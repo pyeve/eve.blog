@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title>Eve News</title><link>http://blog.python-eve.org/</link><description></description><atom:link href="http://blog.python-eve.org/feeds/rss.xml" rel="self"></atom:link><lastBuildDate>Sat, 05 Oct 2013 15:39:00 +0200</lastBuildDate><item><title>SQLAlchemy and Eve</title><link>http://blog.python-eve.org/sqlalchemy-and-eve</link><description>&lt;p&gt;There is an ongoing effort to develop a SQLAlchemy data layer for Eve. This is
+interesting because it will allow the use of a wide range of SQL databases
+(PostgreSQL, MySQL, Oracle, etc.) as storage backends for Eve-powered REST
+APIs. As you probably now, until now only MongoDB has been supported.&lt;/p&gt;
+&lt;p&gt;The current early prototype resides in its own &lt;a class="reference external" href="https://github.com/nicolaiarocci/eve/tree/sqlalchemy"&gt;sqlalchemy branch&lt;/a&gt;. We are in
+the early stages of development and contributors are invited to join the ranks.
+There is a lot of room for improvement at all levels: features, tests,
+documentation, you name it.&lt;/p&gt;
+&lt;p&gt;If you want to lend a hand please come visit us on &lt;a class="reference external" href="irc://irc.freenode.net/evehq"&gt;IRC&lt;/a&gt; so we can better
+coordinate efforts. &lt;strong&gt;Jezier&lt;/strong&gt; has been working on the SQL features while
+&lt;strong&gt;beatpanic&lt;/strong&gt; has been playing around with the test suite. Get in touch with
+them or with me (I’m &lt;strong&gt;iaro&lt;/strong&gt; on IRC). If IRC is not your cup of tea feel free to
+open a &lt;a class="reference external" href="https://github.com/nicolaiarocci/eve/issues"&gt;ticket&lt;/a&gt;, &lt;a class="reference external" href="mailto:eve&amp;#64;nicolaiarocci.com"&gt;email me&lt;/a&gt; or submit a pull requests: just make sure it is
+against the sqlalchemy branch.&lt;/p&gt;
+</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Nicola Iarocci</dc:creator><pubDate>Sat, 05 Oct 2013 15:39:00 +0200</pubDate><guid>tag:blog.python-eve.org,2013-10-05:sqlalchemy-and-eve</guid><category>sqlalchemy</category></item></channel></rss>
