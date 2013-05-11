@@ -13,6 +13,7 @@ from pelicanconf import *
 #SITEURL = 'http://blog.python-eve.org/'
 RELATIVE_URLS = False
 
+FEED_RSS = 'feeds/rss.xml'
 FEED_ALL_ATOM = 'feeds/all.atom.xml'
 CATEGORY_FEED_ATOM = 'feeds/%s.atom.xml'
 
