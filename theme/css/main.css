@@ -107,3 +107,8 @@ hr { border: 0; height: 0; border-top: 1px solid rgba(0, 0, 0, 0.1);
 .align-center { display: block;
                 margin-left: auto;
                 margin-right: auto}
+
+/* Needs work */
+#menu ul { width: 740px; margin: 0 auto; text-align: center;  padding: 0; }
+#menu ul li { list-style: none; display: inline-block; }
+#menu ul li:before { content: ""; }

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Eve News</title><link href="blog.python-eve.org/" rel="alternate"></link><link href="blog.python-eve.org/feeds/all.atom.xml" rel="self"></link><id>blog.python-eve.org/</id><updated>2013-10-05T15:39:00+02:00</updated><entry><title>SQLAlchemy and Eve</title><link href="blog.python-eve.org/sqlalchemy-and-eve" rel="alternate"></link><updated>2013-10-05T15:39:00+02:00</updated><author><name>Nicola Iarocci</name></author><id>tag:blog.python-eve.org,2013-10-05:sqlalchemy-and-eve</id><summary type="html">&lt;p&gt;There is currently an ongoing effort to develop a SQLAlchemy data layer for
+Eve. This is interesting because it will allow to use a wide range of SQL
+databases (PostgreSQL, MySQL, Oracle, etc.) to be used as storage backends for
+Eve-powered REST APIs. Until now, only MongoDB has been supported.&lt;/p&gt;
+&lt;p&gt;The current early prototype resides in its own &lt;a class="reference external" href="https://github.com/nicolaiarocci/eve/tree/sqlalchemy"&gt;sqlalchemy branch&lt;/a&gt;. We are in
+the early stages of development and contributors are invited to join the ranks.
+There is a lot of room for improvement at all levels: features, tests,
+documentation you name it.&lt;/p&gt;
+&lt;p&gt;If you want to lend a hand please come visit us on &lt;a class="reference external" href="irc://irc.freenode.net/evehq"&gt;IRC&lt;/a&gt; so we can better
+coordinate efforts. Jezier has been working on the SQL features while beatpanic
+has been playing around with the test suite. Get in touch with them or with me
+(I’m iaro on IRC). If IRC is not your cup of tea feel free to open a &lt;a class="reference external" href="https://github.com/nicolaiarocci/eve/issues"&gt;ticket&lt;/a&gt;, to
+&lt;a class="reference external" href="mailto:eve&amp;#64;nicolaiarocci.com"&gt;email me&lt;/a&gt; or directly submit a pull requests, just make sure it is against the
+sqlalchemy branch.&lt;/p&gt;
+</summary><category term="sqlalchemy"></category></entry></feed>
