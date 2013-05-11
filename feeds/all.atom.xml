@@ -10,7 +10,7 @@ documentation, you name it.&lt;/p&gt;
 &lt;p&gt;If you want to lend a hand please come visit us on &lt;a class="reference external" href="irc://irc.freenode.net/evehq"&gt;IRC&lt;/a&gt; so we can better
 coordinate efforts. &lt;strong&gt;Jezier&lt;/strong&gt; has been working on the SQL features while
 &lt;strong&gt;beatpanic&lt;/strong&gt; has been playing around with the test suite. Get in touch with
-them or with me (I’m iaro on IRC). If IRC is not your cup of tea feel free to
+them or with me (I’m &lt;strong&gt;iaro&lt;/strong&gt; on IRC). If IRC is not your cup of tea feel free to
 open a &lt;a class="reference external" href="https://github.com/nicolaiarocci/eve/issues"&gt;ticket&lt;/a&gt;, &lt;a class="reference external" href="mailto:eve&amp;#64;nicolaiarocci.com"&gt;email me&lt;/a&gt; or submit a pull requests: just make sure it is
 against the sqlalchemy branch.&lt;/p&gt;
 </summary><category term="sqlalchemy"></category></entry></feed>
