@@ -4,7 +4,7 @@ from __future__ import unicode_literals
 
 AUTHOR = u'Nicola Iarocci'
 SITENAME = u'Eve News'
-SITEURL = 'blog.python-eve.org'
+SITEURL = 'http://blog.python-eve.org'
 #DISPLAY_PAGES_ON_MENU = False
 #MENUITEMS = [('test','#')]
 
