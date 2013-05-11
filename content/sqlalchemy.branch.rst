@@ -6,22 +6,22 @@ SQLAlchemy and Eve
 :category: develop
 :author: Nicola Iarocci
 
-There is currently an ongoing effort to develop a SQLAlchemy data layer for
-Eve. This is interesting because it will allow to use a wide range of SQL
-databases (PostgreSQL, MySQL, Oracle, etc.) to be used as storage backends for
-Eve-powered REST APIs. Until now, only MongoDB has been supported.
+There is an ongoing effort to develop a SQLAlchemy data layer for Eve. This is
+interesting because it will allow the use of a wide range of SQL databases
+(PostgreSQL, MySQL, Oracle, etc.) as storage backends for Eve-powered REST
+APIs. As you probably now, until now only MongoDB has been supported.
 
 The current early prototype resides in its own `sqlalchemy branch`_. We are in
 the early stages of development and contributors are invited to join the ranks.
 There is a lot of room for improvement at all levels: features, tests,
-documentation you name it.
+documentation, you name it.
 
 If you want to lend a hand please come visit us on IRC_ so we can better
-coordinate efforts. Jezier has been working on the SQL features while beatpanic
-has been playing around with the test suite. Get in touch with them or with me
-(I’m iaro on IRC). If IRC is not your cup of tea feel free to open a ticket_, to
-`email me`_ or directly submit a pull requests, just make sure it is against the
-sqlalchemy branch.
+coordinate efforts. **Jezier** has been working on the SQL features while
+**beatpanic** has been playing around with the test suite. Get in touch with
+them or with me (I’m **iaro** on IRC). If IRC is not your cup of tea feel free to
+open a ticket_, `email me`_ or submit a pull requests: just make sure it is
+against the sqlalchemy branch.
 
 .. _`sqlalchemy branch`: https://github.com/nicolaiarocci/eve/tree/sqlalchemy
 .. _IRC: irc://irc.freenode.net/evehq
