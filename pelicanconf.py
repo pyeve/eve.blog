@@ -3,8 +3,10 @@
 from __future__ import unicode_literals
 
 AUTHOR = u'Nicola Iarocci'
-SITENAME = u'The Eve Blog'
+SITENAME = u'Eve News'
 SITEURL = 'blog.python-eve.org'
+#DISPLAY_PAGES_ON_MENU = False
+#MENUITEMS = [('test','#')]
 
 TIMEZONE = 'Europe/Rome'
 
@@ -27,7 +29,7 @@ LINKS =  (('Eve Website', 'http://python-eve.org'),
 SOCIAL = (('twitter', 'https://twitter.com/nicolaiarocci'),
           ('github', 'https://github.com/nicolaiarocci/eve'),)
 
-THEME = 'themes/iris.eve'
+THEME = 'eve.iris'
 
 EMAIL = 'eve@nicolaiarocci.com'
 
