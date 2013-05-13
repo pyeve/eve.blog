@@ -7,7 +7,7 @@ projections are omitted the whole document is returned).&lt;/p&gt;
 &lt;p&gt;We also added support for HEAD requests, made sure that only fields defined in
 resource schemas are returned, and applied a bunch of performance
 optimizations, especially with regard to &lt;tt class="docutils literal"&gt;POST&lt;/tt&gt; (Eve now performs bulk
-database inserts) and &lt;tt class="docutils literal"&gt;ETags&lt;/tt&gt; computation.  Also, if you have been
+database inserts) and &lt;tt class="docutils literal"&gt;ETag&lt;/tt&gt; computation.  Also, if you have been
 experiencing 400s make sure to download this release, as a couple of
 significant bugs have been squashed. See the &lt;a class="reference external" href="https://github.com/nicolaiarocci/eve/blob/develop/CHANGES"&gt;changelog&lt;/a&gt; for all the news.&lt;/p&gt;
 &lt;p&gt;Thanks to all the people who contributed either with patches or by opening
