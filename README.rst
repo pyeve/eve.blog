@@ -1,7 +1,6 @@
 Eve News
 ========
 
-The Eve_ project blog, powered by Pelican. The actual output is available on
-the gh-pages branch of this repo.
+The Eve_ blog. Powered by Pelican. 
 
 .. _Eve: http://python-eve.org
