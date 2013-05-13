@@ -1,0 +1,31 @@
+Eve 0.0.6 Released
+==================
+
+:date: 2013-05-13
+:category: develop
+:tags: releases
+
+The two main features introduced by this release are `Event Hooks`_ and
+`Projections`_. Event hooks allow to subscribe to ``GET``, ``POST``, ``PATCH``,
+``DELETE`` requests with mutiple callbacks. Projections are conditional queries
+where the client dictates which fields should be returned by the API (when
+projections are omitted the whole document is returned). 
+
+We also added support for HEAD requests, made sure that only fields defined in
+resource schemas are returned, and applied a bunch of performance
+optimizations, especially with regard to ``POST`` (Eve now performs bulk
+database inserts) and ``ETag`` computation.  Also, if you have been
+experiencing 400s make sure to download this release, as a couple of
+significant bugs have been squashed. See the changelog_ for all the news.
+
+Thanks to all the people who contributed either with patches or by opening
+tickets and reporting bugs. In no particular order: Ondrej Slinták, Thomas
+Sileo, Tomasz Jezierski, Nicolas Bazire, Nicola Carlier, maksim2042, Xu Wang,
+Asdine El Hrychy, hluz, chronidev, Gianfranco Palumbo.
+
+Get `Eve 0.0.6`_ while it's hot!
+
+.. _`Event Hooks`: http://python-eve.org/features.html#event-hooks
+.. _Projections: http://python-eve.org/features.html#projections
+.. _changelog: https://github.com/nicolaiarocci/eve/blob/develop/CHANGES
+.. _`Eve 0.0.6`: https://crate.io/packages/Eve/
