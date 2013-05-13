@@ -10,10 +10,11 @@ especially with regard to &lt;tt class="docutils literal"&gt;POST&lt;/tt&gt; (Ev
 and &lt;tt class="docutils literal"&gt;ETags&lt;/tt&gt; computation.  Also, if you have been experiencing 400s make sure to
 download this release, as a couple of significant bugs have been squashed. See
 the &lt;a class="reference external" href="https://github.com/nicolaiarocci/eve/blob/develop/CHANGES"&gt;changelog&lt;/a&gt; for all the news.&lt;/p&gt;
-&lt;p&gt;Thanks to all the people who contributed, either with patches or by opening
+&lt;p&gt;Thanks to all the people who contributed either with patches or by opening
 tickets and reporting bugs. In no particular order: Ondrej Slinták, Thomas
 Sileo, Tomasz Jezierski, Nicolas Bazire, Nicola Carlier, maksim2042, Xu Wang,
 Asdine El Hrychy, hluz, chronidev, Gianfranco Palumbo.&lt;/p&gt;
+&lt;p&gt;Get &lt;a class="reference external" href="https://crate.io/packages/Eve/"&gt;Eve 0.0.6&lt;/a&gt; while it's hot!&lt;/p&gt;
 </summary><category term="releases"></category></entry><entry><title>SQLAlchemy and Eve</title><link href="http://blog.python-eve.org/sqlalchemy-and-eve" rel="alternate"></link><updated>2013-05-10T15:39:00+02:00</updated><author><name>Nicola Iarocci</name></author><id>tag:blog.python-eve.org,2013-05-10:sqlalchemy-and-eve</id><summary type="html">&lt;p&gt;There is an ongoing effort to develop a SQLAlchemy data layer for Eve. This is
 interesting because it will allow the use of a wide range of SQL databases
 (PostgreSQL, MySQL, Oracle, etc.) as storage backends for Eve-powered REST
