@@ -9,7 +9,7 @@ SQLAlchemy and Eve
 There is an ongoing effort to develop a SQLAlchemy data layer for Eve. This is
 interesting because it will allow the use of a wide range of SQL databases
 (PostgreSQL, MySQL, Oracle, etc.) as storage backends for Eve-powered REST
-APIs. As you probably now, until now only MongoDB has been supported.
+APIs. 
 
 The current early prototype resides in its own `sqlalchemy branch`_. We are in
 the early stages of development and contributors are invited to join the ranks.
