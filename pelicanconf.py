@@ -9,6 +9,7 @@ SITEURL = 'http://blog.python-eve.org'
 #MENUITEMS = [('test','#')]
 
 TIMEZONE = 'Europe/Rome'
+LOCALE = 'en_US'
 
 DEFAULT_LANG = u'en'
 
