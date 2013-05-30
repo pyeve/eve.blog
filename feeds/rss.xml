@@ -1,16 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title>Eve News</title><link>http://blog.python-eve.org/</link><description></description><atom:link href="http://blog.python-eve.org/feeds/rss.xml" rel="self"></atom:link><lastBuildDate>Thu, 30 May 2013 00:00:00 +0200</lastBuildDate><item><title>Account Management and REST</title><link>http://blog.python-eve.org/account-management-and-rest</link><description>&lt;p&gt;Lately I have been receiving a lot of enquiries on how to properly handle REST
-API authentication, so I wrote a couple of &lt;a class="reference external" href="http://python-eve.org/tutorials/"&gt;tutorials&lt;/a&gt; that will hopefully
-shread some light on the topic. They're filed under &lt;em&gt;Account Management&lt;/em&gt; and
-their titles are self explanatory.&lt;/p&gt;
+API authentication, so I wrote a couple of tutorials that will hopefully shread
+some light on the topic. They're filed under &lt;a class="reference external" href="http://python-eve.org/tutorials/account_management.html"&gt;RESTful Account Management&lt;/a&gt; and
+cover both Basic and Token-Based Authentication scenarios.&lt;/p&gt;
 &lt;p&gt;Besides the obvious immediate usefulness in solving the issue at hand, I find
 that tutorials offer a golden opportunity to grasp how apparently unrelated
 features can be assembled togheter to solve a problem. So just let me know if
 you'd like to see more &lt;em&gt;howtos&lt;/em&gt;.&lt;/p&gt;
-&lt;ul class="simple"&gt;
-&lt;li&gt;&lt;a class="reference external" href="http://python-eve.org/tutorials/account_management.html#accounts-with-basic-authentication"&gt;Accounts with Basic Authentication&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a class="reference external" href="http://python-eve.org/tutorials/account_management.html#accounts-with-token-authentication"&gt;Accounts with Token-Based Authentication&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
 </description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Nicola Iarocci</dc:creator><pubDate>Thu, 30 May 2013 00:00:00 +0200</pubDate><guid>tag:blog.python-eve.org,2013-05-30:account-management-and-rest</guid><category>tutorials</category></item><item><title>Official IRC Channel</title><link>http://blog.python-eve.org/official-irc-channel</link><description>&lt;p&gt;The official IRC channel for the project is now &lt;a class="reference external" href="irc://irc.freenode.net/python-eve"&gt;#python-eve&lt;/a&gt;. We left the
 previous channel as it was accidentally named like a tool for the EVE ONLINE
 space game, causing some players of that game to join in only to get totally
