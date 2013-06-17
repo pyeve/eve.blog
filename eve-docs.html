@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-                <title>Eve News tags</title>
+                <title>Auto generate API docs</title>
         <!-- Fonts -->
         <link href='http://fonts.googleapis.com/css?family=Inconsolata' rel='stylesheet' type='text/css'>
         <link href='http://fonts.googleapis.com/css?family=The+Girl+Next+Door' rel='stylesheet' type='text/css'>
@@ -28,27 +28,46 @@
 <body id="index" class="home">
          <div class="navigation">
         <ol class="nav">
-          <li><a href="http://blog.python-eve.org">Blog</a> </li>
+          <li class="current"><a href="http://blog.python-eve.org">Blog</a> </li>
           <li><a href="http://blog.python-eve.org/archives.html">Archive</a></li>
-          <li class="current"><a href="http://blog.python-eve.org/tags.html">Tags</a> </li>
-          <li><a href="http://blog.python-eve.org/feeds/rss.xml">RSS</a> </li>
+          <li><a href="http://blog.python-eve.org/tags.html">Tags</a> </li>
+          <li><a href="feeds/rss.xml">RSS</a> </li>
         </ol>
       </div>
-            <header id="banner" class="body">
+        <header id="banner" class="body">
                 <div class="banner"><a href="http://blog.python-eve.org">Eve News <strong></strong></a></div>
         </header><!-- /#banner -->
         <nav id="menu"><ul>
                                           </ul></nav><!-- /#menu -->
         <div class="box">
-            <h2>Tags:</h2>
-<ul>
-    <li><a href="http://blog.python-eve.org/tag/sqlalchemy">sqlalchemy</a></li>
-    <li><a href="http://blog.python-eve.org/tag/releases">releases</a></li>
-    <li><a href="http://blog.python-eve.org/tag/documentation">documentation</a></li>
-    <li><a href="http://blog.python-eve.org/tag/tutorials">tutorials</a></li>
-    <li><a href="http://blog.python-eve.org/tag/irc">irc</a></li>
-    <li><a href="http://blog.python-eve.org/tag/tools">tools</a></li>
-</ul>
+            <section id="content" class="body">
+  <header class="post">
+    <h1 class="entry-title">
+      Auto generate API docs
+    </h1>
+  </header>
+  <footer class="post-info">
+    <abbr>
+      Mon 17 June 2013 
+               By <a class="url fn" href="http://blog.python-eve.org/author/charles-flynn">Charles Flynn</a>
+        
+    </abbr>
+  </footer><!-- /.post-info -->
+  <div class="entry-content">
+    <p>Eve provides powerful capabilities for quickly building RESTful APIs. The
+<a class="reference external" href="https://github.com/charlesflynn/eve-docs">Eve-docs</a> blueprint extends these capabilities with API documentation. You
+activate the blueprint in your launch script, and Eve-docs creates the
+documentation from your existing Eve configuration file, with no additional
+configuration required.</p>
+<img alt="An example of eve-docs auto generated API documentation" src="static/images/evedocs-example.png" />
+<p>Eve-docs generates documentation in HTML using <a class="reference external" href="http://twitter.github.io/bootstrap/">Twitter Bootstrap</a>. You can
+expand each domain to show available endpoints and methods, and further expand
+each method to show parameter details. Eve-docs also publishes the
+documentation data as JSON for programmatic consumption.</p>
+<p>For more detail see the <a class="reference external" href="https://github.com/charlesflynn/eve-docs">project repo</a> on Github.</p>
+
+  </div><!-- /.entry-content -->
+</section>
             <hr/>
             <footer id="contentinfo" class="footer">
                 <div>
