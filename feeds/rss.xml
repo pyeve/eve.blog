@@ -1,5 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title>Eve News</title><link>http://blog.python-eve.org/</link><description></description><atom:link href="http://blog.python-eve.org/feeds/rss.xml" rel="self"></atom:link><lastBuildDate>Mon, 17 Jun 2013 00:00:00 +0200</lastBuildDate><item><title>Auto generate API docs</title><link>http://blog.python-eve.org/eve-docs</link><description>&lt;p&gt;Eve provides powerful capabilities for quickly building RESTful APIs. The
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title>Eve News</title><link>http://blog.python-eve.org/</link><description></description><atom:link href="http://blog.python-eve.org/feeds/rss.xml" rel="self"></atom:link><lastBuildDate>Tue, 18 Jun 2013 00:00:00 +0200</lastBuildDate><item><title>Eve 0.0.7 Released</title><link>http://blog.python-eve.org/eve-007-released</link><description>&lt;p&gt;Along with &lt;a class="reference external" href="http://python-eve.org/features.html#rate-limiting"&gt;Rate Limiting&lt;/a&gt;, which is the main feature, this release also adds
+new powerful &lt;a class="reference external" href="http://python-eve.org/features.html#event-hooks"&gt;Event Hooks&lt;/a&gt;, gives more power to &lt;a class="reference external" href="http://python-eve.org/authentication.html"&gt;Authentication&lt;/a&gt; subclasses,
+and (much) more. As always, see the &lt;a class="reference external" href="http://python-eve.org/changelog.html"&gt;changelog&lt;/a&gt; for all the news.&lt;/p&gt;
+&lt;p&gt;Thanks to Paul Doucet for contributing, and to all the people who opened
+tickets and supported Eve in one way or another.&lt;/p&gt;
+&lt;p&gt;Get &lt;a class="reference external" href="https://crate.io/packages/Eve/"&gt;Eve 0.0.7&lt;/a&gt;.&lt;/p&gt;
+</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Nicola Iarocci</dc:creator><pubDate>Tue, 18 Jun 2013 00:00:00 +0200</pubDate><guid>tag:blog.python-eve.org,2013-06-18:eve-007-released</guid><category>releases</category></item><item><title>Auto generate API docs</title><link>http://blog.python-eve.org/eve-docs</link><description>&lt;p&gt;Eve provides powerful capabilities for quickly building RESTful APIs. The
 &lt;a class="reference external" href="https://github.com/charlesflynn/eve-docs"&gt;Eve-docs&lt;/a&gt; blueprint extends these capabilities with API documentation. You
 activate the blueprint in your launch script, and Eve-docs creates the
 documentation from your existing Eve configuration file, with no additional
