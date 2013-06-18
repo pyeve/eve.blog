@@ -1,0 +1,22 @@
+Eve 0.0.7 Released
+==================
+
+:date: 2013-06-18
+:category: develop
+:tags: releases
+
+Along with `Rate Limiting`_, which is the main feature, this release also adds
+new powerful `Event Hooks`_, gives more power to Authentication_ subclasses,
+and (much) more. As always, see the changelog_ for all the news.
+
+Thanks to Paul Doucet for contributing, and to all the people who opened
+tickets and supported Eve in one way or another.
+
+Get `Eve 0.0.7`_.
+
+.. _`Rate Limiting`: http://python-eve.org/features.html#rate-limiting
+.. _`Authentication`: http://python-eve.org/authentication.html
+.. _`Event Hooks`: http://python-eve.org/features.html#event-hooks
+.. _changelog: http://python-eve.org/changelog.html
+.. _`Eve 0.0.7`: https://crate.io/packages/Eve/
+
