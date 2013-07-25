@@ -1,0 +1,21 @@
+Eve 0.0.8 Released
+==================
+
+:date: 2013-07-25
+:category: develop
+:tags: releases
+
+Today release adds support for MongoDB ``write_concern``, better pagination,
+new event hooks (allowing for transformation of documents before they are sent
+to clients), better CORS handling, validation for ``float`` data type and
+more (see changelog_).
+
+Thanks to Daniele Pizzolli, Julien Barbot and Garrin Kimmell for contributing
+and to David Reese, Josh Matthews and others for opening tickets and supporting
+Eve one way or another.
+
+Get `Eve 0.0.8`_.
+
+.. _changelog: http://python-eve.org/changelog.html
+.. _`Eve 0.0.8`: https://crate.io/packages/Eve/
+
