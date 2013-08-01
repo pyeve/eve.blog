@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+                <title>Mocking tool for Eve APIs</title>
+        <!-- Fonts -->
+        <link href='http://fonts.googleapis.com/css?family=Inconsolata' rel='stylesheet' type='text/css'>
+        <link href='http://fonts.googleapis.com/css?family=The+Girl+Next+Door' rel='stylesheet' type='text/css'>
+        <link href='http://fonts.googleapis.com/css?family=Marcellus' rel='stylesheet' type='text/css'>
+        
+        <!-- CSS -->
+        <link rel="stylesheet" href="http://blog.python-eve.org/theme/css/main.css" type="text/css" />
+        <link rel="stylesheet" href="http://blog.python-eve.org/theme/css/pygments.css" type="text/css" />
+        <link rel="stylesheet" href="http://blog.python-eve.org/theme/css/font-awesome.css" type="text/css" />
+        <meta charset="utf-8" />
+      
+                <link href="http://blog.python-eve.org/feeds/rss.xml" type="application/rss+xml" rel="alternate" title="Eve News RSS Feed" />
+        
+        <!-- Javascript-->
+        <script src="http://blog.python-eve.org/theme/js/invisible-menu-scroll.js"></script>
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8/jquery.min.js"></script>
+        <script type="text/javascript"> 
+          $(function() {
+            invisibleMenu();
+          });
+        </script> 
+        </head>
+
+<body id="index" class="home">
+         <div class="navigation">
+        <ol class="nav">
+          <li class="current"><a href="http://blog.python-eve.org">Blog</a> </li>
+          <li><a href="http://blog.python-eve.org/archives.html">Archive</a></li>
+          <li><a href="http://blog.python-eve.org/tags.html">Tags</a> </li>
+          <li><a href="feeds/rss.xml">RSS</a> </li>
+        </ol>
+      </div>
+        <header id="banner" class="body">
+                <div class="banner"><a href="http://blog.python-eve.org">Eve News <strong></strong></a></div>
+        </header><!-- /#banner -->
+        <nav id="menu"><ul>
+                                          </ul></nav><!-- /#menu -->
+        <div class="box">
+            <section id="content" class="body">
+  <header class="post">
+    <h1 class="entry-title">
+      Mocking tool for Eve APIs
+    </h1>
+  </header>
+  <footer class="post-info">
+    <abbr>
+      Thu 01 August 2013 
+               By <a class="url fn" href="http://blog.python-eve.org/author/thomas-sileo">Thomas Sileo</a>
+        
+    </abbr>
+  </footer><!-- /.post-info -->
+  <div class="entry-content">
+    <p><a class="reference external" href="https://github.com/tsileo/eve-mocker">EveMocker</a> is a mocking tool for <a class="reference external" href="http://python-eve.org">Eve
+powered REST API</a>, based on the excellent <a class="reference external" href="http://falcao.it/HTTPretty">HTTPretty</a>, and aimed to be used in your unit tests, when
+you rely on an Eve API. It mimics the behavior of an Eve API in a controlled
+way. Why would you want to mock Eve when writing unit tests?</p>
+<ul class="simple">
+<li>Your test suite will run faster.</li>
+<li>You don't need to bundle an Eve app exclusively for testing purposes (you can
+spend more time on the actual task).</li>
+<li>You don't need to worry about having a real Eve server running when running
+the test cases.</li>
+</ul>
+<p>Let's say you want to test the following class stored in <tt class="docutils literal">remote_items.py</tt>
+that need to call an Eve powered REST API:</p>
+<div class="highlight"><pre><span class="kn">from</span> <span class="nn">urlparse</span> <span class="kn">import</span> <span class="n">urljoin</span>
+<span class="kn">from</span> <span class="nn">functools</span> <span class="kn">import</span> <span class="n">partial</span>
+<span class="kn">import</span> <span class="nn">requests</span>
+
+<span class="n">API_URL</span> <span class="o">=</span> <span class="s">&quot;http://my-eve-api.com/api/&quot;</span>
+
+
+<span class="k">class</span> <span class="nc">RemoteItems</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">api_url</span><span class="o">=</span><span class="n">API_URL</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">api_url</span> <span class="o">=</span> <span class="n">api_url</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">endpoint_url</span> <span class="o">=</span> <span class="n">partial</span><span class="p">(</span><span class="n">urljoin</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">api_url</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">get_latest</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">r</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">endpoint_url</span><span class="p">(</span><span class="s">&quot;items&quot;</span><span class="p">))</span>
+        <span class="n">r</span><span class="o">.</span><span class="n">raise_for_status</span><span class="p">()</span>
+        <span class="k">return</span> <span class="n">r</span><span class="o">.</span><span class="n">json</span><span class="p">()</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">&quot;_items&quot;</span><span class="p">,</span> <span class="p">[])</span>
+</pre></div>
+<p>Here is how you can do it with Eve-Mocker:</p>
+<div class="highlight"><pre><span class="kn">from</span> <span class="nn">eve_mocker</span> <span class="kn">import</span> <span class="n">EveMocker</span>
+<span class="kn">import</span> <span class="nn">unittest</span>
+<span class="kn">from</span> <span class="nn">remote_items</span> <span class="kn">import</span> <span class="n">RemoteItems</span><span class="p">,</span> <span class="n">API_URL</span>
+
+<span class="k">class</span> <span class="nc">TestRemoteItems</span><span class="p">(</span><span class="n">unittest</span><span class="o">.</span><span class="n">TestCase</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">testGetLatestItems</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">items</span> <span class="o">=</span> <span class="p">[{</span><span class="s">&quot;_id&quot;</span><span class="p">:</span> <span class="s">&quot;fakeid&quot;</span><span class="p">,</span> <span class="s">&quot;content&quot;</span><span class="p">:</span> <span class="s">&quot;my content&quot;</span><span class="p">},</span>
+                 <span class="p">{</span><span class="s">&quot;_id&quot;</span><span class="p">:</span> <span class="s">&quot;fakeid2&quot;</span><span class="p">,</span> <span class="s">&quot;content&quot;</span><span class="p">:</span> <span class="s">&quot;another_content&quot;</span><span class="p">}]</span>
+        <span class="k">with</span> <span class="n">EveMocker</span><span class="p">(</span><span class="n">API_URL</span><span class="p">)</span> <span class="k">as</span> <span class="n">eve_mocker</span><span class="p">:</span>
+            <span class="c"># We feed EveMocker DB with some items</span>
+            <span class="n">eve_mocker</span><span class="o">.</span><span class="n">set_resource</span><span class="p">(</span><span class="s">&quot;items&quot;</span><span class="p">,</span> <span class="n">items</span><span class="p">)</span>
+
+            <span class="n">remote_items</span> <span class="o">=</span> <span class="n">RemoteItems</span><span class="p">()</span>
+            <span class="n">latest_items</span> <span class="o">=</span> <span class="n">remote_items</span><span class="o">.</span><span class="n">get_latest</span><span class="p">()</span>
+
+            <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="nb">sorted</span><span class="p">(</span><span class="n">latest_items</span><span class="p">),</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">items</span><span class="p">))</span>
+
+<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="n">unittest</span><span class="o">.</span><span class="n">main</span><span class="p">()</span>
+</pre></div>
+<p>Check out <a class="reference external" href="https://github.com/tsileo/eve-mocker">the repository</a> on GitHub.</p>
+
+  </div><!-- /.entry-content -->
+</section>
+            <hr/>
+            <footer id="contentinfo" class="footer">
+                <div>
+                    <a href="http://python-eve.org">Eve</a> <br />
+                    REST WEB APIs Made Simple
+                <div>
+                    A <a href="http://nicolaiarocci.com">Nicola Iarocci</a> Project</a>
+                </div>
+                <div>
+                    Powered by <a href="http://getpelican.com/">Pelican</a>
+                    and <a href="http://python.org">Python</a>. 
+                </div>
+                <div class="social">
+                                            <a href="https://twitter.com/nicolaiarocci"><i class="icon-twitter"></i>  </a>
+                                            <a href="https://github.com/nicolaiarocci/eve"><i class="icon-github"></i>  </a>
+                                                                <a href="mailto:eve@nicolaiarocci.com"><i class="icon-envelope"></i> </a>
+                                    </div>
+            </footer><!-- /#contentinfo -->
+        </div>
+        <!--Add statistycs-->
+        
+</body>
+</html>
