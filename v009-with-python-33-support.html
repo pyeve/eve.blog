@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-                <title>Eve News</title>
+                <title>v0.0.9 with Python 3.3 support</title>
         <!-- Fonts -->
         <link href='http://fonts.googleapis.com/css?family=Inconsolata' rel='stylesheet' type='text/css'>
         <link href='http://fonts.googleapis.com/css?family=The+Girl+Next+Door' rel='stylesheet' type='text/css'>
@@ -28,10 +28,10 @@
 <body id="index" class="home">
          <div class="navigation">
         <ol class="nav">
-          <li><a href="http://blog.python-eve.org">Blog</a> </li>
-          <li class="current"><a href="http://blog.python-eve.org/archives.html">Archive</a></li>
+          <li class="current"><a href="http://blog.python-eve.org">Blog</a> </li>
+          <li><a href="http://blog.python-eve.org/archives.html">Archive</a></li>
           <li><a href="http://blog.python-eve.org/tags.html">Tags</a> </li>
-          <li><a href="http://blog.python-eve.org/feeds/rss.xml">RSS</a> </li>
+          <li><a href="feeds/rss.xml">RSS</a> </li>
         </ol>
       </div>
         <header id="banner" class="body">
@@ -40,46 +40,33 @@
         <nav id="menu"><ul>
                                           </ul></nav><!-- /#menu -->
         <div class="box">
-            <h2>Archives:</h2>
+            <section id="content" class="body">
+  <header class="post">
+    <h1 class="entry-title">
+      v0.0.9 with Python 3.3 support
+    </h1>
+  </header>
+  <footer class="post-info">
+    <abbr>
+      Thu 29 August 2013 
+               By <a class="url fn" href="http://blog.python-eve.org/author/nicola-iarocci">Nicola Iarocci</a>
+        
+    </abbr>
+  </footer><!-- /.post-info -->
+  <div class="entry-content">
+    <p>This release brings Python 3.3 support and aligns with most recent Flask,
+Werkzeug and PyMongo releases.</p>
+<p>There are several backward-compatibility breaking changes, so you might want to
+carefully read the <a class="reference external" href="http://python-eve.org/changelog.html">changelog</a> and check the updated <a class="reference external" href="http://python-eve.org">documentation</a>. Besides Py3
+support, the most prominent feature is the new custom userid field now
+available to <a class="reference external" href="http://python-eve.org/authentication.html">Authentication</a> classes, which allows for enhanced flexibility and
+easier token revocation when using token-based authentication.</p>
+<p>Thanks to Bryan Cattle and Ryan Shea for their contributions and, as always, to
+all those who opened tickets and supported the project so far.</p>
+<p>Get <a class="reference external" href="https://crate.io/packages/Eve/">Eve 0.0.9</a>.</p>
 
-<table class="archives">
-    <tr>
-        <td>Thu 29 August 2013</td>
-        <td><a href="http://blog.python-eve.org/v009-with-python-33-support">v0.0.9 with Python 3.3 support</a></td>
-    </tr>
-    <tr>
-        <td>Thu 01 August 2013</td>
-        <td><a href="http://blog.python-eve.org/eve-mocker">Mocking tool for Eve APIs</a></td>
-    </tr>
-    <tr>
-        <td>Thu 25 July 2013</td>
-        <td><a href="http://blog.python-eve.org/eve-008-released">Eve 0.0.8 Released</a></td>
-    </tr>
-    <tr>
-        <td>Tue 18 June 2013</td>
-        <td><a href="http://blog.python-eve.org/eve-007-released">Eve 0.0.7 Released</a></td>
-    </tr>
-    <tr>
-        <td>Mon 17 June 2013</td>
-        <td><a href="http://blog.python-eve.org/eve-docs">Auto generate API docs</a></td>
-    </tr>
-    <tr>
-        <td>Thu 30 May 2013</td>
-        <td><a href="http://blog.python-eve.org/account-management-and-rest">Account Management and REST</a></td>
-    </tr>
-    <tr>
-        <td>Mon 20 May 2013</td>
-        <td><a href="http://blog.python-eve.org/official-irc-channel">Official IRC Channel</a></td>
-    </tr>
-    <tr>
-        <td>Mon 13 May 2013</td>
-        <td><a href="http://blog.python-eve.org/eve-006-released">Eve 0.0.6 Released</a></td>
-    </tr>
-    <tr>
-        <td>Fri 10 May 2013</td>
-        <td><a href="http://blog.python-eve.org/sqlalchemy-and-eve">SQLAlchemy and Eve</a></td>
-    </tr>
-</table>
+  </div><!-- /.entry-content -->
+</section>
             <hr/>
             <footer id="contentinfo" class="footer">
                 <div>

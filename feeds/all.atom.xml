@@ -1,5 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Eve News</title><link href="http://blog.python-eve.org/" rel="alternate"></link><link href="http://blog.python-eve.org/feeds/all.atom.xml" rel="self"></link><id>http://blog.python-eve.org/</id><updated>2013-08-01T00:00:00+02:00</updated><entry><title>Mocking tool for Eve APIs</title><link href="http://blog.python-eve.org/eve-mocker" rel="alternate"></link><updated>2013-08-01T00:00:00+02:00</updated><author><name>Thomas Sileo</name></author><id>tag:blog.python-eve.org,2013-08-01:eve-mocker</id><summary type="html">&lt;p&gt;&lt;a class="reference external" href="https://github.com/tsileo/eve-mocker"&gt;EveMocker&lt;/a&gt; is a mocking tool for &lt;a class="reference external" href="http://python-eve.org"&gt;Eve
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Eve News</title><link href="http://blog.python-eve.org/" rel="alternate"></link><link href="http://blog.python-eve.org/feeds/all.atom.xml" rel="self"></link><id>http://blog.python-eve.org/</id><updated>2013-08-29T00:00:00+02:00</updated><entry><title>v0.0.9 with Python 3.3 support</title><link href="http://blog.python-eve.org/v009-with-python-33-support" rel="alternate"></link><updated>2013-08-29T00:00:00+02:00</updated><author><name>Nicola Iarocci</name></author><id>tag:blog.python-eve.org,2013-08-29:v009-with-python-33-support</id><summary type="html">&lt;p&gt;This release brings Python 3.3 support and aligns with most recent Flask,
+Werkzeug and PyMongo releases.&lt;/p&gt;
+&lt;p&gt;There are several backward-compatibility breaking changes, so you might want to
+carefully read the &lt;a class="reference external" href="http://python-eve.org/changelog.html"&gt;changelog&lt;/a&gt; and check the updated &lt;a class="reference external" href="http://python-eve.org"&gt;documentation&lt;/a&gt;. Besides Py3
+support, the most prominent feature is the new custom userid field now
+available to &lt;a class="reference external" href="http://python-eve.org/authentication.html"&gt;Authentication&lt;/a&gt; classes, which allows for enhanced flexibility and
+easier token revocation when using token-based authentication.&lt;/p&gt;
+&lt;p&gt;Thanks to Bryan Cattle and Ryan Shea for their contributions and, as always, to
+all those who opened tickets and supported the project so far.&lt;/p&gt;
+&lt;p&gt;Get &lt;a class="reference external" href="https://crate.io/packages/Eve/"&gt;Eve 0.0.9&lt;/a&gt;.&lt;/p&gt;
+</summary><category term="releases"></category></entry><entry><title>Mocking tool for Eve APIs</title><link href="http://blog.python-eve.org/eve-mocker" rel="alternate"></link><updated>2013-08-01T00:00:00+02:00</updated><author><name>Thomas Sileo</name></author><id>tag:blog.python-eve.org,2013-08-01:eve-mocker</id><summary type="html">&lt;p&gt;&lt;a class="reference external" href="https://github.com/tsileo/eve-mocker"&gt;EveMocker&lt;/a&gt; is a mocking tool for &lt;a class="reference external" href="http://python-eve.org"&gt;Eve
 powered REST API&lt;/a&gt;, based on the excellent &lt;a class="reference external" href="http://falcao.it/HTTPretty"&gt;HTTPretty&lt;/a&gt;, and aimed to be used in your unit tests, when
 you rely on an Eve API. It mimics the behavior of an Eve API in a controlled
 way. Why would you want to mock Eve when writing unit tests?&lt;/p&gt;
