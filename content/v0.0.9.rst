@@ -1,0 +1,25 @@
+v0.0.9 with Python 3.3 support
+==============================
+
+:date: 2013-08-29
+:category: develop
+:tags: releases
+
+This release brings Python 3.3 support and aligns with most recent Flask,
+Werkzeug and PyMongo releases. 
+
+There are several backward-compatibility breaking changes, so you might want to
+carefully read the changelog_ and check the updated documentation_. Besides Py3
+support, the most prominent feature is the new custom userid field now
+available to Authentication_ classes, which allows for enhanced flexibility and
+easier token revocation when using token-based authentication. 
+
+Thanks to Bryan Cattle and Ryan Shea for their contributions and, as always, to
+all those who opened tickets and supported the project so far.  
+
+Get `Eve 0.0.9`_.
+
+.. _changelog: http://python-eve.org/changelog.html
+.. _documentation: http://python-eve.org
+.. _Authentication: http://python-eve.org/authentication.html
+.. _`Eve 0.0.9`: https://crate.io/packages/Eve/
