@@ -1,5 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title>Eve News</title><link>http://blog.python-eve.org/</link><description></description><atom:link href="http://blog.python-eve.org/feeds/rss.xml" rel="self"></atom:link><lastBuildDate>Thu, 29 Aug 2013 00:00:00 +0200</lastBuildDate><item><title>v0.0.9 with Python 3.3 support</title><link>http://blog.python-eve.org/v009-with-python-33-support</link><description>&lt;p&gt;This release brings Python 3.3 support and aligns with most recent Flask,
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title>Eve News</title><link>http://blog.python-eve.org/</link><description></description><atom:link href="http://blog.python-eve.org/feeds/rss.xml" rel="self"></atom:link><lastBuildDate>Thu, 12 Sep 2013 00:00:00 +0200</lastBuildDate><item><title>The Eve Mailing List</title><link>http://blog.python-eve.org/the-eve-mailing-list</link><description>&lt;p&gt;The &lt;a class="reference external" href="https://groups.google.com/forum/#!forum/python-eve"&gt;Eve Mailing List&lt;/a&gt; is intended to be a low traffic resource for
+developers, contributors and maintainers.&lt;/p&gt;
+&lt;p&gt;I'm opening it because I keep receiving emails about Eve and its satellite
+projects &lt;a class="reference external" href="https://github.com/nicolaiarocci/cerberus"&gt;Cerberus&lt;/a&gt; and &lt;a class="reference external" href="https://github.com/nicolaiarocci/events"&gt;Events&lt;/a&gt;.  While I'm more than happy to reply to invidual
+requests, I feel it is a real pity that valuable information is not being
+shared between users. I'm also hoping that experienced Eve users will want to
+contribute with their own advice and experiences, something that is already
+happening elsewhere.&lt;/p&gt;
+&lt;p&gt;Also, a mailing list is browsable, searchable, and covers all timezones,
+something the current IRC room cannot do.&lt;/p&gt;
+</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Nicola Iarocci</dc:creator><pubDate>Thu, 12 Sep 2013 00:00:00 +0200</pubDate><guid>tag:blog.python-eve.org,2013-09-12:the-eve-mailing-list</guid><category>releases</category></item><item><title>v0.0.9 with Python 3.3 support</title><link>http://blog.python-eve.org/v009-with-python-33-support</link><description>&lt;p&gt;This release brings Python 3.3 support and aligns with most recent Flask,
 Werkzeug and PyMongo releases.&lt;/p&gt;
 &lt;p&gt;There are several backward-compatibility breaking changes, so you might want to
 carefully read the &lt;a class="reference external" href="http://python-eve.org/changelog.html"&gt;changelog&lt;/a&gt; and check the updated &lt;a class="reference external" href="http://python-eve.org"&gt;documentation&lt;/a&gt;. Besides Py3
