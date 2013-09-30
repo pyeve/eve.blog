@@ -1,0 +1,173 @@
+Eve 0.1
+=======
+
+:date: 2013-09-30
+:category: develop
+:tags: releases
+
+This release marks the passage from alpha to beta and introduces several
+features and enhancements. Also, someone was so kind to post about the Eve
+project on Reddit, which in turn granted us a post on Hacker News.  This
+brought a lot of attention, resulting in a massive increase in downloads. The
+overall feedback has been tremendous, so much that I'm flattered, but most
+importantly we received some very good suggestions, some of which have been
+turned into features shipped with this update. Here's a list of relevant
+features introduced:
+
+- Support for PUT
+- Embedded Resource Serialization
+- No trailing slash URLs
+- Support for X-HTTP-Method-Override for all API methods
+- Support for Python 3.3 on Windows systems
+- Optional HATEOAS
+
+Support for PUT
+---------------
+``PATCH`` should be used to update only a part of a document whereas ``PUT``
+should be used to completely replace a document with another (valid) one while
+keeping the same unique identifier. Suppose we have a person model in our
+domain with the field firstname, middlename and lastname. Now let the
+middlename be optional. 
+
+There is one person in our database:
+
+.. code-block:: python
+    
+    {firstname: "Maria", middlename: "Johanna", lastname: "Simmons"}
+
+If we want to change the middlename we can use ``PATCH`` to update it
+
+::
+
+    curl -v -X PATCH -d {middlename:"Christina"} http://localhost:5000/people/<marias id>
+
+But if what if we want to delete the middlename and change the lastname at the
+same time? It would be easier to send a new document to the server
+
+::
+
+    curl -v -X PUT -d {firstname: "Maria", lastname: "Thompson"} http://localhost:5000/people/<marias id>
+
+I doesn't seem to make a big difference if we used ``PATCH`` or ``PUT`` here
+but for more complicated use cases it can be really helpful to have ``PUT``
+available. For example if we want to put a default document in order to reset
+the current one.
+
+Embedded Resources
+------------------
+If a document field is referencing a document in another resource, clients can
+request the referenced document to be embedded within the requested document.
+Clients have the power to activate document embedding on per-request basis by
+means of a query parameter. Suppose you have a emails resource configured like
+this:
+
+.. code-block:: python
+
+    DOMAIN = {
+        'emails': {
+            'schema': {
+                'author:' {
+                    'type': 'objectid',
+                    'data_relation': {
+                        'collection': 'user',
+                        'field': '_id',
+                        'embeddable': True
+                    },
+                },
+                'subject:' {'type': 'string'},
+                'body:' {'type': 'string'},
+            }
+        }
+
+A ``GET`` like ``/emails?embedded={"author":1}`` would return a fully embedded
+user document whereas the same request without the embedded argument would just
+return the user ObjectId. Embedding can be enabled or disabled both at global
+level (by setting ``EMBEDDING`` to either ``True`` or ``False``) and at
+resource level (by toggling ``embedding``). Furthermore, only fields with
+the embeddable value explicitly set to ``True`` will allow the embedding of
+referenced documents.
+
+Currenly we only support a single layer of embedding, i.e.
+``/emails?{"author": 1}`` but not ``/emails?{"author.friends": 1}``. Also, keep
+in mind that this feature is about *serialization* on ``GET`` requests. There's
+no support for POSTing or PUTting or PATCHing embedded documents.
+
+No trailing slash URLs
+----------------------
+Endpoints will now respond to both kind of URLS:
+
+- No trailing slash: ``/users`` and ``/users/<id>``
+- Trailing slash: ``/users/`` and ``/users/<id>/``
+
+Previously, only trailing slash URLs were accessible, whereas no trailing slash
+would return a ``301`` redirect. While the previous behavior was more
+consistent with REST "unique identifier" principle, many people reported that
+it was causing issues with some JavaScript libraries such as AngluarJS.
+
+Optional HATEOAS
+----------------
+HATEOAS can be disabled both at the API and/or resource level. When HATEOAS is
+disabled, response payloads have a different structure. The resource payload is
+a simple list of items:
+
+.. code-block:: python
+
+    [
+        {
+            "firstname": "Mark",
+            "lastname": "Green",
+            "born": "Sat, 23 Feb 1985 12:00:00 GMT",
+            "role": ["copy", "author"],
+            "location": {"city": "New York", "address": "4925 Lacross Road"},
+            "_id": "50bf198338345b1c604faf31",
+            "updated": "Wed, 05 Dec 2012 09:53:07 GMT",
+            "created": "Wed, 05 Dec 2012 09:53:07 GMT",
+            "etag": "ec5e8200b8fa0596afe9ca71a87f23e71ca30e2d",
+        },
+        {
+            "firstname": "John",
+            ...
+        },
+    ]
+
+As you can see, the ``_links`` element is missing. Why would you want to turn
+HATEOAS off? Well, if you know that your client application is not going to use
+the feature, then you might want to save on both bandwidth and performance.
+Also, some REST client libraries out there might have issues when parsing
+something other than a simple list of items.
+
+Support for X-HTTP-Method-Override
+----------------------------------
+As a fallback for the odd client not supporting any of the standard HTTP
+methods, the API will gladly honor ``X-HTTP-Method-Override`` requests. For
+example a client not supporting the ``PATCH`` method could send a ``POST``
+request with a ``X-HTTP-Method-Override: PATCH`` header. The API would then
+perform a ``PATCH``, overriding the original request method. While previously
+you could override only PATCH by setting the override header to ``True``, now
+you can override *any* HTTP method.
+
+Wrapping it up
+--------------
+There are also many enhancements and bug fixes. See the changelog_ for details.
+One worth mentioning here is the improved support for Python 3 on Windows
+systems. If you have been experiencing encoding errors while installing Eve,
+this release will make you happy.
+
+As we're in beta now, we will be strictly following `Semantic Versioning`_ when
+labeling Eve releases. New releases will also be better documented on this
+blog, as this post is hopefully showing. Also, during alpha we have been doing
+monthly releases. This might change in the future, as I feel that beta
+releases would probably benefit from staying out in the wild for prolonged
+periods of time.
+
+Thanks to all the people who contributed to this patch: Bryan Cattle, Dong Wei
+Ming, Ken Carpenter, Jean Boussier, Kracekumar, Francisco Corrales Morales,
+Arsh Singh. Also thanks to all the people who suggested features and fixes.
+
+Get `Eve 0.1`_ while it's hot.
+
+.. _changelog: http://python-eve.org/changelog.html
+.. _documentation: http://python-eve.org
+.. _`Eve 0.1`: https://crate.io/packages/Eve/
+.. _`Semantic Versioning`: http://semver.org/
+
