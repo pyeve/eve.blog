@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+                <title>Eve 0.1</title>
+        <!-- Fonts -->
+        <link href='http://fonts.googleapis.com/css?family=Inconsolata' rel='stylesheet' type='text/css'>
+        <link href='http://fonts.googleapis.com/css?family=The+Girl+Next+Door' rel='stylesheet' type='text/css'>
+        <link href='http://fonts.googleapis.com/css?family=Marcellus' rel='stylesheet' type='text/css'>
+        
+        <!-- CSS -->
+        <link rel="stylesheet" href="http://blog.python-eve.org/theme/css/main.css" type="text/css" />
+        <link rel="stylesheet" href="http://blog.python-eve.org/theme/css/pygments.css" type="text/css" />
+        <link rel="stylesheet" href="http://blog.python-eve.org/theme/css/font-awesome.css" type="text/css" />
+        <meta charset="utf-8" />
+      
+                <link href="http://blog.python-eve.org/feeds/rss.xml" type="application/rss+xml" rel="alternate" title="Eve News RSS Feed" />
+        
+        <!-- Javascript-->
+        <script src="http://blog.python-eve.org/theme/js/invisible-menu-scroll.js"></script>
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8/jquery.min.js"></script>
+        <script type="text/javascript"> 
+          $(function() {
+            invisibleMenu();
+          });
+        </script> 
+        </head>
+
+<body id="index" class="home">
+         <div class="navigation">
+        <ol class="nav">
+          <li class="current"><a href="http://blog.python-eve.org">Blog</a> </li>
+          <li><a href="http://blog.python-eve.org/archives.html">Archive</a></li>
+          <li><a href="http://blog.python-eve.org/tags.html">Tags</a> </li>
+          <li><a href="feeds/rss.xml">RSS</a> </li>
+        </ol>
+      </div>
+        <header id="banner" class="body">
+                <div class="banner"><a href="http://blog.python-eve.org">Eve News <strong></strong></a></div>
+        </header><!-- /#banner -->
+        <nav id="menu"><ul>
+                                          </ul></nav><!-- /#menu -->
+        <div class="box">
+            <section id="content" class="body">
+  <header class="post">
+    <h1 class="entry-title">
+      Eve 0.1
+    </h1>
+  </header>
+  <footer class="post-info">
+    <abbr>
+      Mon 30 September 2013 
+               By <a class="url fn" href="http://blog.python-eve.org/author/nicola-iarocci">Nicola Iarocci</a>
+        
+    </abbr>
+  </footer><!-- /.post-info -->
+  <div class="entry-content">
+    <p>This release marks the passage from alpha to beta and introduces several
+features and enhancements. Also, someone was so kind to post about the Eve
+project on Reddit, which in turn granted us a post on Hacker News.  This
+brought a lot of attention, resulting in a massive increase in downloads. The
+overall feedback has been tremendous, so much that I'm flattered, but most
+importantly we received some very good suggestions, some of which have been
+turned into features shipped with this update. Here's a list of relevant
+features introduced:</p>
+<ul class="simple">
+<li>Support for PUT</li>
+<li>Embedded Resource Serialization</li>
+<li>No trailing slash URLs</li>
+<li>Support for X-HTTP-Method-Override for all API methods</li>
+<li>Support for Python 3.3 on Windows systems</li>
+<li>Optional HATEOAS</li>
+</ul>
+<div class="section" id="support-for-put">
+<h2>Support for PUT</h2>
+<p><tt class="docutils literal">PATCH</tt> should be used to update only a part of a document whereas <tt class="docutils literal">PUT</tt>
+should be used to completely replace a document with another (valid) one while
+keeping the same unique identifier. Suppose we have a person model in our
+domain with the field firstname, middlename and lastname. Now let the
+middlename be optional.</p>
+<p>There is one person in our database:</p>
+<div class="highlight"><pre><span class="p">{</span><span class="n">firstname</span><span class="p">:</span> <span class="s">&quot;Maria&quot;</span><span class="p">,</span> <span class="n">middlename</span><span class="p">:</span> <span class="s">&quot;Johanna&quot;</span><span class="p">,</span> <span class="n">lastname</span><span class="p">:</span> <span class="s">&quot;Simmons&quot;</span><span class="p">}</span>
+</pre></div>
+<p>If we want to change the middlename we can use <tt class="docutils literal">PATCH</tt> to update it</p>
+<pre class="literal-block">
+curl -v -X PATCH -d {middlename:&quot;Christina&quot;} http://localhost:5000/people/&lt;marias id&gt;
+</pre>
+<p>But if what if we want to delete the middlename and change the lastname at the
+same time? It would be easier to send a new document to the server</p>
+<pre class="literal-block">
+curl -v -X PUT -d {firstname: &quot;Maria&quot;, lastname: &quot;Thompson&quot;} http://localhost:5000/people/&lt;marias id&gt;
+</pre>
+<p>I doesn't seem to make a big difference if we used <tt class="docutils literal">PATCH</tt> or <tt class="docutils literal">PUT</tt> here
+but for more complicated use cases it can be really helpful to have <tt class="docutils literal">PUT</tt>
+available. For example if we want to put a default document in order to reset
+the current one.</p>
+</div>
+<div class="section" id="embedded-resources">
+<h2>Embedded Resources</h2>
+<p>If a document field is referencing a document in another resource, clients can
+request the referenced document to be embedded within the requested document.
+Clients have the power to activate document embedding on per-request basis by
+means of a query parameter. Suppose you have a emails resource configured like
+this:</p>
+<div class="highlight"><pre><span class="n">DOMAIN</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s">&#39;emails&#39;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s">&#39;schema&#39;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="s">&#39;author:&#39;</span> <span class="p">{</span>
+                <span class="s">&#39;type&#39;</span><span class="p">:</span> <span class="s">&#39;objectid&#39;</span><span class="p">,</span>
+                <span class="s">&#39;data_relation&#39;</span><span class="p">:</span> <span class="p">{</span>
+                    <span class="s">&#39;collection&#39;</span><span class="p">:</span> <span class="s">&#39;user&#39;</span><span class="p">,</span>
+                    <span class="s">&#39;field&#39;</span><span class="p">:</span> <span class="s">&#39;_id&#39;</span><span class="p">,</span>
+                    <span class="s">&#39;embeddable&#39;</span><span class="p">:</span> <span class="bp">True</span>
+                <span class="p">},</span>
+            <span class="p">},</span>
+            <span class="s">&#39;subject:&#39;</span> <span class="p">{</span><span class="s">&#39;type&#39;</span><span class="p">:</span> <span class="s">&#39;string&#39;</span><span class="p">},</span>
+            <span class="s">&#39;body:&#39;</span> <span class="p">{</span><span class="s">&#39;type&#39;</span><span class="p">:</span> <span class="s">&#39;string&#39;</span><span class="p">},</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+</pre></div>
+<p>A <tt class="docutils literal">GET</tt> like <tt class="docutils literal"><span class="pre">/emails?embedded={&quot;author&quot;:1}</span></tt> would return a fully embedded
+user document whereas the same request without the embedded argument would just
+return the user ObjectId. Embedding can be enabled or disabled both at global
+level (by setting <tt class="docutils literal">EMBEDDING</tt> to either <tt class="docutils literal">True</tt> or <tt class="docutils literal">False</tt>) and at
+resource level (by toggling <tt class="docutils literal">embedding</tt>). Furthermore, only fields with
+the embeddable value explicitly set to <tt class="docutils literal">True</tt> will allow the embedding of
+referenced documents.</p>
+<p>Currenly we only support a single layer of embedding, i.e.
+<tt class="docutils literal"><span class="pre">/emails?{&quot;author&quot;:</span> 1}</tt> but not <tt class="docutils literal"><span class="pre">/emails?{&quot;author.friends&quot;:</span> 1}</tt>. Also, keep
+in mind that this feature is about <em>serialization</em> on <tt class="docutils literal">GET</tt> requests. There's
+no support for POSTing or PUTting or PATCHing embedded documents.</p>
+</div>
+<div class="section" id="no-trailing-slash-urls">
+<h2>No trailing slash URLs</h2>
+<p>Endpoints will now respond to both kind of URLS:</p>
+<ul class="simple">
+<li>No trailing slash: <tt class="docutils literal">/users</tt> and <tt class="docutils literal"><span class="pre">/users/&lt;id&gt;</span></tt></li>
+<li>Trailing slash: <tt class="docutils literal">/users/</tt> and <tt class="docutils literal"><span class="pre">/users/&lt;id&gt;/</span></tt></li>
+</ul>
+<p>Previously, only trailing slash URLs were accessible, whereas no trailing slash
+would return a <tt class="docutils literal">301</tt> redirect. While the previous behavior was more
+consistent with REST &quot;unique identifier&quot; principle, many people reported that
+it was causing issues with some JavaScript libraries such as AngluarJS.</p>
+</div>
+<div class="section" id="optional-hateoas">
+<h2>Optional HATEOAS</h2>
+<p>HATEOAS can be disabled both at the API and/or resource level. When HATEOAS is
+disabled, response payloads have a different structure. The resource payload is
+a simple list of items:</p>
+<div class="highlight"><pre><span class="p">[</span>
+    <span class="p">{</span>
+        <span class="s">&quot;firstname&quot;</span><span class="p">:</span> <span class="s">&quot;Mark&quot;</span><span class="p">,</span>
+        <span class="s">&quot;lastname&quot;</span><span class="p">:</span> <span class="s">&quot;Green&quot;</span><span class="p">,</span>
+        <span class="s">&quot;born&quot;</span><span class="p">:</span> <span class="s">&quot;Sat, 23 Feb 1985 12:00:00 GMT&quot;</span><span class="p">,</span>
+        <span class="s">&quot;role&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s">&quot;copy&quot;</span><span class="p">,</span> <span class="s">&quot;author&quot;</span><span class="p">],</span>
+        <span class="s">&quot;location&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s">&quot;city&quot;</span><span class="p">:</span> <span class="s">&quot;New York&quot;</span><span class="p">,</span> <span class="s">&quot;address&quot;</span><span class="p">:</span> <span class="s">&quot;4925 Lacross Road&quot;</span><span class="p">},</span>
+        <span class="s">&quot;_id&quot;</span><span class="p">:</span> <span class="s">&quot;50bf198338345b1c604faf31&quot;</span><span class="p">,</span>
+        <span class="s">&quot;updated&quot;</span><span class="p">:</span> <span class="s">&quot;Wed, 05 Dec 2012 09:53:07 GMT&quot;</span><span class="p">,</span>
+        <span class="s">&quot;created&quot;</span><span class="p">:</span> <span class="s">&quot;Wed, 05 Dec 2012 09:53:07 GMT&quot;</span><span class="p">,</span>
+        <span class="s">&quot;etag&quot;</span><span class="p">:</span> <span class="s">&quot;ec5e8200b8fa0596afe9ca71a87f23e71ca30e2d&quot;</span><span class="p">,</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+        <span class="s">&quot;firstname&quot;</span><span class="p">:</span> <span class="s">&quot;John&quot;</span><span class="p">,</span>
+        <span class="o">...</span>
+    <span class="p">},</span>
+<span class="p">]</span>
+</pre></div>
+<p>As you can see, the <tt class="docutils literal">_links</tt> element is missing. Why would you want to turn
+HATEOAS off? Well, if you know that your client application is not going to use
+the feature, then you might want to save on both bandwidth and performance.
+Also, some REST client libraries out there might have issues when parsing
+something other than a simple list of items.</p>
+</div>
+<div class="section" id="support-for-x-http-method-override">
+<h2>Support for X-HTTP-Method-Override</h2>
+<p>As a fallback for the odd client not supporting any of the standard HTTP
+methods, the API will gladly honor <tt class="docutils literal"><span class="pre">X-HTTP-Method-Override</span></tt> requests. For
+example a client not supporting the <tt class="docutils literal">PATCH</tt> method could send a <tt class="docutils literal">POST</tt>
+request with a <tt class="docutils literal"><span class="pre">X-HTTP-Method-Override:</span> PATCH</tt> header. The API would then
+perform a <tt class="docutils literal">PATCH</tt>, overriding the original request method. While previously
+you could override only PATCH by setting the override header to <tt class="docutils literal">True</tt>, now
+you can override <em>any</em> HTTP method.</p>
+</div>
+<div class="section" id="wrapping-it-up">
+<h2>Wrapping it up</h2>
+<p>There are also many enhancements and bug fixes. See the <a class="reference external" href="http://python-eve.org/changelog.html">changelog</a> for details.
+One worth mentioning here is the improved support for Python 3 on Windows
+systems. If you have been experiencing encoding errors while installing Eve,
+this release will make you happy.</p>
+<p>As we're in beta now, we will be strictly following <a class="reference external" href="http://semver.org/">Semantic Versioning</a> when
+labeling Eve releases. New releases will also be better documented on this
+blog, as this post is hopefully showing. Also, during alpha we have been doing
+monthly releases. This might change in the future, as I feel that beta
+releases would probably benefit from staying out in the wild for prolonged
+periods of time.</p>
+<p>Thanks to all the people who contributed to this patch: Bryan Cattle, Dong Wei
+Ming, Ken Carpenter, Jean Boussier, Kracekumar, Francisco Corrales Morales,
+Arsh Singh. Also thanks to all the people who suggested features and fixes.</p>
+<p>Get <a class="reference external" href="https://crate.io/packages/Eve/">Eve 0.1</a> while it's hot.</p>
+</div>
+
+  </div><!-- /.entry-content -->
+</section>
+            <hr/>
+            <footer id="contentinfo" class="footer">
+                <div>
+                    <a href="http://python-eve.org">Eve</a> <br />
+                    REST WEB APIs Made Simple
+                <div>
+                    A <a href="http://nicolaiarocci.com">Nicola Iarocci</a> Project</a>
+                </div>
+                <div>
+                    Powered by <a href="http://getpelican.com/">Pelican</a>
+                    and <a href="http://python.org">Python</a>. 
+                </div>
+                <div class="social">
+                                            <a href="https://twitter.com/nicolaiarocci"><i class="icon-twitter"></i>  </a>
+                                            <a href="https://github.com/nicolaiarocci/eve"><i class="icon-github"></i>  </a>
+                                                                <a href="mailto:eve@nicolaiarocci.com"><i class="icon-envelope"></i> </a>
+                                    </div>
+            </footer><!-- /#contentinfo -->
+        </div>
+        <!--Add statistycs-->
+        
+</body>
+</html>
