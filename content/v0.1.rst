@@ -102,7 +102,7 @@ Endpoints will now respond to both kind of URLS:
 Previously, only trailing slash URLs were accessible, whereas no trailing slash
 would return a ``301`` redirect. While the previous behavior was more
 consistent with REST "unique identifier" principle, many people reported that
-it was causing issues with some JavaScript libraries such as AngluarJS.
+it was causing issues with some JavaScript libraries such as AngularJS.
 
 Optional HATEOAS
 ----------------
