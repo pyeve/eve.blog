@@ -84,7 +84,7 @@ no support for POSTing or PUTting or PATCHing embedded documents.&lt;/p&gt;
 &lt;p&gt;Previously, only trailing slash URLs were accessible, whereas no trailing slash
 would return a &lt;tt class="docutils literal"&gt;301&lt;/tt&gt; redirect. While the previous behavior was more
 consistent with REST &amp;quot;unique identifier&amp;quot; principle, many people reported that
-it was causing issues with some JavaScript libraries such as AngluarJS.&lt;/p&gt;
+it was causing issues with some JavaScript libraries such as AngularJS.&lt;/p&gt;
 &lt;/div&gt;
 &lt;div class="section" id="optional-hateoas"&gt;
 &lt;h2&gt;Optional HATEOAS&lt;/h2&gt;
