@@ -1,0 +1,100 @@
+Eve 0.1.1
+=========
+
+:date: 2013-10-31
+:category: develop
+:tags: releases
+
+Although this is a maintenance release it introduces a few important
+breaking changes to the API, so you may want to read the following notes
+carefully.
+
+New payload format
+------------------
+item-id wrappers have been completely removed from POST/PATCH/PUT requests and
+responses. Requests for single document inserts  are now performed by just
+submitting the relevant document. 
+
+.. code-block:: python
+
+    POST /users
+    { "email": "jobs@apple.com", "password": "iRock"}
+
+Response payload:
+
+.. code-block:: python
+
+    {
+        "status": "OK", 
+        "updated": "Sat, 05 Oct 2013 09:27:08 GMT", 
+        "_id": "524fdb6c38345b5d308c3a10", 
+        ...
+    }
+  
+Bulk insert are now performed by submitting a list of documents. 
+
+.. code-block:: python
+
+    POST /users
+    [
+        {"email": "jobs@apple.com", "password": "iRock"}, 
+        {"email": "orders@apple.com", "password": "iSuck"}
+    ]
+  
+The response to bulk requests is a list itself, in which every item contains
+the state of the corresponding document within the request. 
+
+.. code-block:: python
+
+    [
+        {
+            "status": "OK", 
+            "updated": "Sat, 05 Oct 2013 09:27:08 GMT", 
+            "_id": "524fdb6c38345b5d308c3a10", 
+            ...
+        }, 
+        {
+            "status": "ERR", 
+            "issues": ["email not unique"]
+        }
+    ]
+  
+PUT and PATCH are also simplified and don't require id wrappers anymore.
+Overall this change simplifies the payloads making them easier to handle,
+especially for popular Javascript frameworks such as AngularJS.
+
+Please note that this is a breaking change. Also be aware that when the request
+content-type is ``x-www-form-urlencoded``, single document insert is performed.
+
+Other important changes
+-----------------------
+- In order to avoid confusion between the Eve schema and the underlying MongoDB
+  collections, ``collection`` (used when setting up a data relation, see
+  `Embedded Resource Serialization`_) has been renamed to ``resource``. Also,
+  embedded resource serialization is now active on item endpoints as well
+  (previously it would only work on resource endpoints).
+- For better consistency with the ``auth_field`` setting, ``auth.user_id``
+  renamed to ``auth.request_auth_value``.
+- Endpoints with deep paths like ``/contacts/overseas`` can now function in
+  conjuction with top-level endpoints (``/contacts``).  Endpoints are
+  completely independent: each can allow item lookups (``/contacts/<id>`` and
+  ``contacts/overseas/<id>``) and different access methods. Previously, while
+  you could have complex urls, you could not get nested endpoints to work
+  properly.
+
+Wrapping it up
+--------------
+The documentation_ has been updated to reflect all the changes. Remember to
+check the changelog_ for details and know about the other updates.
+
+As always, thanks to all the people who contributed to this update: Xavi
+Cubillas, Ryan Shea, Ronan Delacorix, Petr Jašek, Roy Smith.  Also thanks to
+all the people who suggested features and fixes.
+
+Get `Eve 0.1.1`_.
+
+.. _changelog: http://python-eve.org/changelog.html
+.. _documentation: http://python-eve.org
+.. _`Eve 0.1.1`: https://crate.io/packages/Eve/
+.. _`Embedded Resource Serialization`: http://python-eve.org/features.html#embedded-resource-serialization
+
