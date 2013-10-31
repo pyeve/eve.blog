@@ -1,5 +1,79 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Eve News</title><link href="http://blog.python-eve.org/" rel="alternate"></link><link href="http://blog.python-eve.org/feeds/all.atom.xml" rel="self"></link><id>http://blog.python-eve.org/</id><updated>2013-09-30T00:00:00+02:00</updated><entry><title>Eve 0.1</title><link href="http://blog.python-eve.org/eve-01" rel="alternate"></link><updated>2013-09-30T00:00:00+02:00</updated><author><name>Nicola Iarocci</name></author><id>tag:blog.python-eve.org,2013-09-30:eve-01</id><summary type="html">&lt;p&gt;This release marks the passage from alpha to beta and introduces several
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Eve News</title><link href="http://blog.python-eve.org/" rel="alternate"></link><link href="http://blog.python-eve.org/feeds/all.atom.xml" rel="self"></link><id>http://blog.python-eve.org/</id><updated>2013-10-31T00:00:00+01:00</updated><entry><title>Eve 0.1.1</title><link href="http://blog.python-eve.org/eve-011" rel="alternate"></link><updated>2013-10-31T00:00:00+01:00</updated><author><name>Nicola Iarocci</name></author><id>tag:blog.python-eve.org,2013-10-31:eve-011</id><summary type="html">&lt;p&gt;Although this is a maintenance release it introduces a few important
+breaking changes to the API, so you may want to read the following notes
+carefully.&lt;/p&gt;
+&lt;div class="section" id="new-payload-format"&gt;
+&lt;h2&gt;New payload format&lt;/h2&gt;
+&lt;p&gt;item-id wrappers have been completely removed from POST/PATCH/PUT requests and
+responses. Requests for single document inserts  are now performed by just
+submitting the relevant document.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;POST&lt;/span&gt; &lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;users&lt;/span&gt;
+&lt;span class="p"&gt;{&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;email&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;jobs@apple.com&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;password&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;iRock&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Response payload:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="p"&gt;{&lt;/span&gt;
+    &lt;span class="s"&gt;&amp;quot;status&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;OK&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+    &lt;span class="s"&gt;&amp;quot;updated&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;Sat, 05 Oct 2013 09:27:08 GMT&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+    &lt;span class="s"&gt;&amp;quot;_id&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;524fdb6c38345b5d308c3a10&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+    &lt;span class="o"&gt;...&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Bulk insert are now performed by submitting a list of documents.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;POST&lt;/span&gt; &lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;users&lt;/span&gt;
+&lt;span class="p"&gt;[&lt;/span&gt;
+    &lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;email&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;jobs@apple.com&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;password&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;iRock&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;},&lt;/span&gt;
+    &lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;email&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;orders@apple.com&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;password&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;iSuck&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;span class="p"&gt;]&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;The response to bulk requests is a list itself, in which every item contains
+the state of the corresponding document within the request.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="p"&gt;[&lt;/span&gt;
+    &lt;span class="p"&gt;{&lt;/span&gt;
+        &lt;span class="s"&gt;&amp;quot;status&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;OK&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+        &lt;span class="s"&gt;&amp;quot;updated&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;Sat, 05 Oct 2013 09:27:08 GMT&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+        &lt;span class="s"&gt;&amp;quot;_id&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;524fdb6c38345b5d308c3a10&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+        &lt;span class="o"&gt;...&lt;/span&gt;
+    &lt;span class="p"&gt;},&lt;/span&gt;
+    &lt;span class="p"&gt;{&lt;/span&gt;
+        &lt;span class="s"&gt;&amp;quot;status&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;ERR&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+        &lt;span class="s"&gt;&amp;quot;issues&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;email not unique&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
+    &lt;span class="p"&gt;}&lt;/span&gt;
+&lt;span class="p"&gt;]&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;PUT and PATCH are also simplified and don't require id wrappers anymore.
+Overall this change simplifies the payloads making them easier to handle,
+especially for popular Javascript frameworks such as AngularJS.&lt;/p&gt;
+&lt;p&gt;Please note that this is a breaking change. Also be aware that when the request
+content-type is &lt;tt class="docutils literal"&gt;&lt;span class="pre"&gt;x-www-form-urlencoded&lt;/span&gt;&lt;/tt&gt;, single document insert is performed.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="section" id="other-important-changes"&gt;
+&lt;h2&gt;Other important changes&lt;/h2&gt;
+&lt;ul class="simple"&gt;
+&lt;li&gt;In order to avoid confusion between the Eve schema and the underlying MongoDB
+collections, &lt;tt class="docutils literal"&gt;collection&lt;/tt&gt; (used when setting up a data relation, see
+&lt;a class="reference external" href="http://python-eve.org/features.html#embedded-resource-serialization"&gt;Embedded Resource Serialization&lt;/a&gt;) has been renamed to &lt;tt class="docutils literal"&gt;resource&lt;/tt&gt;. Also,
+embedded resource serialization is now active on item endpoints as well
+(previously it would only work on resource endpoints).&lt;/li&gt;
+&lt;li&gt;For better consistency with the &lt;tt class="docutils literal"&gt;auth_field&lt;/tt&gt; setting, &lt;tt class="docutils literal"&gt;auth.user_id&lt;/tt&gt;
+renamed to &lt;tt class="docutils literal"&gt;auth.request_auth_value&lt;/tt&gt;.&lt;/li&gt;
+&lt;li&gt;Endpoints with deep paths like &lt;tt class="docutils literal"&gt;/contacts/overseas&lt;/tt&gt; can now function in
+conjuction with top-level endpoints (&lt;tt class="docutils literal"&gt;/contacts&lt;/tt&gt;).  Endpoints are
+completely independent: each can allow item lookups (&lt;tt class="docutils literal"&gt;&lt;span class="pre"&gt;/contacts/&amp;lt;id&amp;gt;&lt;/span&gt;&lt;/tt&gt; and
+&lt;tt class="docutils literal"&gt;&lt;span class="pre"&gt;contacts/overseas/&amp;lt;id&amp;gt;&lt;/span&gt;&lt;/tt&gt;) and different access methods. Previously, while
+you could have complex urls, you could not get nested endpoints to work
+properly.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;div class="section" id="wrapping-it-up"&gt;
+&lt;h2&gt;Wrapping it up&lt;/h2&gt;
+&lt;p&gt;The &lt;a class="reference external" href="http://python-eve.org"&gt;documentation&lt;/a&gt; has been updated to reflect all the changes. Remember to
+check the &lt;a class="reference external" href="http://python-eve.org/changelog.html"&gt;changelog&lt;/a&gt; for details and know about the other updates.&lt;/p&gt;
+&lt;p&gt;As always, thanks to all the people who contributed to this update: Xavi
+Cubillas, Ryan Shea, Ronan Delacorix, Petr Jašek, Roy Smith.  Also thanks to
+all the people who suggested features and fixes.&lt;/p&gt;
+&lt;p&gt;Get &lt;a class="reference external" href="https://crate.io/packages/Eve/"&gt;Eve 0.1.1&lt;/a&gt;.&lt;/p&gt;
+&lt;/div&gt;
+</summary><category term="releases"></category></entry><entry><title>Eve 0.1</title><link href="http://blog.python-eve.org/eve-01" rel="alternate"></link><updated>2013-09-30T00:00:00+02:00</updated><author><name>Nicola Iarocci</name></author><id>tag:blog.python-eve.org,2013-09-30:eve-01</id><summary type="html">&lt;p&gt;This release marks the passage from alpha to beta and introduces several
 features and enhancements. Also, someone was so kind to post about the Eve
 project on Reddit, which in turn granted us a post on Hacker News.  This
 brought a lot of attention, resulting in a massive increase in downloads. The

@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+                <title>Eve 0.1.1</title>
+        <!-- Fonts -->
+        <link href='http://fonts.googleapis.com/css?family=Inconsolata' rel='stylesheet' type='text/css'>
+        <link href='http://fonts.googleapis.com/css?family=The+Girl+Next+Door' rel='stylesheet' type='text/css'>
+        <link href='http://fonts.googleapis.com/css?family=Marcellus' rel='stylesheet' type='text/css'>
+        
+        <!-- CSS -->
+        <link rel="stylesheet" href="http://blog.python-eve.org/theme/css/main.css" type="text/css" />
+        <link rel="stylesheet" href="http://blog.python-eve.org/theme/css/pygments.css" type="text/css" />
+        <link rel="stylesheet" href="http://blog.python-eve.org/theme/css/font-awesome.css" type="text/css" />
+        <meta charset="utf-8" />
+      
+                <link href="http://blog.python-eve.org/feeds/rss.xml" type="application/rss+xml" rel="alternate" title="Eve News RSS Feed" />
+        
+        <!-- Javascript-->
+        <script src="http://blog.python-eve.org/theme/js/invisible-menu-scroll.js"></script>
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8/jquery.min.js"></script>
+        <script type="text/javascript"> 
+          $(function() {
+            invisibleMenu();
+          });
+        </script> 
+        </head>
+
+<body id="index" class="home">
+         <div class="navigation">
+        <ol class="nav">
+          <li class="current"><a href="http://blog.python-eve.org">Blog</a> </li>
+          <li><a href="http://blog.python-eve.org/archives.html">Archive</a></li>
+          <li><a href="http://blog.python-eve.org/tags.html">Tags</a> </li>
+          <li><a href="feeds/rss.xml">RSS</a> </li>
+        </ol>
+      </div>
+        <header id="banner" class="body">
+                <div class="banner"><a href="http://blog.python-eve.org">Eve News <strong></strong></a></div>
+        </header><!-- /#banner -->
+        <nav id="menu"><ul>
+                                          </ul></nav><!-- /#menu -->
+        <div class="box">
+            <section id="content" class="body">
+  <header class="post">
+    <h1 class="entry-title">
+      Eve 0.1.1
+    </h1>
+  </header>
+  <footer class="post-info">
+    <abbr>
+      Thu 31 October 2013 
+               By <a class="url fn" href="http://blog.python-eve.org/author/nicola-iarocci">Nicola Iarocci</a>
+        
+    </abbr>
+  </footer><!-- /.post-info -->
+  <div class="entry-content">
+    <p>Although this is a maintenance release it introduces a few important
+breaking changes to the API, so you may want to read the following notes
+carefully.</p>
+<div class="section" id="new-payload-format">
+<h2>New payload format</h2>
+<p>item-id wrappers have been completely removed from POST/PATCH/PUT requests and
+responses. Requests for single document inserts  are now performed by just
+submitting the relevant document.</p>
+<div class="highlight"><pre><span class="n">POST</span> <span class="o">/</span><span class="n">users</span>
+<span class="p">{</span> <span class="s">&quot;email&quot;</span><span class="p">:</span> <span class="s">&quot;jobs@apple.com&quot;</span><span class="p">,</span> <span class="s">&quot;password&quot;</span><span class="p">:</span> <span class="s">&quot;iRock&quot;</span><span class="p">}</span>
+</pre></div>
+<p>Response payload:</p>
+<div class="highlight"><pre><span class="p">{</span>
+    <span class="s">&quot;status&quot;</span><span class="p">:</span> <span class="s">&quot;OK&quot;</span><span class="p">,</span>
+    <span class="s">&quot;updated&quot;</span><span class="p">:</span> <span class="s">&quot;Sat, 05 Oct 2013 09:27:08 GMT&quot;</span><span class="p">,</span>
+    <span class="s">&quot;_id&quot;</span><span class="p">:</span> <span class="s">&quot;524fdb6c38345b5d308c3a10&quot;</span><span class="p">,</span>
+    <span class="o">...</span>
+<span class="p">}</span>
+</pre></div>
+<p>Bulk insert are now performed by submitting a list of documents.</p>
+<div class="highlight"><pre><span class="n">POST</span> <span class="o">/</span><span class="n">users</span>
+<span class="p">[</span>
+    <span class="p">{</span><span class="s">&quot;email&quot;</span><span class="p">:</span> <span class="s">&quot;jobs@apple.com&quot;</span><span class="p">,</span> <span class="s">&quot;password&quot;</span><span class="p">:</span> <span class="s">&quot;iRock&quot;</span><span class="p">},</span>
+    <span class="p">{</span><span class="s">&quot;email&quot;</span><span class="p">:</span> <span class="s">&quot;orders@apple.com&quot;</span><span class="p">,</span> <span class="s">&quot;password&quot;</span><span class="p">:</span> <span class="s">&quot;iSuck&quot;</span><span class="p">}</span>
+<span class="p">]</span>
+</pre></div>
+<p>The response to bulk requests is a list itself, in which every item contains
+the state of the corresponding document within the request.</p>
+<div class="highlight"><pre><span class="p">[</span>
+    <span class="p">{</span>
+        <span class="s">&quot;status&quot;</span><span class="p">:</span> <span class="s">&quot;OK&quot;</span><span class="p">,</span>
+        <span class="s">&quot;updated&quot;</span><span class="p">:</span> <span class="s">&quot;Sat, 05 Oct 2013 09:27:08 GMT&quot;</span><span class="p">,</span>
+        <span class="s">&quot;_id&quot;</span><span class="p">:</span> <span class="s">&quot;524fdb6c38345b5d308c3a10&quot;</span><span class="p">,</span>
+        <span class="o">...</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+        <span class="s">&quot;status&quot;</span><span class="p">:</span> <span class="s">&quot;ERR&quot;</span><span class="p">,</span>
+        <span class="s">&quot;issues&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s">&quot;email not unique&quot;</span><span class="p">]</span>
+    <span class="p">}</span>
+<span class="p">]</span>
+</pre></div>
+<p>PUT and PATCH are also simplified and don't require id wrappers anymore.
+Overall this change simplifies the payloads making them easier to handle,
+especially for popular Javascript frameworks such as AngularJS.</p>
+<p>Please note that this is a breaking change. Also be aware that when the request
+content-type is <tt class="docutils literal"><span class="pre">x-www-form-urlencoded</span></tt>, single document insert is performed.</p>
+</div>
+<div class="section" id="other-important-changes">
+<h2>Other important changes</h2>
+<ul class="simple">
+<li>In order to avoid confusion between the Eve schema and the underlying MongoDB
+collections, <tt class="docutils literal">collection</tt> (used when setting up a data relation, see
+<a class="reference external" href="http://python-eve.org/features.html#embedded-resource-serialization">Embedded Resource Serialization</a>) has been renamed to <tt class="docutils literal">resource</tt>. Also,
+embedded resource serialization is now active on item endpoints as well
+(previously it would only work on resource endpoints).</li>
+<li>For better consistency with the <tt class="docutils literal">auth_field</tt> setting, <tt class="docutils literal">auth.user_id</tt>
+renamed to <tt class="docutils literal">auth.request_auth_value</tt>.</li>
+<li>Endpoints with deep paths like <tt class="docutils literal">/contacts/overseas</tt> can now function in
+conjuction with top-level endpoints (<tt class="docutils literal">/contacts</tt>).  Endpoints are
+completely independent: each can allow item lookups (<tt class="docutils literal"><span class="pre">/contacts/&lt;id&gt;</span></tt> and
+<tt class="docutils literal"><span class="pre">contacts/overseas/&lt;id&gt;</span></tt>) and different access methods. Previously, while
+you could have complex urls, you could not get nested endpoints to work
+properly.</li>
+</ul>
+</div>
+<div class="section" id="wrapping-it-up">
+<h2>Wrapping it up</h2>
+<p>The <a class="reference external" href="http://python-eve.org">documentation</a> has been updated to reflect all the changes. Remember to
+check the <a class="reference external" href="http://python-eve.org/changelog.html">changelog</a> for details and know about the other updates.</p>
+<p>As always, thanks to all the people who contributed to this update: Xavi
+Cubillas, Ryan Shea, Ronan Delacorix, Petr Jašek, Roy Smith.  Also thanks to
+all the people who suggested features and fixes.</p>
+<p>Get <a class="reference external" href="https://crate.io/packages/Eve/">Eve 0.1.1</a>.</p>
+</div>
+
+  </div><!-- /.entry-content -->
+</section>
+            <hr/>
+            <footer id="contentinfo" class="footer">
+                <div>
+                    <a href="http://python-eve.org">Eve</a> <br />
+                    REST WEB APIs Made Simple
+                <div>
+                    A <a href="http://nicolaiarocci.com">Nicola Iarocci</a> Project</a>
+                </div>
+                <div>
+                    Powered by <a href="http://getpelican.com/">Pelican</a>
+                    and <a href="http://python.org">Python</a>. 
+                </div>
+                <div class="social">
+                                            <a href="https://twitter.com/nicolaiarocci"><i class="icon-twitter"></i>  </a>
+                                            <a href="https://github.com/nicolaiarocci/eve"><i class="icon-github"></i>  </a>
+                                                                <a href="mailto:eve@nicolaiarocci.com"><i class="icon-envelope"></i> </a>
+                                    </div>
+            </footer><!-- /#contentinfo -->
+        </div>
+        <!--Add statistycs-->
+        
+</body>
+</html>
