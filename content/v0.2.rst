@@ -27,7 +27,6 @@ Thanks to the ever growing Eve community and especially to the contributors
 who helped with this patch: Petr Jašek, Kelvin Hammond, dccrazyboy, Christoph
 Witzany, Stanislav Heller, Florian Rathberger.
 
-
 Get `Eve 0.2`_ while it's hot.
 
 .. _changelog: http://python-eve.org/changelog.html
