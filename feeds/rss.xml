@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title>Eve News</title><link>http://blog.python-eve.org/</link><description></description><atom:link href="http://blog.python-eve.org/feeds/rss.xml" rel="self"></atom:link><lastBuildDate>Mon, 02 Dec 2013 00:00:00 +0100</lastBuildDate><item><title>Eve 0.2 released</title><link>http://blog.python-eve.org/eve-02-released</link><description>&lt;p&gt;This releas marks the introduction of several new features along with a few
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title>Eve News</title><link>http://blog.python-eve.org/</link><description></description><atom:link href="http://blog.python-eve.org/feeds/rss.xml" rel="self"></atom:link><lastBuildDate>Mon, 02 Dec 2013 00:00:00 +0100</lastBuildDate><item><title>Eve 0.2 released</title><link>http://blog.python-eve.org/eve-02-released</link><description>&lt;p&gt;This release marks the introduction of several new features along with a few
 changes and fixes.&lt;/p&gt;
 &lt;ul class="simple"&gt;
 &lt;li&gt;&lt;a class="reference external" href="http://python-eve.org/features.html#subresources"&gt;Sub-Resources&lt;/a&gt;!&lt;/li&gt;
