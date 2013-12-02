@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-                <title>Eve News</title>
+                <title>Eve 0.2 released</title>
         <!-- Fonts -->
         <link href='http://fonts.googleapis.com/css?family=Inconsolata' rel='stylesheet' type='text/css'>
         <link href='http://fonts.googleapis.com/css?family=The+Girl+Next+Door' rel='stylesheet' type='text/css'>
@@ -28,10 +28,10 @@
 <body id="index" class="home">
          <div class="navigation">
         <ol class="nav">
-          <li><a href="http://blog.python-eve.org">Blog</a> </li>
-          <li class="current"><a href="http://blog.python-eve.org/archives.html">Archive</a></li>
+          <li class="current"><a href="http://blog.python-eve.org">Blog</a> </li>
+          <li><a href="http://blog.python-eve.org/archives.html">Archive</a></li>
           <li><a href="http://blog.python-eve.org/tags.html">Tags</a> </li>
-          <li><a href="http://blog.python-eve.org/feeds/rss.xml">RSS</a> </li>
+          <li><a href="feeds/rss.xml">RSS</a> </li>
         </ol>
       </div>
         <header id="banner" class="body">
@@ -40,62 +40,44 @@
         <nav id="menu"><ul>
                                           </ul></nav><!-- /#menu -->
         <div class="box">
-            <h2>Archives:</h2>
+            <section id="content" class="body">
+  <header class="post">
+    <h1 class="entry-title">
+      Eve 0.2 released
+    </h1>
+  </header>
+  <footer class="post-info">
+    <abbr>
+      Mon 02 December 2013 
+               By <a class="url fn" href="http://blog.python-eve.org/author/nicola-iarocci">Nicola Iarocci</a>
+        
+    </abbr>
+  </footer><!-- /.post-info -->
+  <div class="entry-content">
+    <p>This releas marks the introduction of several new features along with a few
+changes and fixes.</p>
+<ul class="simple">
+<li><a class="reference external" href="http://python-eve.org/features.html#subresources">Sub-Resources</a>!</li>
+<li>Unique identifier fields can now be of arbitrary types, not only ObjectIds.
+See the brand new <a class="reference external" href="http://python-eve.org/tutorials/custom_idfields.html">Custom IDs Tutorial</a>.</li>
+<li>It is now possible to completely disable support for the <tt class="docutils literal"><span class="pre">If-Match</span></tt> header (use
+at your own risk).</li>
+<li>New <tt class="docutils literal">pre_&lt;method&gt;</tt> event hooks are available. They are raised when a request
+is received and before it is processed. See the updated <a class="reference external" href="http://python-eve.org/features.html#event-hooks">Event Hooks</a> section.</li>
+<li>Lots of new customization options. See <a class="reference external" href="http://python-eve.org/config.html">Configuration</a>.</li>
+<li>Default <a class="reference external" href="http://python-eve.org/features.html#embedded-resource-serialization">embedded documents</a> can now be defined at any endpoint.</li>
+<li>Default sorting can be defined at any resource endpoint.</li>
+<li>Settings can be also passed as a python dictionary.</li>
+<li>Custom JSON encoders can now be used with the framework.</li>
+</ul>
+<p>As always, see the <a class="reference external" href="http://python-eve.org/changelog.html">changelog</a> for details on all updates.</p>
+<p>Thanks to the ever growing Eve community and especially to the contributors
+who helped with this patch: Petr Jašek, Kelvin Hammond, dccrazyboy, Christoph
+Witzany, Stanislav Heller, Florian Rathberger.</p>
+<p>Get <a class="reference external" href="https://crate.io/packages/Eve/">Eve 0.2</a> while it's hot.</p>
 
-<table class="archives">
-    <tr>
-        <td>Mon 02 December 2013</td>
-        <td><a href="http://blog.python-eve.org/eve-02-released">Eve 0.2 released</a></td>
-    </tr>
-    <tr>
-        <td>Thu 31 October 2013</td>
-        <td><a href="http://blog.python-eve.org/eve-011">Eve 0.1.1</a></td>
-    </tr>
-    <tr>
-        <td>Mon 30 September 2013</td>
-        <td><a href="http://blog.python-eve.org/eve-01">Eve 0.1</a></td>
-    </tr>
-    <tr>
-        <td>Thu 12 September 2013</td>
-        <td><a href="http://blog.python-eve.org/the-eve-mailing-list">The Eve Mailing List</a></td>
-    </tr>
-    <tr>
-        <td>Thu 29 August 2013</td>
-        <td><a href="http://blog.python-eve.org/v009-with-python-33-support">v0.0.9 with Python 3.3 support</a></td>
-    </tr>
-    <tr>
-        <td>Thu 01 August 2013</td>
-        <td><a href="http://blog.python-eve.org/eve-mocker">Mocking tool for Eve APIs</a></td>
-    </tr>
-    <tr>
-        <td>Thu 25 July 2013</td>
-        <td><a href="http://blog.python-eve.org/eve-008-released">Eve 0.0.8 Released</a></td>
-    </tr>
-    <tr>
-        <td>Tue 18 June 2013</td>
-        <td><a href="http://blog.python-eve.org/eve-007-released">Eve 0.0.7 Released</a></td>
-    </tr>
-    <tr>
-        <td>Mon 17 June 2013</td>
-        <td><a href="http://blog.python-eve.org/eve-docs">Auto generate API docs</a></td>
-    </tr>
-    <tr>
-        <td>Thu 30 May 2013</td>
-        <td><a href="http://blog.python-eve.org/account-management-and-rest">Account Management and REST</a></td>
-    </tr>
-    <tr>
-        <td>Mon 20 May 2013</td>
-        <td><a href="http://blog.python-eve.org/official-irc-channel">Official IRC Channel</a></td>
-    </tr>
-    <tr>
-        <td>Mon 13 May 2013</td>
-        <td><a href="http://blog.python-eve.org/eve-006-released">Eve 0.0.6 Released</a></td>
-    </tr>
-    <tr>
-        <td>Fri 10 May 2013</td>
-        <td><a href="http://blog.python-eve.org/sqlalchemy-and-eve">SQLAlchemy and Eve</a></td>
-    </tr>
-</table>
+  </div><!-- /.entry-content -->
+</section>
             <hr/>
             <footer id="contentinfo" class="footer">
                 <div>
