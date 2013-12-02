@@ -1,0 +1,41 @@
+Eve 0.2 released
+================
+
+:date: 2013-12-02
+:category: develop
+:tags: releases
+
+This release marks the introduction of several new features along with a few
+changes and fixes.
+
+- Sub-Resources_!
+- Unique identifier fields can now be of arbitrary types, not only ObjectIds.
+  See the brand new `Custom IDs Tutorial`_.
+- It is now possible to completely disable support for the ``If-Match`` header (use
+  at your own risk). 
+- New ``pre_<method>`` event hooks are available. They are raised when a request
+  is received and before it is processed. See the updated `Event Hooks`_ section.
+- Lots of new customization options. See Configuration_.
+- Default `embedded documents`_ can now be defined at any endpoint.
+- Default sorting can be defined at any resource endpoint.
+- Settings can be also passed as a python dictionary.
+- Custom JSON encoders can now be used with the framework.
+
+As always, see the changelog_ for details on all updates.
+
+Thanks to the ever growing Eve community and especially to the contributors
+who helped with this patch: Petr Jašek, Kelvin Hammond, dccrazyboy, Christoph
+Witzany, Stanislav Heller, Florian Rathberger.
+
+
+Get `Eve 0.2`_ while it's hot.
+
+.. _changelog: http://python-eve.org/changelog.html
+.. _documentation: http://python-eve.org
+.. _`Eve 0.2`: https://crate.io/packages/Eve/
+.. _`Configuration`: http://python-eve.org/config.html
+.. _`Sub-Resources`: http://python-eve.org/features.html#subresources
+.. _`Custom IDs Tutorial`: http://python-eve.org/tutorials/custom_idfields.html
+.. _`Event Hooks`: http://python-eve.org/features.html#event-hooks
+.. _`Embedded documents`: http://python-eve.org/features.html#embedded-resource-serialization
+
