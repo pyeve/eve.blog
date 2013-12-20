@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+                <title>Eve + ORM? Eve-Mongoengine!</title>
+        <!-- Fonts -->
+        <link href='http://fonts.googleapis.com/css?family=Inconsolata' rel='stylesheet' type='text/css'>
+        <link href='http://fonts.googleapis.com/css?family=The+Girl+Next+Door' rel='stylesheet' type='text/css'>
+        <link href='http://fonts.googleapis.com/css?family=Marcellus' rel='stylesheet' type='text/css'>
+        
+        <!-- CSS -->
+        <link rel="stylesheet" href="http://blog.python-eve.org/theme/css/main.css" type="text/css" />
+        <link rel="stylesheet" href="http://blog.python-eve.org/theme/css/pygments.css" type="text/css" />
+        <link rel="stylesheet" href="http://blog.python-eve.org/theme/css/font-awesome.css" type="text/css" />
+        <meta charset="utf-8" />
+      
+                <link href="http://blog.python-eve.org/feeds/rss.xml" type="application/rss+xml" rel="alternate" title="Eve News RSS Feed" />
+        
+        <!-- Javascript-->
+        <script src="http://blog.python-eve.org/theme/js/invisible-menu-scroll.js"></script>
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8/jquery.min.js"></script>
+        <script type="text/javascript"> 
+          $(function() {
+            invisibleMenu();
+          });
+        </script> 
+        </head>
+
+<body id="index" class="home">
+         <div class="navigation">
+        <ol class="nav">
+          <li class="current"><a href="http://blog.python-eve.org">Blog</a> </li>
+          <li><a href="http://blog.python-eve.org/archives.html">Archive</a></li>
+          <li><a href="http://blog.python-eve.org/tags.html">Tags</a> </li>
+          <li><a href="feeds/rss.xml">RSS</a> </li>
+        </ol>
+      </div>
+        <header id="banner" class="body">
+                <div class="banner"><a href="http://blog.python-eve.org">Eve News <strong></strong></a></div>
+        </header><!-- /#banner -->
+        <nav id="menu"><ul>
+                                          </ul></nav><!-- /#menu -->
+        <div class="box">
+            <section id="content" class="body">
+  <header class="post">
+    <h1 class="entry-title">
+      Eve + ORM? Eve-Mongoengine!
+    </h1>
+  </header>
+  <footer class="post-info">
+    <abbr>
+      Fri 20 December 2013 
+               By <a class="url fn" href="http://blog.python-eve.org/author/stanislav-heller">Stanislav Heller</a>
+        
+    </abbr>
+  </footer><!-- /.post-info -->
+  <div class="entry-content">
+    <p><a class="reference external" href="https://github.com/hellerstanislav/eve-mongoengine">Eve-Mongoengine</a> is an Eve extension, which enables <a class="reference external" href="http://mongoengine.org/">Mongoengine</a> ORM models to
+be used as eve schema.</p>
+<p>If you use mongoengine in your application and simultaneously want to use <a class="reference external" href="http://python-eve.org">Eve</a>,
+instead of writing schema again in <a class="reference external" href="http://cerberus.readthedocs.org/en/latest/">Cerberus</a> format (DRY!), you can use this
+extension, which takes your mongoengine models and auto-transforms them into
+Cerberus schema under the hood.</p>
+<div class="section" id="features">
+<h2>Features</h2>
+<ul class="simple">
+<li><strong>Auto-generated schema out of your mongoengine models</strong>. Even if you did not specify <tt class="docutils literal">updated</tt> and <tt class="docutils literal">created</tt> fields in your model, Eve-Mongoengine adds them into the model class. But beware, if you update your document using mongoengine model (i.e. by calling <tt class="docutils literal">save()</tt> on the model object), the <tt class="docutils literal">updated</tt> field wont be updated to current time. This is because there arent any hooks bound to <tt class="docutils literal">save()</tt> or <tt class="docutils literal">update()</tt> methods at default.</li>
+<li><strong>Every operation goes through mongoengine</strong>. You do not loose your mongoengine hooks!</li>
+<li><strong>Support for most of mongoengine fields</strong>.</li>
+<li><strong>Mongoengine validation layer not disconnected</strong>. If you define some validators on top of regular mongoengine validation spec, you have got them in eve too!</li>
+</ul>
+</div>
+<div class="section" id="how-it-works">
+<h2>How it works?</h2>
+<div class="highlight"><pre><span class="kn">import</span> <span class="nn">mongoengine</span>
+<span class="kn">from</span> <span class="nn">eve</span> <span class="kn">import</span> <span class="n">Eve</span>
+<span class="kn">from</span> <span class="nn">eve_mongoengine</span> <span class="kn">import</span> <span class="n">EveMongoengine</span>
+
+<span class="c"># create some dummy model class</span>
+<span class="k">class</span> <span class="nc">Person</span><span class="p">(</span><span class="n">mongoengine</span><span class="o">.</span><span class="n">Document</span><span class="p">):</span>
+    <span class="n">name</span> <span class="o">=</span> <span class="n">mongoengine</span><span class="o">.</span><span class="n">StringField</span><span class="p">()</span>
+    <span class="n">age</span> <span class="o">=</span> <span class="n">mongoengine</span><span class="o">.</span><span class="n">IntField</span><span class="p">()</span>
+
+<span class="c"># default eve settings</span>
+<span class="n">my_settings</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s">&#39;MONGO_HOST&#39;</span><span class="p">:</span> <span class="s">&#39;localhost&#39;</span><span class="p">,</span>
+    <span class="s">&#39;MONGO_PORT&#39;</span><span class="p">:</span> <span class="mi">27017</span><span class="p">,</span>
+    <span class="s">&#39;MONGO_DBNAME&#39;</span><span class="p">:</span> <span class="s">&#39;eve_mongoengine_test&#39;</span>
+    <span class="c"># You have to give Eve some dummy domain to shut him up. Without this</span>
+    <span class="c"># setting it will complain about empty domain.</span>
+    <span class="s">&#39;DOMAIN&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s">&#39;eve-mongoengine&#39;</span><span class="p">:</span> <span class="p">{}}</span>
+<span class="p">}</span>
+
+<span class="c"># init application</span>
+<span class="n">app</span> <span class="o">=</span> <span class="n">Eve</span><span class="p">(</span><span class="n">settings</span><span class="o">=</span><span class="n">my_settings</span><span class="p">)</span>
+<span class="c"># init extension</span>
+<span class="n">ext</span> <span class="o">=</span> <span class="n">EveMongoengine</span><span class="p">(</span><span class="n">app</span><span class="p">)</span>
+<span class="c"># register model to eve</span>
+<span class="n">ext</span><span class="o">.</span><span class="n">add_model</span><span class="p">(</span><span class="n">Person</span><span class="p">)</span>
+<span class="c"># let&#39;s roll</span>
+<span class="n">app</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
+</pre></div>
+<p>So you just give Eve some general settings, initialize EveMongoengine
+extension and then register a bunch of mongoengine models as you wish.</p>
+<p>If you ask, what's the name of resource in case of <tt class="docutils literal">Person</tt> class, it will be
+lowercase name of given class, in this example it will be <cite>person</cite>, so the
+request URL could be <tt class="docutils literal">/person</tt> (but you can use <tt class="docutils literal">lowercase</tt> param to get the
+original name of class as resource name: <tt class="docutils literal">add_model(Person, lowercase=False)</tt>).</p>
+<p>In <tt class="docutils literal">add_model()</tt> method you can add into resource settings every possible
+parameter, which is accepted by Eve. Even if you want to overwrite some
+settings, which generates eve-mongoengine under the hood, you can do it this
+way:</p>
+<div class="highlight"><pre><span class="n">ext</span><span class="o">.</span><span class="n">add_model</span><span class="p">(</span><span class="n">Person</span><span class="p">,</span>                                       <span class="c"># model or models</span>
+              <span class="n">resource_methods</span><span class="o">=</span><span class="p">[</span><span class="s">&#39;GET&#39;</span><span class="p">],</span>                     <span class="c"># allow only GET</span>
+              <span class="n">cache_control</span><span class="o">=</span><span class="s">&quot;max-age=600; must-revalidate&quot;</span><span class="p">)</span> <span class="c"># set max-age</span>
+</pre></div>
+<p>Need more? Check out official <a class="reference external" href="http://eve-mongoengine.readthedocs.org/en/latest/">documentation</a> !</p>
+</div>
+
+  </div><!-- /.entry-content -->
+</section>
+            <hr/>
+            <footer id="contentinfo" class="footer">
+                <div>
+                    <a href="http://python-eve.org">Eve</a> <br />
+                    REST WEB APIs Made Simple
+                <div>
+                    A <a href="http://nicolaiarocci.com">Nicola Iarocci</a> Project</a>
+                </div>
+                <div>
+                    Powered by <a href="http://getpelican.com/">Pelican</a>
+                    and <a href="http://python.org">Python</a>. 
+                </div>
+                <div class="social">
+                                            <a href="https://twitter.com/nicolaiarocci"><i class="icon-twitter"></i>  </a>
+                                            <a href="https://github.com/nicolaiarocci/eve"><i class="icon-github"></i>  </a>
+                                                                <a href="mailto:eve@nicolaiarocci.com"><i class="icon-envelope"></i> </a>
+                                    </div>
+            </footer><!-- /#contentinfo -->
+        </div>
+        <!--Add statistycs-->
+        
+</body>
+</html>
