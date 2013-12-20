@@ -3,7 +3,7 @@ SQLAlchemy and Eve
 
 :date: 2013-05-10 15:39
 :tags: sqlalchemy
-:category: develop
+:category: extensions
 :author: Nicola Iarocci
 
 There is an ongoing effort to develop a SQLAlchemy data layer for Eve. This is
