@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Eve News</title><link href="http://blog.python-eve.org/" rel="alternate"></link><link href="http://blog.python-eve.org/feeds/events.atom.xml" rel="self"></link><id>http://blog.python-eve.org/</id><updated>2014-11-02T00:00:00+01:00</updated><entry><title>Eve at FOSDEM 2014</title><link href="http://blog.python-eve.org/eve-at-fosdem-2014" rel="alternate"></link><updated>2014-11-02T00:00:00+01:00</updated><author><name>Nicola Iarocci</name></author><id>tag:blog.python-eve.org,2014-11-02:eve-at-fosdem-2014</id><summary type="html">&lt;p&gt;A few days ago I gave a Eve talk at FOSDEM 2014 in Brussels. The talk was given
+in a fully packed Python DevRoom, which granted for a lot of smart questions
+both in the final QA session and later during the day.&lt;/p&gt;
+&lt;p&gt;I thought that you might find  the talk slides interesting, especially if you
+need to explain what is Eve to your boss or colleagues ;-), so here you have
+it:&lt;/p&gt;
+&lt;p&gt;&lt;a class="reference external" href="https://speakerdeck.com/nicola/eve-rest-api-for-humans"&gt;REST APIs for Humans&lt;/a&gt; (FOSDEM 2014, Brussels)&lt;/p&gt;
+&lt;p&gt;PS: In preparation for the upcoming Eve 0.3 release, released &lt;a class="reference external" href="https://pypi.python.org/pypi/Cerberus"&gt;Cerberus 0.6&lt;/a&gt; was
+released a couple days ago. Expect the 0.3 announcement in your inbox anytime
+now.&lt;/p&gt;
+</summary><category term="events"></category></entry></feed>
