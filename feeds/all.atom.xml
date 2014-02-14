@@ -1,5 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Eve News</title><link href="http://blog.python-eve.org/" rel="alternate"></link><link href="http://blog.python-eve.org/feeds/all.atom.xml" rel="self"></link><id>http://blog.python-eve.org/</id><updated>2014-11-02T00:00:00+01:00</updated><entry><title>Eve at FOSDEM 2014</title><link href="http://blog.python-eve.org/eve-at-fosdem-2014" rel="alternate"></link><updated>2014-11-02T00:00:00+01:00</updated><author><name>Nicola Iarocci</name></author><id>tag:blog.python-eve.org,2014-11-02:eve-at-fosdem-2014</id><summary type="html">&lt;p&gt;A few days ago I gave a Eve talk at FOSDEM 2014 in Brussels. The talk was given
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Eve News</title><link href="http://blog.python-eve.org/" rel="alternate"></link><link href="http://blog.python-eve.org/feeds/all.atom.xml" rel="self"></link><id>http://blog.python-eve.org/</id><updated>2014-02-14T00:00:00+01:00</updated><entry><title>Eve 0.3 Released</title><link href="http://blog.python-eve.org/eve-03-released" rel="alternate"></link><updated>2014-02-14T00:00:00+01:00</updated><author><name>Nicola Iarocci</name></author><id>tag:blog.python-eve.org,2014-02-14:eve-03-released</id><summary type="html">&lt;p&gt;As with every new release there are a lot of new things coming with 0.3.&lt;/p&gt;
+&lt;ul class="simple"&gt;
+&lt;li&gt;&lt;strong&gt;File Storage&lt;/strong&gt;. Images, pdf, etc. can now be uploaded as &lt;tt class="docutils literal"&gt;media&lt;/tt&gt;
+fields. Upload is done via POST, PUT and PATCH as usual, but using the
+&lt;tt class="docutils literal"&gt;&lt;span class="pre"&gt;multipart/data-form&lt;/span&gt;&lt;/tt&gt; content-type. Files are returned as Base64 encoded
+strings. For optmized performance files are stored in GridFS by default.
+Custom &lt;tt class="docutils literal"&gt;MediaStorage&lt;/tt&gt; classes can be implemented and passed to the
+application to support alternative storage systems. See &lt;a class="reference external" href="http://python-eve.org/features.html#file-storage"&gt;File Storage&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Validation Format&lt;/strong&gt;. Validation errors are now reported as a dictionary
+where offending fields are keys and issues are values. This should allow
+for easier parsing of validation errors easier. See my &lt;a class="reference external" href="https://groups.google.com/forum/#!topic/python-eve/E0A6YYq_h2c"&gt;rambling&lt;/a&gt; on the
+mailing list if you want to know more about the reasons behind this breaking
+change.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Improved metatags consistency&lt;/strong&gt;. Standard API tags have been renamed across
+the board so they are all consistent and easily recognisable (now they all
+start with an underscore: &lt;tt class="docutils literal"&gt;_etag&lt;/tt&gt;, &lt;tt class="docutils literal"&gt;_status&lt;/tt&gt;, &lt;tt class="docutils literal"&gt;_issues&lt;/tt&gt;, etc.) Find the complete
+list on the &lt;a class="reference external" href="http://python-eve.org/config.html"&gt;Configuration&lt;/a&gt; page.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;XML/JSON opt-outs&lt;/strong&gt;. You can easily disable either JSON or XML support if so
+you wish.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Enhanced projections&lt;/strong&gt;. Field exclusion (&lt;tt class="docutils literal"&gt;&lt;span class="pre"&gt;?projection={&amp;quot;fieldname&amp;quot;:&lt;/span&gt; 0}&lt;/tt&gt;)
+now supported in client projections.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Number data type&lt;/strong&gt;. The &lt;tt class="docutils literal"&gt;number&lt;/tt&gt; data type allows you to
+define a field which accepts both integers and floats.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;and more&lt;/strong&gt;. Just check the &lt;a class="reference external" href="http://python-eve.org/changelog.html"&gt;changelog&lt;/a&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Special thanks to Josh Villbrandt, Jaroslav Semančík, John Deng, David
+Buchmann, Hannes Tiede who contributed to this update.&lt;/p&gt;
+&lt;p&gt;As always, get &lt;a class="reference external" href="https://pypi.python.org/pypi/Eve"&gt;Eve 0.3&lt;/a&gt; while it's hot.&lt;/p&gt;
+</summary><category term="releases"></category></entry><entry><title>Eve at FOSDEM 2014</title><link href="http://blog.python-eve.org/eve-at-fosdem-2014" rel="alternate"></link><updated>2014-02-11T00:00:00+01:00</updated><author><name>Nicola Iarocci</name></author><id>tag:blog.python-eve.org,2014-02-11:eve-at-fosdem-2014</id><summary type="html">&lt;p&gt;A few days ago I gave a Eve talk at FOSDEM 2014 in Brussels. The talk was given
 in a fully packed Python DevRoom, which granted for a lot of smart questions
 both in the final QA session and later during the day.&lt;/p&gt;
 &lt;p&gt;I thought that you might find  the talk slides interesting, especially if you

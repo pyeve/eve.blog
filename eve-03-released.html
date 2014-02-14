@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-                <title>Eve at FOSDEM 2014</title>
+                <title>Eve 0.3 Released</title>
         <!-- Fonts -->
         <link href='http://fonts.googleapis.com/css?family=Inconsolata' rel='stylesheet' type='text/css'>
         <link href='http://fonts.googleapis.com/css?family=The+Girl+Next+Door' rel='stylesheet' type='text/css'>
@@ -43,27 +43,45 @@
             <section id="content" class="body">
   <header class="post">
     <h1 class="entry-title">
-      Eve at FOSDEM 2014
+      Eve 0.3 Released
     </h1>
   </header>
   <footer class="post-info">
     <abbr>
-      Tue 11 February 2014 
+      Fri 14 February 2014 
                By <a class="url fn" href="http://blog.python-eve.org/author/nicola-iarocci">Nicola Iarocci</a>
         
     </abbr>
   </footer><!-- /.post-info -->
   <div class="entry-content">
-    <p>A few days ago I gave a Eve talk at FOSDEM 2014 in Brussels. The talk was given
-in a fully packed Python DevRoom, which granted for a lot of smart questions
-both in the final QA session and later during the day.</p>
-<p>I thought that you might find  the talk slides interesting, especially if you
-need to explain what is Eve to your boss or colleagues ;-), so here you have
-it:</p>
-<p><a class="reference external" href="https://speakerdeck.com/nicola/eve-rest-api-for-humans">REST APIs for Humans</a> (FOSDEM 2014, Brussels)</p>
-<p>PS: In preparation for the upcoming Eve 0.3 release, <a class="reference external" href="https://pypi.python.org/pypi/Cerberus">Cerberus 0.6</a> was
-released a couple days ago. Expect the 0.3 announcement in your inbox anytime
-now.</p>
+    <p>As with every new release there are a lot of new things coming with 0.3.</p>
+<ul class="simple">
+<li><strong>File Storage</strong>. Images, pdf, etc. can now be uploaded as <tt class="docutils literal">media</tt>
+fields. Upload is done via POST, PUT and PATCH as usual, but using the
+<tt class="docutils literal"><span class="pre">multipart/data-form</span></tt> content-type. Files are returned as Base64 encoded
+strings. For optmized performance files are stored in GridFS by default.
+Custom <tt class="docutils literal">MediaStorage</tt> classes can be implemented and passed to the
+application to support alternative storage systems. See <a class="reference external" href="http://python-eve.org/features.html#file-storage">File Storage</a>.</li>
+<li><strong>Validation Format</strong>. Validation errors are now reported as a dictionary
+where offending fields are keys and issues are values. This should allow
+for easier parsing of validation errors easier. See my <a class="reference external" href="https://groups.google.com/forum/#!topic/python-eve/E0A6YYq_h2c">rambling</a> on the
+mailing list if you want to know more about the reasons behind this breaking
+change.</li>
+<li><strong>Improved metatags consistency</strong>. Standard API tags have been renamed across
+the board so they are all consistent and easily recognisable (now they all
+start with an underscore: <tt class="docutils literal">_etag</tt>, <tt class="docutils literal">_status</tt>, <tt class="docutils literal">_issues</tt>, etc.) Find the complete
+list on the <a class="reference external" href="http://python-eve.org/config.html">Configuration</a> page.</li>
+<li><strong>XML/JSON opt-outs</strong>. You can easily disable either JSON or XML support if so
+you wish.</li>
+<li><strong>Enhanced projections</strong>. Field exclusion (<tt class="docutils literal"><span class="pre">?projection={&quot;fieldname&quot;:</span> 0}</tt>)
+now supported in client projections.</li>
+<li><strong>Number data type</strong>. The <tt class="docutils literal">number</tt> data type allows you to
+define a field which accepts both integers and floats.</li>
+<li><strong>and more</strong>. Just check the <a class="reference external" href="http://python-eve.org/changelog.html">changelog</a>.</li>
+</ul>
+<p>Special thanks to Josh Villbrandt, Jaroslav Semančík, John Deng, David
+Buchmann, Hannes Tiede who contributed to this update.</p>
+<p>As always, get <a class="reference external" href="https://pypi.python.org/pypi/Eve">Eve 0.3</a> while it's hot.</p>
 
   </div><!-- /.entry-content -->
 </section>
