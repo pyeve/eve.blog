@@ -1,0 +1,43 @@
+Eve 0.3 Released
+================
+
+:date: 2014-14-02
+:category: develop
+:tags: releases
+
+As with every new release there are a lot of new things coming with 0.3. 
+
+- **File Storage**. Images, pdf, etc. can now be uploaded as ``media``
+  fields. Upload is done via POST, PUT and PATCH as usual, but using the
+  ``multipart/data-form`` content-type. Files are returned as Base64 encoded
+  strings. For optmized performance files are stored in GridFS by default.
+  Custom ``MediaStorage`` classes can be implemented and passed to the
+  application to support alternative storage systems. See `File Storage`_.
+- **Validation Format**. Validation errors are now reported as a dictionary
+  where offending fields are keys and issues are values. This should allow
+  for easier parsing of validation errors easier. See my rambling_ on the
+  mailing list if you want to know more about the reasons behind this breaking
+  change.
+- **Improved metatags consistency**. Standard API tags have been renamed across
+  the board so they are all consistent and easily recognisable (now they all
+  start with an underscore: ``_etag``, ``_status``, ``_issues``, etc.) Find the complete
+  list on the Configuration_ page.
+- **XML/JSON opt-outs**. You can easily disable either JSON or XML support if so
+  you wish.
+- **Enhanced projections**. Field exclusion (``?projection={"fieldname": 0}``)
+  now supported in client projections. 
+- **Number data type**. The ``number`` data type allows you to
+  define a field which accepts both integers and floats.
+- **and more**. Just check the changelog_.
+
+Special thanks to Josh Villbrandt, Jaroslav Semančík, John Deng, David
+Buchmann, Hannes Tiede who contributed to this update.
+
+As always, get `Eve 0.3`_ while it's hot.
+
+.. _changelog: http://python-eve.org/changelog.html
+.. _documentation: http://python-eve.org
+.. _`Eve 0.3`: https://pypi.python.org/pypi/Eve
+.. _`Configuration`: http://python-eve.org/config.html
+.. _`File Storage`: http://python-eve.org/features.html#file-storage
+.. _rambling: https://groups.google.com/forum/#!topic/python-eve/E0A6YYq_h2c
