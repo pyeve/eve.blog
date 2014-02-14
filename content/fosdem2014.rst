@@ -15,7 +15,7 @@ it:
 
 `REST APIs for Humans`_ (FOSDEM 2014, Brussels)
 
-PS: In preparation for the upcoming Eve 0.3 release, released `Cerberus 0.6`_ was
+PS: In preparation for the upcoming Eve 0.3 release, `Cerberus 0.6`_ was
 released a couple days ago. Expect the 0.3 announcement in your inbox anytime
 now.
 
