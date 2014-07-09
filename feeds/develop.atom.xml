@@ -1,5 +1,126 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Eve News</title><link href="http://blog.python-eve.org/" rel="alternate"></link><link href="http://blog.python-eve.org/feeds/develop.atom.xml" rel="self"></link><id>http://blog.python-eve.org/</id><updated>2014-02-14T00:00:00+01:00</updated><entry><title>Eve 0.3 Released</title><link href="http://blog.python-eve.org/eve-03-released" rel="alternate"></link><updated>2014-02-14T00:00:00+01:00</updated><author><name>Nicola Iarocci</name></author><id>tag:blog.python-eve.org,2014-02-14:eve-03-released</id><summary type="html">&lt;p&gt;As with every new release there are a lot of new things coming with 0.3.&lt;/p&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Eve News</title><link href="http://blog.python-eve.org/" rel="alternate"></link><link href="http://blog.python-eve.org/feeds/develop.atom.xml" rel="self"></link><id>http://blog.python-eve.org/</id><updated>2014-07-09T00:00:00+02:00</updated><entry><title>Eve 0.4 Released</title><link href="http://blog.python-eve.org/eve-04-released" rel="alternate"></link><updated>2014-07-09T00:00:00+02:00</updated><author><name>Nicola Iarocci</name></author><id>tag:blog.python-eve.org,2014-07-09:eve-04-released</id><summary type="html">&lt;p&gt;Eve 0.4 has been released and it brings some very interesting changes and
+features. Let's briefly review some of them.&lt;/p&gt;
+&lt;div class="section" id="document-versioning"&gt;
+&lt;h2&gt;Document Versioning&lt;/h2&gt;
+&lt;p&gt;Eve now supports automatic version control of documents. By default this
+setting is turned off, but it can be turned globally or configured individually
+for each resource. When enabled, Eve begins automatically tracking changes to
+documents and adds the fields &lt;tt class="docutils literal"&gt;_version&lt;/tt&gt; and &lt;tt class="docutils literal"&gt;_latest_version&lt;/tt&gt; when
+retrieving documents.&lt;/p&gt;
+&lt;p&gt;Access a specific version with &lt;tt class="docutils literal"&gt;&lt;span class="pre"&gt;?version=VERSION&lt;/span&gt;&lt;/tt&gt;, access all versions with
+&lt;tt class="docutils literal"&gt;&lt;span class="pre"&gt;?version=all&lt;/span&gt;&lt;/tt&gt;, and access diffs of all versions with &lt;tt class="docutils literal"&gt;&lt;span class="pre"&gt;?version=diffs&lt;/span&gt;&lt;/tt&gt;.
+Collection query features like projections, pagination, and sorting work with
+all and diff except for sorting which does not work on diff. See &lt;a class="reference external" href="http://python-eve.org/features#document-versioning"&gt;Document
+Versioning&lt;/a&gt; for details.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="section" id="coherence-mode"&gt;
+&lt;h2&gt;Coherence Mode&lt;/h2&gt;
+&lt;p&gt;When the new &lt;tt class="docutils literal"&gt;BANDWITH_SAVER&lt;/tt&gt; option is set to &lt;tt class="docutils literal"&gt;True&lt;/tt&gt;, POST, PUT,
+and PATCH responses only return automatically handled fields and eventual
+&lt;tt class="docutils literal"&gt;EXTRA_RESPONSE_FIELDS&lt;/tt&gt;. When set to &lt;tt class="docutils literal"&gt;False&lt;/tt&gt;, the entire document will be
+sent back to the client. Defaults to &lt;tt class="docutils literal"&gt;True&lt;/tt&gt; to preserve previous behaviour.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="section" id="pagination-meta-for-all-collection-responses"&gt;
+&lt;h2&gt;Pagination Meta for All Collection Responses&lt;/h2&gt;
+&lt;p&gt;Collection responses now get always the same response format, regardless of the
+HATEOAS status. Consequently, now HATEOAS status only affects the presence or
+not of the &lt;tt class="docutils literal"&gt;_link&lt;/tt&gt; section.&lt;/p&gt;
+&lt;p&gt;New collection response format is as follow&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="p"&gt;{&lt;/span&gt;
+    &lt;span class="s"&gt;&amp;quot;_meta&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+        &lt;span class="s"&gt;&amp;quot;total&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;1234&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+        &lt;span class="s"&gt;&amp;quot;page&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+        &lt;span class="s"&gt;&amp;quot;max_results&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;20&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+    &lt;span class="p"&gt;}&lt;/span&gt;
+    &lt;span class="s"&gt;&amp;quot;_items&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;
+        &lt;span class="o"&gt;...&lt;/span&gt;
+    &lt;span class="p"&gt;]&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;When &lt;a class="reference external" href="http://python-eve.org/features#pagination"&gt;Pagination&lt;/a&gt; is disabled the new &lt;tt class="docutils literal"&gt;_meta&lt;/tt&gt; field (configurable by
+means of the new &lt;tt class="docutils literal"&gt;META&lt;/tt&gt; configuration parameter) won't appear in responses.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="section" id="all-errors-return-a-parseable-body"&gt;
+&lt;h2&gt;All errors return a parseable body&lt;/h2&gt;
+&lt;p&gt;Now the API returns parseable (either JSON or XML) body in case of error, with
+status and error information:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="p"&gt;{&lt;/span&gt;
+    &lt;span class="s"&gt;&amp;quot;_status&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;ERR&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+    &lt;span class="s"&gt;&amp;quot;_error&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+        &lt;span class="s"&gt;&amp;quot;message&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+        &lt;span class="s"&gt;&amp;quot;code&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;404&lt;/span&gt;
+    &lt;span class="p"&gt;}&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Previously, while the HTTP status was of course returning the error code, the
+response body was empty.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="section" id="standardized-inserts-bulk-or-not-behavior"&gt;
+&lt;h2&gt;Standardized inserts (bulk or not) behavior&lt;/h2&gt;
+&lt;p&gt;For bulk and non-bulk inserts, response status now always either &lt;tt class="docutils literal"&gt;201&lt;/tt&gt; when
+everything was ok or &lt;tt class="docutils literal"&gt;400&lt;/tt&gt; when something went wrong. For bulk inserts, if at
+least one document doesn't validate, the whole request is rejected, and none of
+the documents are inserted into the database.&lt;/p&gt;
+&lt;p&gt;Additionnaly, responses are always a dict with a &lt;tt class="docutils literal"&gt;_status&lt;/tt&gt; field at its root
+and an eventual &lt;tt class="docutils literal"&gt;_error&lt;/tt&gt; object if &lt;tt class="docutils literal"&gt;_status&lt;/tt&gt; is &lt;tt class="docutils literal"&gt;ERR&lt;/tt&gt;. Documents status
+are stored in the &lt;tt class="docutils literal"&gt;_items&lt;/tt&gt; field:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="p"&gt;{&lt;/span&gt;
+    &lt;span class="s"&gt;&amp;quot;_status&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;ERR&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+    &lt;span class="s"&gt;&amp;quot;_error&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+        &lt;span class="s"&gt;&amp;quot;code&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;400&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+        &lt;span class="s"&gt;&amp;quot;message&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;Insertion failure: 1 document(s) contain(s) error(s)&amp;quot;&lt;/span&gt;
+    &lt;span class="p"&gt;},&lt;/span&gt;
+    &lt;span class="s"&gt;&amp;quot;_items&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;
+        &lt;span class="p"&gt;{&lt;/span&gt;
+            &lt;span class="s"&gt;&amp;quot;_status&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;OK&amp;quot;&lt;/span&gt;
+        &lt;span class="p"&gt;},&lt;/span&gt;
+        &lt;span class="p"&gt;{&lt;/span&gt;
+            &lt;span class="s"&gt;&amp;quot;_issues&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+                &lt;span class="s"&gt;&amp;quot;email&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;required field&amp;quot;&lt;/span&gt;
+            &lt;span class="p"&gt;},&lt;/span&gt;
+            &lt;span class="s"&gt;&amp;quot;_status&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;ERR&amp;quot;&lt;/span&gt;
+        &lt;span class="p"&gt;}&lt;/span&gt;
+    &lt;span class="p"&gt;]&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="section" id="read-write-granularity-to-role-based-acl"&gt;
+&lt;h2&gt;Read/write granularity to role based ACL&lt;/h2&gt;
+&lt;p&gt;In addition to &lt;tt class="docutils literal"&gt;ALLOWED_ROLES&lt;/tt&gt; you know have two new read/write configuration
+parameters (global and per resource) at your disposal. This allows for instance
+to require a role for writing but not for reading. The new parameters are
+&lt;tt class="docutils literal"&gt;ALLOWED_READ_ROLES&lt;/tt&gt;, &lt;tt class="docutils literal"&gt;ALLOWED_WRITE_ROLES&lt;/tt&gt; for resources and
+&lt;tt class="docutils literal"&gt;ALLOWED_ITEM_READ_ROLES&lt;/tt&gt; and &lt;tt class="docutils literal"&gt;ALLOWED_ITEM_WRITE_ROLES&lt;/tt&gt; for item
+endpoints. See &lt;a class="reference external" href="http://python-eve.org/config.html"&gt;Configuration&lt;/a&gt; for details.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="section" id="other-changes"&gt;
+&lt;h2&gt;Other changes&lt;/h2&gt;
+&lt;ul class="simple"&gt;
+&lt;li&gt;&lt;strong&gt;New validation rules&lt;/strong&gt;. New &lt;tt class="docutils literal"&gt;regex&lt;/tt&gt;, &lt;tt class="docutils literal"&gt;dependencies&lt;/tt&gt; and &lt;tt class="docutils literal"&gt;keyschema&lt;/tt&gt;
+validation rules have been added. See &lt;a class="reference external" href="http://python-eve.org/config#schema-definition"&gt;Schema Definition&lt;/a&gt; for details.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;File storage&lt;/strong&gt;. New &lt;tt class="docutils literal"&gt;EXTENDED_MEDIA_INFO&lt;/tt&gt; allows a list of meta fields
+(file properties) to forward from the file upload driver. See &lt;a class="reference external" href="http://python-eve.org/features.html#file-storage"&gt;File Storage&lt;/a&gt; for details.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Event hooks&lt;/strong&gt;.  &lt;tt class="docutils literal"&gt;on_pre_&amp;lt;METHOD&amp;gt;&lt;/tt&gt; events expose the &lt;tt class="docutils literal"&gt;lookup&lt;/tt&gt; dictionary
+which allows for setting up dynamic database lookups on both resource and
+item endpoints. New hooks have been added while others have been re-organized
+for better consistency across methods. See &lt;a class="reference external" href="http://python-eve.org/features#event-hooks"&gt;Event Hooks&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;New Python versions&lt;/strong&gt;. Eve now officially supports both Python 3.4 and PyPy
+out of the box. All commits are now also tested against these two Python
+versions.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;And more!&lt;/strong&gt; See the complete &lt;a class="reference external" href="http://python-eve.org/changelog.html"&gt;changelog&lt;/a&gt; for the detailed list of changes.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;div class="section" id="what-an-amazing-community"&gt;
+&lt;h2&gt;What an Amazing Community&lt;/h2&gt;
+&lt;p&gt;Special thanks to Josh Villbrandt, Olivier Poitrey, Petr Jašek, Ben Demaree,
+Javier Gonel, boosh, Junior Vidotti, Jaroslav Semančík, Jen Montes, Taylor
+Brown, Alexander Hendorf for their awesome help with this release.&lt;/p&gt;
+&lt;p&gt;Allow me to add that I'm really proud of the community which is forming around
+this project.&lt;/p&gt;
+&lt;p&gt;Get &lt;a class="reference external" href="https://pypi.python.org/pypi/Eve"&gt;Eve 0.4&lt;/a&gt; while it's hot.&lt;/p&gt;
+&lt;/div&gt;
+</summary><category term="releases"></category></entry><entry><title>Eve 0.3 Released</title><link href="http://blog.python-eve.org/eve-03-released" rel="alternate"></link><updated>2014-02-14T00:00:00+01:00</updated><author><name>Nicola Iarocci</name></author><id>tag:blog.python-eve.org,2014-02-14:eve-03-released</id><summary type="html">&lt;p&gt;As with every new release there are a lot of new things coming with 0.3.&lt;/p&gt;
 &lt;ul class="simple"&gt;
 &lt;li&gt;&lt;strong&gt;File Storage&lt;/strong&gt;. Images, pdf, etc. can now be uploaded as &lt;tt class="docutils literal"&gt;media&lt;/tt&gt;
 fields. Upload is done via POST, PUT and PATCH as usual, but using the

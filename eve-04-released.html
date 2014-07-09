@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+                <title>Eve 0.4 Released</title>
+        <!-- Fonts -->
+        <link href='http://fonts.googleapis.com/css?family=Inconsolata' rel='stylesheet' type='text/css'>
+        <link href='http://fonts.googleapis.com/css?family=The+Girl+Next+Door' rel='stylesheet' type='text/css'>
+        <link href='http://fonts.googleapis.com/css?family=Marcellus' rel='stylesheet' type='text/css'>
+        
+        <!-- CSS -->
+        <link rel="stylesheet" href="http://blog.python-eve.org/theme/css/main.css" type="text/css" />
+        <link rel="stylesheet" href="http://blog.python-eve.org/theme/css/pygments.css" type="text/css" />
+        <link rel="stylesheet" href="http://blog.python-eve.org/theme/css/font-awesome.css" type="text/css" />
+        <meta charset="utf-8" />
+      
+                <link href="http://blog.python-eve.org/feeds/rss.xml" type="application/rss+xml" rel="alternate" title="Eve News RSS Feed" />
+        
+        <!-- Javascript-->
+        <script src="http://blog.python-eve.org/theme/js/invisible-menu-scroll.js"></script>
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8/jquery.min.js"></script>
+        <script type="text/javascript"> 
+          $(function() {
+            invisibleMenu();
+          });
+        </script> 
+        </head>
+
+<body id="index" class="home">
+         <div class="navigation">
+        <ol class="nav">
+          <li class="current"><a href="http://blog.python-eve.org">Blog</a> </li>
+          <li><a href="http://blog.python-eve.org/archives.html">Archive</a></li>
+          <li><a href="http://blog.python-eve.org/tags.html">Tags</a> </li>
+          <li><a href="feeds/rss.xml">RSS</a> </li>
+        </ol>
+      </div>
+        <header id="banner" class="body">
+                <div class="banner"><a href="http://blog.python-eve.org">Eve News <strong></strong></a></div>
+        </header><!-- /#banner -->
+        <nav id="menu"><ul>
+                                          </ul></nav><!-- /#menu -->
+        <div class="box">
+            <section id="content" class="body">
+  <header class="post">
+    <h1 class="entry-title">
+      Eve 0.4 Released
+    </h1>
+  </header>
+  <footer class="post-info">
+    <abbr>
+      Wed 09 July 2014 
+               By <a class="url fn" href="http://blog.python-eve.org/author/nicola-iarocci">Nicola Iarocci</a>
+        
+    </abbr>
+  </footer><!-- /.post-info -->
+  <div class="entry-content">
+    <p>Eve 0.4 has been released and it brings some very interesting changes and
+features. Let's briefly review some of them.</p>
+<div class="section" id="document-versioning">
+<h2>Document Versioning</h2>
+<p>Eve now supports automatic version control of documents. By default this
+setting is turned off, but it can be turned globally or configured individually
+for each resource. When enabled, Eve begins automatically tracking changes to
+documents and adds the fields <tt class="docutils literal">_version</tt> and <tt class="docutils literal">_latest_version</tt> when
+retrieving documents.</p>
+<p>Access a specific version with <tt class="docutils literal"><span class="pre">?version=VERSION</span></tt>, access all versions with
+<tt class="docutils literal"><span class="pre">?version=all</span></tt>, and access diffs of all versions with <tt class="docutils literal"><span class="pre">?version=diffs</span></tt>.
+Collection query features like projections, pagination, and sorting work with
+all and diff except for sorting which does not work on diff. See <a class="reference external" href="http://python-eve.org/features#document-versioning">Document
+Versioning</a> for details.</p>
+</div>
+<div class="section" id="coherence-mode">
+<h2>Coherence Mode</h2>
+<p>When the new <tt class="docutils literal">BANDWITH_SAVER</tt> option is set to <tt class="docutils literal">True</tt>, POST, PUT,
+and PATCH responses only return automatically handled fields and eventual
+<tt class="docutils literal">EXTRA_RESPONSE_FIELDS</tt>. When set to <tt class="docutils literal">False</tt>, the entire document will be
+sent back to the client. Defaults to <tt class="docutils literal">True</tt> to preserve previous behaviour.</p>
+</div>
+<div class="section" id="pagination-meta-for-all-collection-responses">
+<h2>Pagination Meta for All Collection Responses</h2>
+<p>Collection responses now get always the same response format, regardless of the
+HATEOAS status. Consequently, now HATEOAS status only affects the presence or
+not of the <tt class="docutils literal">_link</tt> section.</p>
+<p>New collection response format is as follow</p>
+<div class="highlight"><pre><span class="p">{</span>
+    <span class="s">&quot;_meta&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s">&quot;total&quot;</span><span class="p">:</span> <span class="mi">1234</span><span class="p">,</span>
+        <span class="s">&quot;page&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+        <span class="s">&quot;max_results&quot;</span><span class="p">:</span> <span class="mi">20</span><span class="p">,</span>
+    <span class="p">}</span>
+    <span class="s">&quot;_items&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="o">...</span>
+    <span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+<p>When <a class="reference external" href="http://python-eve.org/features#pagination">Pagination</a> is disabled the new <tt class="docutils literal">_meta</tt> field (configurable by
+means of the new <tt class="docutils literal">META</tt> configuration parameter) won't appear in responses.</p>
+</div>
+<div class="section" id="all-errors-return-a-parseable-body">
+<h2>All errors return a parseable body</h2>
+<p>Now the API returns parseable (either JSON or XML) body in case of error, with
+status and error information:</p>
+<div class="highlight"><pre><span class="p">{</span>
+    <span class="s">&quot;_status&quot;</span><span class="p">:</span> <span class="s">&quot;ERR&quot;</span><span class="p">,</span>
+    <span class="s">&quot;_error&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s">&quot;message&quot;</span><span class="p">:</span> <span class="s">&quot;The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.&quot;</span><span class="p">,</span>
+        <span class="s">&quot;code&quot;</span><span class="p">:</span> <span class="mi">404</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+<p>Previously, while the HTTP status was of course returning the error code, the
+response body was empty.</p>
+</div>
+<div class="section" id="standardized-inserts-bulk-or-not-behavior">
+<h2>Standardized inserts (bulk or not) behavior</h2>
+<p>For bulk and non-bulk inserts, response status now always either <tt class="docutils literal">201</tt> when
+everything was ok or <tt class="docutils literal">400</tt> when something went wrong. For bulk inserts, if at
+least one document doesn't validate, the whole request is rejected, and none of
+the documents are inserted into the database.</p>
+<p>Additionnaly, responses are always a dict with a <tt class="docutils literal">_status</tt> field at its root
+and an eventual <tt class="docutils literal">_error</tt> object if <tt class="docutils literal">_status</tt> is <tt class="docutils literal">ERR</tt>. Documents status
+are stored in the <tt class="docutils literal">_items</tt> field:</p>
+<div class="highlight"><pre><span class="p">{</span>
+    <span class="s">&quot;_status&quot;</span><span class="p">:</span> <span class="s">&quot;ERR&quot;</span><span class="p">,</span>
+    <span class="s">&quot;_error&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s">&quot;code&quot;</span><span class="p">:</span> <span class="mi">400</span><span class="p">,</span>
+        <span class="s">&quot;message&quot;</span><span class="p">:</span> <span class="s">&quot;Insertion failure: 1 document(s) contain(s) error(s)&quot;</span>
+    <span class="p">},</span>
+    <span class="s">&quot;_items&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="p">{</span>
+            <span class="s">&quot;_status&quot;</span><span class="p">:</span> <span class="s">&quot;OK&quot;</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+            <span class="s">&quot;_issues&quot;</span><span class="p">:</span> <span class="p">{</span>
+                <span class="s">&quot;email&quot;</span><span class="p">:</span> <span class="s">&quot;required field&quot;</span>
+            <span class="p">},</span>
+            <span class="s">&quot;_status&quot;</span><span class="p">:</span> <span class="s">&quot;ERR&quot;</span>
+        <span class="p">}</span>
+    <span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<div class="section" id="read-write-granularity-to-role-based-acl">
+<h2>Read/write granularity to role based ACL</h2>
+<p>In addition to <tt class="docutils literal">ALLOWED_ROLES</tt> you know have two new read/write configuration
+parameters (global and per resource) at your disposal. This allows for instance
+to require a role for writing but not for reading. The new parameters are
+<tt class="docutils literal">ALLOWED_READ_ROLES</tt>, <tt class="docutils literal">ALLOWED_WRITE_ROLES</tt> for resources and
+<tt class="docutils literal">ALLOWED_ITEM_READ_ROLES</tt> and <tt class="docutils literal">ALLOWED_ITEM_WRITE_ROLES</tt> for item
+endpoints. See <a class="reference external" href="http://python-eve.org/config.html">Configuration</a> for details.</p>
+</div>
+<div class="section" id="other-changes">
+<h2>Other changes</h2>
+<ul class="simple">
+<li><strong>New validation rules</strong>. New <tt class="docutils literal">regex</tt>, <tt class="docutils literal">dependencies</tt> and <tt class="docutils literal">keyschema</tt>
+validation rules have been added. See <a class="reference external" href="http://python-eve.org/config#schema-definition">Schema Definition</a> for details.</li>
+<li><strong>File storage</strong>. New <tt class="docutils literal">EXTENDED_MEDIA_INFO</tt> allows a list of meta fields
+(file properties) to forward from the file upload driver. See <a class="reference external" href="http://python-eve.org/features.html#file-storage">File Storage</a> for details.</li>
+<li><strong>Event hooks</strong>.  <tt class="docutils literal">on_pre_&lt;METHOD&gt;</tt> events expose the <tt class="docutils literal">lookup</tt> dictionary
+which allows for setting up dynamic database lookups on both resource and
+item endpoints. New hooks have been added while others have been re-organized
+for better consistency across methods. See <a class="reference external" href="http://python-eve.org/features#event-hooks">Event Hooks</a>.</li>
+<li><strong>New Python versions</strong>. Eve now officially supports both Python 3.4 and PyPy
+out of the box. All commits are now also tested against these two Python
+versions.</li>
+<li><strong>And more!</strong> See the complete <a class="reference external" href="http://python-eve.org/changelog.html">changelog</a> for the detailed list of changes.</li>
+</ul>
+</div>
+<div class="section" id="what-an-amazing-community">
+<h2>What an Amazing Community</h2>
+<p>Special thanks to Josh Villbrandt, Olivier Poitrey, Petr Jašek, Ben Demaree,
+Javier Gonel, boosh, Junior Vidotti, Jaroslav Semančík, Jen Montes, Taylor
+Brown, Alexander Hendorf for their awesome help with this release.</p>
+<p>Allow me to add that I'm really proud of the community which is forming around
+this project.</p>
+<p>Get <a class="reference external" href="https://pypi.python.org/pypi/Eve">Eve 0.4</a> while it's hot.</p>
+</div>
+
+  </div><!-- /.entry-content -->
+</section>
+            <hr/>
+            <footer id="contentinfo" class="footer">
+                <div>
+                    <a href="http://python-eve.org">Eve</a> <br />
+                    REST WEB APIs Made Simple
+                <div>
+                    A <a href="http://nicolaiarocci.com">Nicola Iarocci</a> Project</a>
+                </div>
+                <div>
+                    Powered by <a href="http://getpelican.com/">Pelican</a>
+                    and <a href="http://python.org">Python</a>. 
+                </div>
+                <div class="social">
+                                            <a href="https://twitter.com/nicolaiarocci"><i class="icon-twitter"></i>  </a>
+                                            <a href="https://github.com/nicolaiarocci/eve"><i class="icon-github"></i>  </a>
+                                                                <a href="mailto:eve@nicolaiarocci.com"><i class="icon-envelope"></i> </a>
+                                    </div>
+            </footer><!-- /#contentinfo -->
+        </div>
+        <!--Add statistycs-->
+        
+</body>
+</html>
