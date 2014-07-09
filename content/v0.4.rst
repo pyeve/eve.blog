@@ -1,0 +1,151 @@
+Eve 0.4 Released 
+================
+
+:date: 2014-07-09
+:category: develop
+:tags: releases
+
+Eve 0.4 has been released and it brings some very interesting changes and
+features. Let's briefly review some of them.
+
+Document Versioning
+-------------------
+Eve now supports automatic version control of documents. By default this
+setting is turned off, but it can be turned globally or configured individually
+for each resource. When enabled, Eve begins automatically tracking changes to
+documents and adds the fields ``_version`` and ``_latest_version`` when
+retrieving documents. 
+
+Access a specific version with ``?version=VERSION``, access all versions with
+``?version=all``, and access diffs of all versions with ``?version=diffs``.
+Collection query features like projections, pagination, and sorting work with
+all and diff except for sorting which does not work on diff. See `Document
+Versioning`_ for details. 
+
+Coherence Mode
+--------------
+When the new ``BANDWITH_SAVER`` option is set to ``True``, POST, PUT,
+and PATCH responses only return automatically handled fields and eventual
+``EXTRA_RESPONSE_FIELDS``. When set to ``False``, the entire document will be
+sent back to the client. Defaults to ``True`` to preserve previous behaviour. 
+
+Pagination Meta for All Collection Responses
+--------------------------------------------
+Collection responses now get always the same response format, regardless of the
+HATEOAS status. Consequently, now HATEOAS status only affects the presence or
+not of the ``_link`` section.
+
+New collection response format is as follow
+
+.. code-block:: python
+
+    {
+        "_meta": {
+            "total": 1234,
+            "page": 1,
+            "max_results": 20,
+        }
+        "_items": [
+            ...
+        ]
+    }
+
+
+When Pagination_ is disabled the new ``_meta`` field (configurable by
+means of the new ``META`` configuration parameter) won't appear in responses.
+
+All errors return a parseable body
+----------------------------------
+Now the API returns parseable (either JSON or XML) body in case of error, with
+status and error information: 
+
+.. code-block:: python
+
+    {
+        "_status": "ERR", 
+        "_error": {
+            "message": "The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.", 
+            "code": 404
+        }
+    }                          
+
+Previously, while the HTTP status was of course returning the error code, the
+response body was empty.
+
+Standardized inserts (bulk or not) behavior
+-------------------------------------------
+For bulk and non-bulk inserts, response status now always either ``201`` when
+everything was ok or ``400`` when something went wrong. For bulk inserts, if at
+least one document doesn't validate, the whole request is rejected, and none of
+the documents are inserted into the database. 
+  
+Additionnaly, responses are always a dict with a ``_status`` field at its root
+and an eventual ``_error`` object if ``_status`` is ``ERR``. Documents status
+are stored in the ``_items`` field:
+
+.. code-block:: python
+
+    {
+        "_status": "ERR",
+        "_error": {
+            "code": 400,
+            "message": "Insertion failure: 1 document(s) contain(s) error(s)"
+        },
+        "_items": [
+            {
+                "_status": "OK"
+            },
+            {
+                "_issues": {
+                    "email": "required field"
+                },
+                "_status": "ERR"
+            }
+        ]
+    }
+
+Read/write granularity to role based ACL
+----------------------------------------
+In addition to ``ALLOWED_ROLES`` you know have two new read/write configuration
+parameters (global and per resource) at your disposal. This allows for instance
+to require a role for writing but not for reading. The new parameters are
+``ALLOWED_READ_ROLES``, ``ALLOWED_WRITE_ROLES`` for resources and
+``ALLOWED_ITEM_READ_ROLES`` and ``ALLOWED_ITEM_WRITE_ROLES`` for item
+endpoints. See Configuration_ for details.
+
+Other changes
+-------------
+
+- **New validation rules**. New ``regex``, ``dependencies`` and ``keyschema``
+  validation rules have been added. See `Schema Definition`_ for details.
+- **File storage**. New ``EXTENDED_MEDIA_INFO`` allows a list of meta fields
+  (file properties) to forward from the file upload driver. See `File Storage`_ for details.
+- **Event hooks**.  ``on_pre_<METHOD>`` events expose the ``lookup`` dictionary
+  which allows for setting up dynamic database lookups on both resource and
+  item endpoints. New hooks have been added while others have been re-organized
+  for better consistency across methods. See `Event Hooks`_.
+- **New Python versions**. Eve now officially supports both Python 3.4 and PyPy
+  out of the box. All commits are now also tested against these two Python
+  versions.
+- **And more!** See the complete changelog_ for the detailed list of changes.
+
+What an Amazing Community
+-------------------------
+Special thanks to Josh Villbrandt, Olivier Poitrey, Petr Jašek, Ben Demaree,
+Javier Gonel, boosh, Junior Vidotti, Jaroslav Semančík, Jen Montes, Taylor
+Brown, Alexander Hendorf for their awesome help with this release. 
+
+Allow me to add that I'm really proud of the community which is forming around
+this project.
+
+Get `Eve 0.4`_ while it's hot.
+
+.. _changelog: http://python-eve.org/changelog.html
+.. _documentation: http://python-eve.org
+.. _`Eve 0.4`: https://pypi.python.org/pypi/Eve
+.. _`Configuration`: http://python-eve.org/config.html
+.. _`File Storage`: http://python-eve.org/features.html#file-storage
+.. _`Schema Definition`: http://python-eve.org/config#schema-definition
+.. _`Event Hooks`: http://python-eve.org/features#event-hooks
+.. _`Pagination`: http://python-eve.org/features#pagination
+.. _`Document Versioning`: http://python-eve.org/features#document-versioning
