@@ -2,8 +2,8 @@
 <feed xmlns="http://www.w3.org/2005/Atom"><title>Eve News</title><link href="http://blog.python-eve.org/" rel="alternate"></link><link href="http://blog.python-eve.org/feeds/develop.atom.xml" rel="self"></link><id>http://blog.python-eve.org/</id><updated>2015-01-12T00:00:00+01:00</updated><entry><title>Eve 0.5 Released</title><link href="http://blog.python-eve.org/eve-05-released" rel="alternate"></link><updated>2015-01-12T00:00:00+01:00</updated><author><name>Nicola Iarocci</name></author><id>tag:blog.python-eve.org,2015-01-12:eve-05-released</id><summary type="html">&lt;p&gt;Today Eve 0.5 has been released. It brings a lot of new features and fixes,
 along with a couple breaking changes. I'll let you see che &lt;a class="reference external" href="http://python-eve.org/changelog.html"&gt;changelog&lt;/a&gt; for
 a complete list, but let's see a few important updates.&lt;/p&gt;
-&lt;div class="section" id="operatins-log"&gt;
-&lt;h2&gt;Operatins Log&lt;/h2&gt;
+&lt;div class="section" id="operations-log"&gt;
+&lt;h2&gt;Operations Log&lt;/h2&gt;
 &lt;p&gt;The OpLog is an API-wide log of all edit operations. Every &lt;tt class="docutils literal"&gt;POST&lt;/tt&gt;, &lt;tt class="docutils literal"&gt;PATCH&lt;/tt&gt;
 &lt;tt class="docutils literal"&gt;PUT&lt;/tt&gt; and &lt;tt class="docutils literal"&gt;DELETE&lt;/tt&gt; operation can be recorded to the oplog. At its core the
 oplog is simply a server log. What makes it a little bit different is that it
