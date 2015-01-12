@@ -29,9 +29,6 @@ AUTHOR_URL = 'author/{slug}'
 CATEGORY_URL = 'category/{slug}'
 TAG_URL = 'tag/{slug}'
 
-#FILES_TO_COPY = (('extra/favicon.ico', 'favicon.ico'),
-#                 ('extra/CNAME', 'CNAME'),)
-
 STATIC_PATHS = [
     'extra/favicon.ico',
     'extra/CNAME'
