@@ -9,8 +9,8 @@ Today Eve 0.5 has been released. It brings a lot of new features and fixes,
 along with a couple breaking changes. I'll let you see che changelog_ for
 a complete list, but let's see a few important updates.
 
-Operatins Log
--------------
+Operations Log
+--------------
 The OpLog is an API-wide log of all edit operations. Every ``POST``, ``PATCH``
 ``PUT`` and ``DELETE`` operation can be recorded to the oplog. At its core the
 oplog is simply a server log. What makes it a little bit different is that it
