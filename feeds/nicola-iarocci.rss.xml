@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Eve News</title><link href="http://blog.python-eve.org/" rel="alternate"></link><link href="http://blog.python-eve.org/feeds/all.atom.xml" rel="self"></link><id>http://blog.python-eve.org/</id><updated>2015-01-12T00:00:00+01:00</updated><entry><title>Eve 0.5 Released</title><link href="http://blog.python-eve.org/eve-05-released" rel="alternate"></link><updated>2015-01-12T00:00:00+01:00</updated><author><name>Nicola Iarocci</name></author><id>tag:blog.python-eve.org,2015-01-12:eve-05-released</id><summary type="html">&lt;p&gt;Today Eve 0.5 has been released. It brings a lot of new features and fixes,
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Eve News</title><link>http://blog.python-eve.org/</link><description></description><atom:link href="http://blog.python-eve.org/feeds/nicola-iarocci.rss.xml" rel="self"></atom:link><lastBuildDate>Mon, 12 Jan 2015 00:00:00 +0100</lastBuildDate><item><title>Eve 0.5 Released</title><link>http://blog.python-eve.org/eve-05-released</link><description>&lt;p&gt;Today Eve 0.5 has been released. It brings a lot of new features and fixes,
 along with a couple breaking changes. I'll let you see che &lt;a class="reference external" href="http://python-eve.org/changelog.html"&gt;changelog&lt;/a&gt; for
 a complete list, but let's see a few important updates.&lt;/p&gt;
 &lt;div class="section" id="operatins-log"&gt;
@@ -61,7 +61,7 @@ Petr Jašek, Sebastián Magrí, Stanislav Heller, hansotronic&lt;/p&gt;
 &lt;p&gt;Thank you all for making this release possibile!&lt;/p&gt;
 &lt;p&gt;Get &lt;a class="reference external" href="https://pypi.python.org/pypi/Eve"&gt;Eve 0.5&lt;/a&gt; while it's hot.&lt;/p&gt;
 &lt;/div&gt;
-</summary><category term="releases"></category></entry><entry><title>Eve 0.4 Released</title><link href="http://blog.python-eve.org/eve-04-released" rel="alternate"></link><updated>2014-07-09T00:00:00+02:00</updated><author><name>Nicola Iarocci</name></author><id>tag:blog.python-eve.org,2014-07-09:eve-04-released</id><summary type="html">&lt;p&gt;Eve 0.4 has been released and it brings some very interesting changes and
+</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Nicola Iarocci</dc:creator><pubDate>Mon, 12 Jan 2015 00:00:00 +0100</pubDate><guid>tag:blog.python-eve.org,2015-01-12:eve-05-released</guid><category>releases</category></item><item><title>Eve 0.4 Released</title><link>http://blog.python-eve.org/eve-04-released</link><description>&lt;p&gt;Eve 0.4 has been released and it brings some very interesting changes and
 features. Let's briefly review some of them.&lt;/p&gt;
 &lt;div class="section" id="document-versioning"&gt;
 &lt;h2&gt;Document Versioning&lt;/h2&gt;
@@ -182,7 +182,7 @@ Brown, Alexander Hendorf for their awesome help with this release.&lt;/p&gt;
 this project.&lt;/p&gt;
 &lt;p&gt;Get &lt;a class="reference external" href="https://pypi.python.org/pypi/Eve"&gt;Eve 0.4&lt;/a&gt; while it's hot.&lt;/p&gt;
 &lt;/div&gt;
-</summary><category term="releases"></category></entry><entry><title>Eve 0.3 Released</title><link href="http://blog.python-eve.org/eve-03-released" rel="alternate"></link><updated>2014-02-14T00:00:00+01:00</updated><author><name>Nicola Iarocci</name></author><id>tag:blog.python-eve.org,2014-02-14:eve-03-released</id><summary type="html">&lt;p&gt;As with every new release there are a lot of new things coming with 0.3.&lt;/p&gt;
+</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Nicola Iarocci</dc:creator><pubDate>Wed, 09 Jul 2014 00:00:00 +0200</pubDate><guid>tag:blog.python-eve.org,2014-07-09:eve-04-released</guid><category>releases</category></item><item><title>Eve 0.3 Released</title><link>http://blog.python-eve.org/eve-03-released</link><description>&lt;p&gt;As with every new release there are a lot of new things coming with 0.3.&lt;/p&gt;
 &lt;ul class="simple"&gt;
 &lt;li&gt;&lt;strong&gt;File Storage&lt;/strong&gt;. Images, pdf, etc. can now be uploaded as &lt;tt class="docutils literal"&gt;media&lt;/tt&gt;
 fields. Upload is done via POST, PUT and PATCH as usual, but using the
@@ -210,7 +210,7 @@ define a field which accepts both integers and floats.&lt;/li&gt;
 &lt;p&gt;Special thanks to Josh Villbrandt, Jaroslav Semančík, John Deng, David
 Buchmann, Hannes Tiede who contributed to this update.&lt;/p&gt;
 &lt;p&gt;As always, get &lt;a class="reference external" href="https://pypi.python.org/pypi/Eve"&gt;Eve 0.3&lt;/a&gt; while it's hot.&lt;/p&gt;
-</summary><category term="releases"></category></entry><entry><title>Eve at FOSDEM 2014</title><link href="http://blog.python-eve.org/eve-at-fosdem-2014" rel="alternate"></link><updated>2014-02-11T00:00:00+01:00</updated><author><name>Nicola Iarocci</name></author><id>tag:blog.python-eve.org,2014-02-11:eve-at-fosdem-2014</id><summary type="html">&lt;p&gt;A few days ago I gave a Eve talk at FOSDEM 2014 in Brussels. The talk was given
+</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Nicola Iarocci</dc:creator><pubDate>Fri, 14 Feb 2014 00:00:00 +0100</pubDate><guid>tag:blog.python-eve.org,2014-02-14:eve-03-released</guid><category>releases</category></item><item><title>Eve at FOSDEM 2014</title><link>http://blog.python-eve.org/eve-at-fosdem-2014</link><description>&lt;p&gt;A few days ago I gave a Eve talk at FOSDEM 2014 in Brussels. The talk was given
 in a fully packed Python DevRoom, which granted for a lot of smart questions
 both in the final QA session and later during the day.&lt;/p&gt;
 &lt;p&gt;I thought that you might find  the talk slides interesting, especially if you
@@ -220,68 +220,7 @@ it:&lt;/p&gt;
 &lt;p&gt;PS: In preparation for the upcoming Eve 0.3 release, &lt;a class="reference external" href="https://pypi.python.org/pypi/Cerberus"&gt;Cerberus 0.6&lt;/a&gt; was
 released a couple days ago. Expect the 0.3 announcement in your inbox anytime
 now.&lt;/p&gt;
-</summary><category term="events"></category></entry><entry><title>Eve + ORM? Eve-Mongoengine!</title><link href="http://blog.python-eve.org/eve-orm-eve-mongoengine" rel="alternate"></link><updated>2013-12-20T00:00:00+01:00</updated><author><name>Stanislav Heller</name></author><id>tag:blog.python-eve.org,2013-12-20:eve-orm-eve-mongoengine</id><summary type="html">&lt;p&gt;&lt;a class="reference external" href="https://github.com/hellerstanislav/eve-mongoengine"&gt;Eve-Mongoengine&lt;/a&gt; is an Eve extension, which enables &lt;a class="reference external" href="http://mongoengine.org/"&gt;Mongoengine&lt;/a&gt; ORM models to
-be used as eve schema.&lt;/p&gt;
-&lt;p&gt;If you use mongoengine in your application and simultaneously want to use &lt;a class="reference external" href="http://python-eve.org"&gt;Eve&lt;/a&gt;,
-instead of writing schema again in &lt;a class="reference external" href="http://cerberus.readthedocs.org/en/latest/"&gt;Cerberus&lt;/a&gt; format (DRY!), you can use this
-extension, which takes your mongoengine models and auto-transforms them into
-Cerberus schema under the hood.&lt;/p&gt;
-&lt;div class="section" id="features"&gt;
-&lt;h2&gt;Features&lt;/h2&gt;
-&lt;ul class="simple"&gt;
-&lt;li&gt;&lt;strong&gt;Auto-generated schema out of your mongoengine models&lt;/strong&gt;. Even if you did not specify &lt;tt class="docutils literal"&gt;updated&lt;/tt&gt; and &lt;tt class="docutils literal"&gt;created&lt;/tt&gt; fields in your model, Eve-Mongoengine adds them into the model class. But beware, if you update your document using mongoengine model (i.e. by calling &lt;tt class="docutils literal"&gt;save()&lt;/tt&gt; on the model object), the &lt;tt class="docutils literal"&gt;updated&lt;/tt&gt; field wont be updated to current time. This is because there arent any hooks bound to &lt;tt class="docutils literal"&gt;save()&lt;/tt&gt; or &lt;tt class="docutils literal"&gt;update()&lt;/tt&gt; methods at default.&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;Every operation goes through mongoengine&lt;/strong&gt;. You do not loose your mongoengine hooks!&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;Support for most of mongoengine fields&lt;/strong&gt;.&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;Mongoengine validation layer not disconnected&lt;/strong&gt;. If you define some validators on top of regular mongoengine validation spec, you have got them in eve too!&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/div&gt;
-&lt;div class="section" id="how-it-works"&gt;
-&lt;h2&gt;How it works?&lt;/h2&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;mongoengine&lt;/span&gt;
-&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;eve&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;Eve&lt;/span&gt;
-&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;eve_mongoengine&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;EveMongoengine&lt;/span&gt;
-
-&lt;span class="c"&gt;# create some dummy model class&lt;/span&gt;
-&lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="nc"&gt;Person&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;mongoengine&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;Document&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
-    &lt;span class="n"&gt;name&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;mongoengine&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;StringField&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
-    &lt;span class="n"&gt;age&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;mongoengine&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;IntField&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
-
-&lt;span class="c"&gt;# default eve settings&lt;/span&gt;
-&lt;span class="n"&gt;my_settings&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
-    &lt;span class="s"&gt;&amp;#39;MONGO_HOST&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;localhost&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
-    &lt;span class="s"&gt;&amp;#39;MONGO_PORT&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;27017&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
-    &lt;span class="s"&gt;&amp;#39;MONGO_DBNAME&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;eve_mongoengine_test&amp;#39;&lt;/span&gt;
-    &lt;span class="c"&gt;# You have to give Eve some dummy domain to shut him up. Without this&lt;/span&gt;
-    &lt;span class="c"&gt;# setting it will complain about empty domain.&lt;/span&gt;
-    &lt;span class="s"&gt;&amp;#39;DOMAIN&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;eve-mongoengine&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="p"&gt;{}}&lt;/span&gt;
-&lt;span class="p"&gt;}&lt;/span&gt;
-
-&lt;span class="c"&gt;# init application&lt;/span&gt;
-&lt;span class="n"&gt;app&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;Eve&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;settings&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;my_settings&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-&lt;span class="c"&gt;# init extension&lt;/span&gt;
-&lt;span class="n"&gt;ext&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;EveMongoengine&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;app&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-&lt;span class="c"&gt;# register model to eve&lt;/span&gt;
-&lt;span class="n"&gt;ext&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;add_model&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;Person&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-&lt;span class="c"&gt;# let&amp;#39;s roll&lt;/span&gt;
-&lt;span class="n"&gt;app&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;run&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;So you just give Eve some general settings, initialize EveMongoengine
-extension and then register a bunch of mongoengine models as you wish.&lt;/p&gt;
-&lt;p&gt;If you ask, what's the name of resource in case of &lt;tt class="docutils literal"&gt;Person&lt;/tt&gt; class, it will be
-lowercase name of given class, in this example it will be &lt;cite&gt;person&lt;/cite&gt;, so the
-request URL could be &lt;tt class="docutils literal"&gt;/person&lt;/tt&gt; (but you can use &lt;tt class="docutils literal"&gt;lowercase&lt;/tt&gt; param to get the
-original name of class as resource name: &lt;tt class="docutils literal"&gt;add_model(Person, lowercase=False)&lt;/tt&gt;).&lt;/p&gt;
-&lt;p&gt;In &lt;tt class="docutils literal"&gt;add_model()&lt;/tt&gt; method you can add into resource settings every possible
-parameter, which is accepted by Eve. Even if you want to overwrite some
-settings, which generates eve-mongoengine under the hood, you can do it this
-way:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;ext&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;add_model&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;Person&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;                                       &lt;span class="c"&gt;# model or models&lt;/span&gt;
-              &lt;span class="n"&gt;resource_methods&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;GET&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;],&lt;/span&gt;                     &lt;span class="c"&gt;# allow only GET&lt;/span&gt;
-              &lt;span class="n"&gt;cache_control&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;max-age=600; must-revalidate&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="c"&gt;# set max-age&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;Need more? Check out official &lt;a class="reference external" href="http://eve-mongoengine.readthedocs.org/en/latest/"&gt;documentation&lt;/a&gt; !&lt;/p&gt;
-&lt;/div&gt;
-</summary><category term="eve-mongoengine"></category></entry><entry><title>Eve 0.2 released</title><link href="http://blog.python-eve.org/eve-02-released" rel="alternate"></link><updated>2013-12-02T00:00:00+01:00</updated><author><name>Nicola Iarocci</name></author><id>tag:blog.python-eve.org,2013-12-02:eve-02-released</id><summary type="html">&lt;p&gt;This release marks the introduction of several new features along with a few
+</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Nicola Iarocci</dc:creator><pubDate>Tue, 11 Feb 2014 00:00:00 +0100</pubDate><guid>tag:blog.python-eve.org,2014-02-11:eve-at-fosdem-2014</guid><category>events</category></item><item><title>Eve 0.2 released</title><link>http://blog.python-eve.org/eve-02-released</link><description>&lt;p&gt;This release marks the introduction of several new features along with a few
 changes and fixes.&lt;/p&gt;
 &lt;ul class="simple"&gt;
 &lt;li&gt;&lt;a class="reference external" href="http://python-eve.org/features.html#subresources"&gt;Sub-Resources&lt;/a&gt;!&lt;/li&gt;
@@ -302,7 +241,7 @@ is received and before it is processed. See the updated &lt;a class="reference e
 who helped with this patch: Petr Jašek, Kelvin Hammond, dccrazyboy, Christoph
 Witzany, Stanislav Heller, Florian Rathberger.&lt;/p&gt;
 &lt;p&gt;Get &lt;a class="reference external" href="https://crate.io/packages/Eve/"&gt;Eve 0.2&lt;/a&gt; while it's hot.&lt;/p&gt;
-</summary><category term="releases"></category></entry><entry><title>Eve 0.1.1</title><link href="http://blog.python-eve.org/eve-011" rel="alternate"></link><updated>2013-10-31T00:00:00+01:00</updated><author><name>Nicola Iarocci</name></author><id>tag:blog.python-eve.org,2013-10-31:eve-011</id><summary type="html">&lt;p&gt;Although this is a maintenance release it introduces a few important
+</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Nicola Iarocci</dc:creator><pubDate>Mon, 02 Dec 2013 00:00:00 +0100</pubDate><guid>tag:blog.python-eve.org,2013-12-02:eve-02-released</guid><category>releases</category></item><item><title>Eve 0.1.1</title><link>http://blog.python-eve.org/eve-011</link><description>&lt;p&gt;Although this is a maintenance release it introduces a few important
 breaking changes to the API, so you may want to read the following notes
 carefully.&lt;/p&gt;
 &lt;div class="section" id="new-payload-format"&gt;
@@ -376,7 +315,7 @@ Cubillas, Ryan Shea, Ronan Delacorix, Petr Jašek, Roy Smith.  Also thanks to
 all the people who suggested features and fixes.&lt;/p&gt;
 &lt;p&gt;Get &lt;a class="reference external" href="https://crate.io/packages/Eve/"&gt;Eve 0.1.1&lt;/a&gt;.&lt;/p&gt;
 &lt;/div&gt;
-</summary><category term="releases"></category></entry><entry><title>Eve 0.1</title><link href="http://blog.python-eve.org/eve-01" rel="alternate"></link><updated>2013-09-30T00:00:00+02:00</updated><author><name>Nicola Iarocci</name></author><id>tag:blog.python-eve.org,2013-09-30:eve-01</id><summary type="html">&lt;p&gt;This release marks the passage from alpha to beta and introduces several
+</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Nicola Iarocci</dc:creator><pubDate>Thu, 31 Oct 2013 00:00:00 +0100</pubDate><guid>tag:blog.python-eve.org,2013-10-31:eve-011</guid><category>releases</category></item><item><title>Eve 0.1</title><link>http://blog.python-eve.org/eve-01</link><description>&lt;p&gt;This release marks the passage from alpha to beta and introduces several
 features and enhancements. Also, someone was so kind to post about the Eve
 project on Reddit, which in turn granted us a post on Hacker News.  This
 brought a lot of attention, resulting in a massive increase in downloads. The
@@ -519,7 +458,7 @@ Ming, Ken Carpenter, Jean Boussier, Kracekumar, Francisco Corrales Morales,
 Arsh Singh. Also thanks to all the people who suggested features and fixes.&lt;/p&gt;
 &lt;p&gt;Get &lt;a class="reference external" href="https://crate.io/packages/Eve/"&gt;Eve 0.1&lt;/a&gt; while it's hot.&lt;/p&gt;
 &lt;/div&gt;
-</summary><category term="releases"></category></entry><entry><title>The Eve Mailing List</title><link href="http://blog.python-eve.org/the-eve-mailing-list" rel="alternate"></link><updated>2013-09-12T00:00:00+02:00</updated><author><name>Nicola Iarocci</name></author><id>tag:blog.python-eve.org,2013-09-12:the-eve-mailing-list</id><summary type="html">&lt;p&gt;The &lt;a class="reference external" href="https://groups.google.com/forum/#!forum/python-eve"&gt;Eve Mailing List&lt;/a&gt; is intended to be a low traffic resource for
+</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Nicola Iarocci</dc:creator><pubDate>Mon, 30 Sep 2013 00:00:00 +0200</pubDate><guid>tag:blog.python-eve.org,2013-09-30:eve-01</guid><category>releases</category></item><item><title>The Eve Mailing List</title><link>http://blog.python-eve.org/the-eve-mailing-list</link><description>&lt;p&gt;The &lt;a class="reference external" href="https://groups.google.com/forum/#!forum/python-eve"&gt;Eve Mailing List&lt;/a&gt; is intended to be a low traffic resource for
 developers, contributors and maintainers.&lt;/p&gt;
 &lt;p&gt;I'm opening it because I keep receiving emails about Eve and its satellite
 projects &lt;a class="reference external" href="https://github.com/nicolaiarocci/cerberus"&gt;Cerberus&lt;/a&gt; and &lt;a class="reference external" href="https://github.com/nicolaiarocci/events"&gt;Events&lt;/a&gt;.  While I'm more than happy to reply to invidual
@@ -529,7 +468,7 @@ contribute with their own advice and experiences, something that is already
 happening elsewhere.&lt;/p&gt;
 &lt;p&gt;Also, a mailing list is browsable, searchable, and covers all timezones,
 something the current IRC room cannot do.&lt;/p&gt;
-</summary><category term="releases"></category></entry><entry><title>v0.0.9 with Python 3.3 support</title><link href="http://blog.python-eve.org/v009-with-python-33-support" rel="alternate"></link><updated>2013-08-29T00:00:00+02:00</updated><author><name>Nicola Iarocci</name></author><id>tag:blog.python-eve.org,2013-08-29:v009-with-python-33-support</id><summary type="html">&lt;p&gt;This release brings Python 3.3 support and aligns with most recent Flask,
+</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Nicola Iarocci</dc:creator><pubDate>Thu, 12 Sep 2013 00:00:00 +0200</pubDate><guid>tag:blog.python-eve.org,2013-09-12:the-eve-mailing-list</guid><category>releases</category></item><item><title>v0.0.9 with Python 3.3 support</title><link>http://blog.python-eve.org/v009-with-python-33-support</link><description>&lt;p&gt;This release brings Python 3.3 support and aligns with most recent Flask,
 Werkzeug and PyMongo releases.&lt;/p&gt;
 &lt;p&gt;There are several backward-compatibility breaking changes, so you might want to
 carefully read the &lt;a class="reference external" href="http://python-eve.org/changelog.html"&gt;changelog&lt;/a&gt; and check the updated &lt;a class="reference external" href="http://python-eve.org"&gt;documentation&lt;/a&gt;. Besides Py3
@@ -539,59 +478,7 @@ easier token revocation when using token-based authentication.&lt;/p&gt;
 &lt;p&gt;Thanks to Bryan Cattle and Ryan Shea for their contributions and, as always, to
 all those who opened tickets and supported the project so far.&lt;/p&gt;
 &lt;p&gt;Get &lt;a class="reference external" href="https://crate.io/packages/Eve/"&gt;Eve 0.0.9&lt;/a&gt;.&lt;/p&gt;
-</summary><category term="releases"></category></entry><entry><title>Mocking tool for Eve APIs</title><link href="http://blog.python-eve.org/eve-mocker" rel="alternate"></link><updated>2013-08-01T00:00:00+02:00</updated><author><name>Thomas Sileo</name></author><id>tag:blog.python-eve.org,2013-08-01:eve-mocker</id><summary type="html">&lt;p&gt;&lt;a class="reference external" href="https://github.com/tsileo/eve-mocker"&gt;EveMocker&lt;/a&gt; is a mocking tool for &lt;a class="reference external" href="http://python-eve.org"&gt;Eve
-powered REST API&lt;/a&gt;, based on the excellent &lt;a class="reference external" href="http://falcao.it/HTTPretty"&gt;HTTPretty&lt;/a&gt;, and aimed to be used in your unit tests, when
-you rely on an Eve API. It mimics the behavior of an Eve API in a controlled
-way. Why would you want to mock Eve when writing unit tests?&lt;/p&gt;
-&lt;ul class="simple"&gt;
-&lt;li&gt;Your test suite will run faster.&lt;/li&gt;
-&lt;li&gt;You don't need to bundle an Eve app exclusively for testing purposes (you can
-spend more time on the actual task).&lt;/li&gt;
-&lt;li&gt;You don't need to worry about having a real Eve server running when running
-the test cases.&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;Let's say you want to test the following class stored in &lt;tt class="docutils literal"&gt;remote_items.py&lt;/tt&gt;
-that need to call an Eve powered REST API:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;urlparse&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;urljoin&lt;/span&gt;
-&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;functools&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;partial&lt;/span&gt;
-&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;requests&lt;/span&gt;
-
-&lt;span class="n"&gt;API_URL&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;http://my-eve-api.com/api/&amp;quot;&lt;/span&gt;
-
-
-&lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="nc"&gt;RemoteItems&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;object&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
-    &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;__init__&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;api_url&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;API_URL&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
-        &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;api_url&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;api_url&lt;/span&gt;
-        &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;endpoint_url&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;partial&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;urljoin&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;api_url&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-
-    &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;get_latest&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
-        &lt;span class="n"&gt;r&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;requests&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;get&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;endpoint_url&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;items&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
-        &lt;span class="n"&gt;r&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;raise_for_status&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
-        &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;r&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;json&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;get&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;_items&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="p"&gt;[])&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;Here is how you can do it with Eve-Mocker:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;eve_mocker&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;EveMocker&lt;/span&gt;
-&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;unittest&lt;/span&gt;
-&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;remote_items&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;RemoteItems&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;API_URL&lt;/span&gt;
-
-&lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="nc"&gt;TestRemoteItems&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;unittest&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;TestCase&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
-    &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;testGetLatestItems&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
-        &lt;span class="n"&gt;items&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[{&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;_id&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;fakeid&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;content&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;my content&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;},&lt;/span&gt;
-                 &lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;_id&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;fakeid2&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;content&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;another_content&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;}]&lt;/span&gt;
-        &lt;span class="k"&gt;with&lt;/span&gt; &lt;span class="n"&gt;EveMocker&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;API_URL&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="k"&gt;as&lt;/span&gt; &lt;span class="n"&gt;eve_mocker&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
-            &lt;span class="c"&gt;# We feed EveMocker DB with some items&lt;/span&gt;
-            &lt;span class="n"&gt;eve_mocker&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;set_resource&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;items&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;items&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-
-            &lt;span class="n"&gt;remote_items&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;RemoteItems&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
-            &lt;span class="n"&gt;latest_items&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;remote_items&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;get_latest&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
-
-            &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;assertEqual&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;sorted&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;latest_items&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt; &lt;span class="nb"&gt;sorted&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;items&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
-
-&lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="n"&gt;__name__&lt;/span&gt; &lt;span class="o"&gt;==&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;__main__&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
-    &lt;span class="n"&gt;unittest&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;main&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;Check out &lt;a class="reference external" href="https://github.com/tsileo/eve-mocker"&gt;the repository&lt;/a&gt; on GitHub.&lt;/p&gt;
-</summary><category term="documentation"></category><category term="tools"></category></entry><entry><title>Eve 0.0.8 Released</title><link href="http://blog.python-eve.org/eve-008-released" rel="alternate"></link><updated>2013-07-25T00:00:00+02:00</updated><author><name>Nicola Iarocci</name></author><id>tag:blog.python-eve.org,2013-07-25:eve-008-released</id><summary type="html">&lt;p&gt;Today release adds support for MongoDB &lt;tt class="docutils literal"&gt;write_concern&lt;/tt&gt;, better pagination,
+</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Nicola Iarocci</dc:creator><pubDate>Thu, 29 Aug 2013 00:00:00 +0200</pubDate><guid>tag:blog.python-eve.org,2013-08-29:v009-with-python-33-support</guid><category>releases</category></item><item><title>Eve 0.0.8 Released</title><link>http://blog.python-eve.org/eve-008-released</link><description>&lt;p&gt;Today release adds support for MongoDB &lt;tt class="docutils literal"&gt;write_concern&lt;/tt&gt;, better pagination,
 new event hooks (allowing for transformation of documents before they are sent
 to clients), better CORS handling, validation for &lt;tt class="docutils literal"&gt;float&lt;/tt&gt; data type and
 more (see &lt;a class="reference external" href="http://python-eve.org/changelog.html"&gt;changelog&lt;/a&gt;).&lt;/p&gt;
@@ -599,24 +486,13 @@ more (see &lt;a class="reference external" href="http://python-eve.org/changelog
 and to David Reese, Josh Matthews and others for opening tickets and supporting
 Eve one way or another.&lt;/p&gt;
 &lt;p&gt;Get &lt;a class="reference external" href="https://crate.io/packages/Eve/"&gt;Eve 0.0.8&lt;/a&gt;.&lt;/p&gt;
-</summary><category term="releases"></category></entry><entry><title>Eve 0.0.7 Released</title><link href="http://blog.python-eve.org/eve-007-released" rel="alternate"></link><updated>2013-06-18T00:00:00+02:00</updated><author><name>Nicola Iarocci</name></author><id>tag:blog.python-eve.org,2013-06-18:eve-007-released</id><summary type="html">&lt;p&gt;Along with &lt;a class="reference external" href="http://python-eve.org/features.html#rate-limiting"&gt;Rate Limiting&lt;/a&gt;, which is the main feature, this release also adds
+</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Nicola Iarocci</dc:creator><pubDate>Thu, 25 Jul 2013 00:00:00 +0200</pubDate><guid>tag:blog.python-eve.org,2013-07-25:eve-008-released</guid><category>releases</category></item><item><title>Eve 0.0.7 Released</title><link>http://blog.python-eve.org/eve-007-released</link><description>&lt;p&gt;Along with &lt;a class="reference external" href="http://python-eve.org/features.html#rate-limiting"&gt;Rate Limiting&lt;/a&gt;, which is the main feature, this release also adds
 new powerful &lt;a class="reference external" href="http://python-eve.org/features.html#event-hooks"&gt;Event Hooks&lt;/a&gt;, gives more power to &lt;a class="reference external" href="http://python-eve.org/authentication.html"&gt;Authentication&lt;/a&gt; subclasses,
 and (much) more. As always, see the &lt;a class="reference external" href="http://python-eve.org/changelog.html"&gt;changelog&lt;/a&gt; for all the news.&lt;/p&gt;
 &lt;p&gt;Thanks to Paul Doucet for contributing, and to all the people who opened
 tickets and supported Eve in one way or another.&lt;/p&gt;
 &lt;p&gt;Get &lt;a class="reference external" href="https://crate.io/packages/Eve/"&gt;Eve 0.0.7&lt;/a&gt;.&lt;/p&gt;
-</summary><category term="releases"></category></entry><entry><title>Auto generate API docs</title><link href="http://blog.python-eve.org/eve-docs" rel="alternate"></link><updated>2013-06-17T00:00:00+02:00</updated><author><name>Charles Flynn</name></author><id>tag:blog.python-eve.org,2013-06-17:eve-docs</id><summary type="html">&lt;p&gt;Eve provides powerful capabilities for quickly building RESTful APIs. The
-&lt;a class="reference external" href="https://github.com/charlesflynn/eve-docs"&gt;Eve-docs&lt;/a&gt; blueprint extends these capabilities with API documentation. You
-activate the blueprint in your launch script, and Eve-docs creates the
-documentation from your existing Eve configuration file, with no additional
-configuration required.&lt;/p&gt;
-&lt;img alt="An example of eve-docs auto generated API documentation" src="static/images/evedocs-example.png" /&gt;
-&lt;p&gt;Eve-docs generates documentation in HTML using &lt;a class="reference external" href="http://twitter.github.io/bootstrap/"&gt;Twitter Bootstrap&lt;/a&gt;. You can
-expand each domain to show available endpoints and methods, and further expand
-each method to show parameter details. Eve-docs also publishes the
-documentation data as JSON for programmatic consumption.&lt;/p&gt;
-&lt;p&gt;For more detail see the &lt;a class="reference external" href="https://github.com/charlesflynn/eve-docs"&gt;project repo&lt;/a&gt; on Github.&lt;/p&gt;
-</summary><category term="documentation"></category><category term="tools"></category></entry><entry><title>Account Management and REST</title><link href="http://blog.python-eve.org/account-management-and-rest" rel="alternate"></link><updated>2013-05-30T00:00:00+02:00</updated><author><name>Nicola Iarocci</name></author><id>tag:blog.python-eve.org,2013-05-30:account-management-and-rest</id><summary type="html">&lt;p&gt;Lately I have been receiving a lot of enquiries on how to properly handle REST
+</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Nicola Iarocci</dc:creator><pubDate>Tue, 18 Jun 2013 00:00:00 +0200</pubDate><guid>tag:blog.python-eve.org,2013-06-18:eve-007-released</guid><category>releases</category></item><item><title>Account Management and REST</title><link>http://blog.python-eve.org/account-management-and-rest</link><description>&lt;p&gt;Lately I have been receiving a lot of enquiries on how to properly handle REST
 API authentication, so I wrote a couple of tutorials that will hopefully shread
 some light on the topic. They're filed under &lt;a class="reference external" href="http://python-eve.org/tutorials/account_management.html"&gt;RESTful Account Management&lt;/a&gt; and
 cover both Basic and Token-Based Authentication scenarios.&lt;/p&gt;
@@ -624,11 +500,11 @@ cover both Basic and Token-Based Authentication scenarios.&lt;/p&gt;
 that tutorials offer a golden opportunity to grasp how apparently unrelated
 features can be assembled togheter to solve a problem. So just let me know if
 you'd like to see more &lt;em&gt;howtos&lt;/em&gt;.&lt;/p&gt;
-</summary><category term="tutorials"></category></entry><entry><title>Official IRC Channel</title><link href="http://blog.python-eve.org/official-irc-channel" rel="alternate"></link><updated>2013-05-20T00:00:00+02:00</updated><author><name>Nicola Iarocci</name></author><id>tag:blog.python-eve.org,2013-05-20:official-irc-channel</id><summary type="html">&lt;p&gt;The official IRC channel for the project is now &lt;a class="reference external" href="irc://irc.freenode.net/python-eve"&gt;#python-eve&lt;/a&gt;. We left the
+</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Nicola Iarocci</dc:creator><pubDate>Thu, 30 May 2013 00:00:00 +0200</pubDate><guid>tag:blog.python-eve.org,2013-05-30:account-management-and-rest</guid><category>tutorials</category></item><item><title>Official IRC Channel</title><link>http://blog.python-eve.org/official-irc-channel</link><description>&lt;p&gt;The official IRC channel for the project is now &lt;a class="reference external" href="irc://irc.freenode.net/python-eve"&gt;#python-eve&lt;/a&gt;. We left the
 previous channel as it was accidentally named like a tool for the EVE ONLINE
 space game, causing some players of that game to join in only to get totally
 lost by our geek chatter.&lt;/p&gt;
-</summary><category term="irc"></category></entry><entry><title>Eve 0.0.6 Released</title><link href="http://blog.python-eve.org/eve-006-released" rel="alternate"></link><updated>2013-05-13T00:00:00+02:00</updated><author><name>Nicola Iarocci</name></author><id>tag:blog.python-eve.org,2013-05-13:eve-006-released</id><summary type="html">&lt;p&gt;The two main features introduced by this release are &lt;a class="reference external" href="http://python-eve.org/features.html#event-hooks"&gt;Event Hooks&lt;/a&gt; and
+</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Nicola Iarocci</dc:creator><pubDate>Mon, 20 May 2013 00:00:00 +0200</pubDate><guid>tag:blog.python-eve.org,2013-05-20:official-irc-channel</guid><category>irc</category></item><item><title>Eve 0.0.6 Released</title><link>http://blog.python-eve.org/eve-006-released</link><description>&lt;p&gt;The two main features introduced by this release are &lt;a class="reference external" href="http://python-eve.org/features.html#event-hooks"&gt;Event Hooks&lt;/a&gt; and
 &lt;a class="reference external" href="http://python-eve.org/features.html#projections"&gt;Projections&lt;/a&gt;. Event hooks allow to subscribe to &lt;tt class="docutils literal"&gt;GET&lt;/tt&gt;, &lt;tt class="docutils literal"&gt;POST&lt;/tt&gt;, &lt;tt class="docutils literal"&gt;PATCH&lt;/tt&gt;,
 &lt;tt class="docutils literal"&gt;DELETE&lt;/tt&gt; requests with mutiple callbacks. Projections are conditional queries
 where the client dictates which fields should be returned by the API (when
@@ -644,7 +520,7 @@ tickets and reporting bugs. In no particular order: Ondrej Slinták, Thomas
 Sileo, Tomasz Jezierski, Nicolas Bazire, Nicola Carlier, maksim2042, Xu Wang,
 Asdine El Hrychy, hluz, chronidev, Gianfranco Palumbo.&lt;/p&gt;
 &lt;p&gt;Get &lt;a class="reference external" href="https://crate.io/packages/Eve/"&gt;Eve 0.0.6&lt;/a&gt; while it's hot!&lt;/p&gt;
-</summary><category term="releases"></category></entry><entry><title>SQLAlchemy and Eve</title><link href="http://blog.python-eve.org/sqlalchemy-and-eve" rel="alternate"></link><updated>2013-05-10T15:39:00+02:00</updated><author><name>Nicola Iarocci</name></author><id>tag:blog.python-eve.org,2013-05-10:sqlalchemy-and-eve</id><summary type="html">&lt;p&gt;There is an ongoing effort to develop a SQLAlchemy data layer for Eve. This is
+</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Nicola Iarocci</dc:creator><pubDate>Mon, 13 May 2013 00:00:00 +0200</pubDate><guid>tag:blog.python-eve.org,2013-05-13:eve-006-released</guid><category>releases</category></item><item><title>SQLAlchemy and Eve</title><link>http://blog.python-eve.org/sqlalchemy-and-eve</link><description>&lt;p&gt;There is an ongoing effort to develop a SQLAlchemy data layer for Eve. This is
 interesting because it will allow the use of a wide range of SQL databases
 (PostgreSQL, MySQL, Oracle, etc.) as storage backends for Eve-powered REST
 APIs.&lt;/p&gt;
@@ -658,4 +534,4 @@ coordinate efforts. &lt;strong&gt;Jezier&lt;/strong&gt; has been working on the 
 them or with me (I’m &lt;strong&gt;iaro&lt;/strong&gt; on IRC). If IRC is not your cup of tea feel free to
 open a &lt;a class="reference external" href="https://github.com/nicolaiarocci/eve/issues"&gt;ticket&lt;/a&gt;, &lt;a class="reference external" href="mailto:eve&amp;#64;nicolaiarocci.com"&gt;email me&lt;/a&gt; or submit a pull requests: just make sure it is
 against the sqlalchemy branch.&lt;/p&gt;
-</summary><category term="sqlalchemy"></category></entry></feed>
+</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Nicola Iarocci</dc:creator><pubDate>Fri, 10 May 2013 15:39:00 +0200</pubDate><guid>tag:blog.python-eve.org,2013-05-10:sqlalchemy-and-eve</guid><category>sqlalchemy</category></item></channel></rss>

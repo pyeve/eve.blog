@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Eve News</title><link>http://blog.python-eve.org/</link><description></description><atom:link href="http://blog.python-eve.org/feeds/charles-flynn.rss.xml" rel="self"></atom:link><lastBuildDate>Mon, 17 Jun 2013 00:00:00 +0200</lastBuildDate><item><title>Auto generate API docs</title><link>http://blog.python-eve.org/eve-docs</link><description>&lt;p&gt;Eve provides powerful capabilities for quickly building RESTful APIs. The
+&lt;a class="reference external" href="https://github.com/charlesflynn/eve-docs"&gt;Eve-docs&lt;/a&gt; blueprint extends these capabilities with API documentation. You
+activate the blueprint in your launch script, and Eve-docs creates the
+documentation from your existing Eve configuration file, with no additional
+configuration required.&lt;/p&gt;
+&lt;img alt="An example of eve-docs auto generated API documentation" src="static/images/evedocs-example.png" /&gt;
+&lt;p&gt;Eve-docs generates documentation in HTML using &lt;a class="reference external" href="http://twitter.github.io/bootstrap/"&gt;Twitter Bootstrap&lt;/a&gt;. You can
+expand each domain to show available endpoints and methods, and further expand
+each method to show parameter details. Eve-docs also publishes the
+documentation data as JSON for programmatic consumption.&lt;/p&gt;
+&lt;p&gt;For more detail see the &lt;a class="reference external" href="https://github.com/charlesflynn/eve-docs"&gt;project repo&lt;/a&gt; on Github.&lt;/p&gt;
+</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Charles Flynn</dc:creator><pubDate>Mon, 17 Jun 2013 00:00:00 +0200</pubDate><guid>tag:blog.python-eve.org,2013-06-17:eve-docs</guid><category>documentation</category><category>tools</category></item></channel></rss>

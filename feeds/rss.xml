@@ -1,5 +1,67 @@
 <?xml version="1.0" encoding="utf-8"?>
-<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title>Eve News</title><link>http://blog.python-eve.org/</link><description></description><atom:link href="http://blog.python-eve.org/feeds/rss.xml" rel="self"></atom:link><lastBuildDate>Wed, 09 Jul 2014 00:00:00 +0200</lastBuildDate><item><title>Eve 0.4 Released</title><link>http://blog.python-eve.org/eve-04-released</link><description>&lt;p&gt;Eve 0.4 has been released and it brings some very interesting changes and
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Eve News</title><link>http://blog.python-eve.org/</link><description></description><atom:link href="http://blog.python-eve.org/feeds/rss.xml" rel="self"></atom:link><lastBuildDate>Mon, 12 Jan 2015 00:00:00 +0100</lastBuildDate><item><title>Eve 0.5 Released</title><link>http://blog.python-eve.org/eve-05-released</link><description>&lt;p&gt;Today Eve 0.5 has been released. It brings a lot of new features and fixes,
+along with a couple breaking changes. I'll let you see che &lt;a class="reference external" href="http://python-eve.org/changelog.html"&gt;changelog&lt;/a&gt; for
+a complete list, but let's see a few important updates.&lt;/p&gt;
+&lt;div class="section" id="operatins-log"&gt;
+&lt;h2&gt;Operatins Log&lt;/h2&gt;
+&lt;p&gt;The OpLog is an API-wide log of all edit operations. Every &lt;tt class="docutils literal"&gt;POST&lt;/tt&gt;, &lt;tt class="docutils literal"&gt;PATCH&lt;/tt&gt;
+&lt;tt class="docutils literal"&gt;PUT&lt;/tt&gt; and &lt;tt class="docutils literal"&gt;DELETE&lt;/tt&gt; operation can be recorded to the oplog. At its core the
+oplog is simply a server log. What makes it a little bit different is that it
+can be exposed as a read-only endpoint, thus allowing clients to query it as
+they would with any other API endpoint. For more see &lt;a class="reference external" href="http://python-eve.org/features#operations-log"&gt;Operations Log&lt;/a&gt;.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="section" id="geojson"&gt;
+&lt;h2&gt;GeoJSON&lt;/h2&gt;
+&lt;p&gt;The MongoDB data layer supports geographic data structures encoded in GeoJSON
+format. All GeoJSON objects supported by MongoDB are available. See &lt;a class="reference external" href="http://python-eve.org/features.html#geojson"&gt;GeoJSON&lt;/a&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="section" id="internal-resources"&gt;
+&lt;h2&gt;Internal Resources&lt;/h2&gt;
+&lt;p&gt;By default responses to GET requests to the home endpoint will include all the
+resources. The &lt;tt class="docutils literal"&gt;internal_resource&lt;/tt&gt; setting keyword, however, allows you to make
+an endpoint internal, available only for internal data manipulation: no HTTP
+calls can be made against it and it will be excluded from the HATEOAS links.
+See &lt;a class="reference external" href="http://python-eve.org/features#internal-resources"&gt;Internal Resources&lt;/a&gt;.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="section" id="internal-crud-methods"&gt;
+&lt;h2&gt;Internal CRUD methods&lt;/h2&gt;
+&lt;p&gt;&lt;tt class="docutils literal"&gt;post_internal&lt;/tt&gt;, &lt;tt class="docutils literal"&gt;put_internal&lt;/tt&gt;, &lt;tt class="docutils literal"&gt;patch_internal&lt;/tt&gt;, &lt;tt class="docutils literal"&gt;delete_internal&lt;/tt&gt;
+can be used for internal CRUD calls. These methods are not rate limited,
+authentication is not checked and pre-request events are not raised. Validation
+can optionally be skipped. All internal methods still properly update API meta
+fields such as &lt;tt class="docutils literal"&gt;ETag&lt;/tt&gt;, &lt;tt class="docutils literal"&gt;_updated&lt;/tt&gt;, etc.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="section" id="other-relevant-changes"&gt;
+&lt;h2&gt;Other relevant changes&lt;/h2&gt;
+&lt;ul class="simple"&gt;
+&lt;li&gt;Support for sub-document projections.&lt;/li&gt;
+&lt;li&gt;Embedding of documents by references located in any subdocuments.&lt;/li&gt;
+&lt;li&gt;Comma delimited sort syntax in queries. The MongoDB data layer now also supports queries like &lt;tt class="docutils literal"&gt;&lt;span class="pre"&gt;?sort=lastname,-age&lt;/span&gt;&lt;/tt&gt;.&lt;/li&gt;
+&lt;li&gt;ETags are now persisted with the documents. This ensures that etags are consistent across queries, even when projection queries are issued.&lt;/li&gt;
+&lt;li&gt;Support for multiple origins when using CORS;&lt;/li&gt;
+&lt;li&gt;Support for CORS &lt;tt class="docutils literal"&gt;&lt;span class="pre"&gt;Access-Control-Expose-Headers&lt;/span&gt;&lt;/tt&gt;.&lt;/li&gt;
+&lt;li&gt;&lt;tt class="docutils literal"&gt;JSON_SORT_KEYS&lt;/tt&gt; enables JSON key sorting.&lt;/li&gt;
+&lt;li&gt;Regexes are stripped out of HATEOAS urls when present. You now get &lt;tt class="docutils literal"&gt;&lt;span class="pre"&gt;games/&amp;lt;game_id&amp;gt;/images&lt;/span&gt;&lt;/tt&gt; where previously you would get &lt;tt class="docutils literal"&gt;&lt;span class="pre"&gt;games/&amp;lt;regex('[a-f0-9]{24}'):game_id&amp;gt;/images&lt;/span&gt;&lt;/tt&gt;&lt;/li&gt;
+&lt;li&gt;&lt;tt class="docutils literal"&gt;DELETE&lt;/tt&gt; returns &lt;tt class="docutils literal"&gt;204 NoContent&lt;/tt&gt; on a successful delete.&lt;/li&gt;
+&lt;li&gt;&lt;tt class="docutils literal"&gt;&lt;span class="pre"&gt;If-Modified-Since&lt;/span&gt;&lt;/tt&gt; has been disabled on resource (collections) endpoints. Same functionality is available with a &lt;tt class="docutils literal"&gt;&lt;span class="pre"&gt;?where={&amp;quot;_udpated&amp;quot;:&lt;/span&gt; &lt;span class="pre"&gt;{&amp;quot;$gt&amp;quot;:&lt;/span&gt; &amp;quot;&amp;lt;RFC1123 &lt;span class="pre"&gt;date&amp;gt;&amp;quot;}}&lt;/span&gt;&lt;/tt&gt; request. The OpLog also allows retrieving detailed changes happened at any endpoint, deleted documents included.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;And &lt;em&gt;a lot&lt;/em&gt; more, see the huge &lt;a class="reference external" href="http://python-eve.org/changelog.html"&gt;changelog&lt;/a&gt;.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="section" id="contributors"&gt;
+&lt;h2&gt;Contributors&lt;/h2&gt;
+&lt;p&gt;This patch Hall of Fame is impressively long, once again showing what a strong
+and nice community is gathering around the Eve project, something I am really
+proud of.&lt;/p&gt;
+&lt;p&gt;Arnau Orriols, Ashley Roach, Christian Henke, Christopher Larsen, Daniel
+Lytkin, Dmitry Anoshin, Gino Zhang, Grisha K., Harro van der Klauw, James
+Stewart, Jaroslav Semančík, Jen Montes, Johan Bloemberg, Jorge Morales, Josh
+Villbrandt, Juan Madurga, Kevin Funk, Kurt Doherty, Magdas Adrian, Marcus
+Cobden, Matt Creenan, Mikael Berg, Niall Donegan, Olivier Poitrey, Or Neeman,
+Petr Jašek, Sebastián Magrí, Stanislav Heller, hansotronic&lt;/p&gt;
+&lt;p&gt;Thank you all for making this release possibile!&lt;/p&gt;
+&lt;p&gt;Get &lt;a class="reference external" href="https://pypi.python.org/pypi/Eve"&gt;Eve 0.5&lt;/a&gt; while it's hot.&lt;/p&gt;
+&lt;/div&gt;
+</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Nicola Iarocci</dc:creator><pubDate>Mon, 12 Jan 2015 00:00:00 +0100</pubDate><guid>tag:blog.python-eve.org,2015-01-12:eve-05-released</guid><category>releases</category></item><item><title>Eve 0.4 Released</title><link>http://blog.python-eve.org/eve-04-released</link><description>&lt;p&gt;Eve 0.4 has been released and it brings some very interesting changes and
 features. Let's briefly review some of them.&lt;/p&gt;
 &lt;div class="section" id="document-versioning"&gt;
 &lt;h2&gt;Document Versioning&lt;/h2&gt;

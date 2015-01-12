@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <title>Eve 0.5 Released</title>
+        <!-- Fonts -->
+        <link href='http://fonts.googleapis.com/css?family=Inconsolata' rel='stylesheet' type='text/css'>
+        <link href='http://fonts.googleapis.com/css?family=The+Girl+Next+Door' rel='stylesheet' type='text/css'>
+        <link href='http://fonts.googleapis.com/css?family=Marcellus' rel='stylesheet' type='text/css'>
+        
+        <!-- CSS -->
+        <link rel="stylesheet" href="http://blog.python-eve.org/theme/css/main.css" type="text/css" />
+        <link rel="stylesheet" href="http://blog.python-eve.org/theme/css/pygments.css" type="text/css" />
+        <link rel="stylesheet" href="http://blog.python-eve.org/theme/css/font-awesome.css" type="text/css" />
+        <meta charset="utf-8" />
+      
+        <link href="http://blog.python-eve.org/feeds/rss.xml" type="application/rss+xml" rel="alternate" title="Eve News RSS Feed" />
+
+        <!-- Javascript-->
+        <script src="http://blog.python-eve.org/theme/js/invisible-menu-scroll.js"></script>
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8/jquery.min.js"></script>
+        <script type="text/javascript"> 
+          $(function() {
+            invisibleMenu();
+          });
+        </script> 
+</head>
+
+<body id="index" class="home">
+     <div class="navigation">
+        <ol class="nav">
+          <li class="current"><a href="http://blog.python-eve.org">Blog</a> </li>
+          <li><a href="http://blog.python-eve.org/archives.html">Archive</a></li>
+          <li><a href="http://blog.python-eve.org/tags.html">Tags</a> </li>
+          <li><a href="feeds/rss.xml">RSS</a> </li>
+        </ol>
+      </div>
+        <header id="banner" class="body">
+                <div class="banner"><a href="http://blog.python-eve.org">Eve News <strong></strong></a></div>
+        </header><!-- /#banner -->
+        <nav id="menu"><ul>
+        </ul></nav><!-- /#menu -->
+        <div class="box">
+<section id="content" class="body">
+  <header class="post">
+    <h1 class="entry-title">
+      Eve 0.5 Released
+    </h1>
+  </header>
+  <footer class="post-info">
+    <abbr>
+      Mon 12 January 2015 
+         By <a class="url fn" href="http://blog.python-eve.org/author/nicola-iarocci">Nicola Iarocci</a>
+  
+    </abbr>
+  </footer><!-- /.post-info -->
+  <div class="entry-content">
+    <p>Today Eve 0.5 has been released. It brings a lot of new features and fixes,
+along with a couple breaking changes. I'll let you see che <a class="reference external" href="http://python-eve.org/changelog.html">changelog</a> for
+a complete list, but let's see a few important updates.</p>
+<div class="section" id="operatins-log">
+<h2>Operatins Log</h2>
+<p>The OpLog is an API-wide log of all edit operations. Every <tt class="docutils literal">POST</tt>, <tt class="docutils literal">PATCH</tt>
+<tt class="docutils literal">PUT</tt> and <tt class="docutils literal">DELETE</tt> operation can be recorded to the oplog. At its core the
+oplog is simply a server log. What makes it a little bit different is that it
+can be exposed as a read-only endpoint, thus allowing clients to query it as
+they would with any other API endpoint. For more see <a class="reference external" href="http://python-eve.org/features#operations-log">Operations Log</a>.</p>
+</div>
+<div class="section" id="geojson">
+<h2>GeoJSON</h2>
+<p>The MongoDB data layer supports geographic data structures encoded in GeoJSON
+format. All GeoJSON objects supported by MongoDB are available. See <a class="reference external" href="http://python-eve.org/features.html#geojson">GeoJSON</a></p>
+</div>
+<div class="section" id="internal-resources">
+<h2>Internal Resources</h2>
+<p>By default responses to GET requests to the home endpoint will include all the
+resources. The <tt class="docutils literal">internal_resource</tt> setting keyword, however, allows you to make
+an endpoint internal, available only for internal data manipulation: no HTTP
+calls can be made against it and it will be excluded from the HATEOAS links.
+See <a class="reference external" href="http://python-eve.org/features#internal-resources">Internal Resources</a>.</p>
+</div>
+<div class="section" id="internal-crud-methods">
+<h2>Internal CRUD methods</h2>
+<p><tt class="docutils literal">post_internal</tt>, <tt class="docutils literal">put_internal</tt>, <tt class="docutils literal">patch_internal</tt>, <tt class="docutils literal">delete_internal</tt>
+can be used for internal CRUD calls. These methods are not rate limited,
+authentication is not checked and pre-request events are not raised. Validation
+can optionally be skipped. All internal methods still properly update API meta
+fields such as <tt class="docutils literal">ETag</tt>, <tt class="docutils literal">_updated</tt>, etc.</p>
+</div>
+<div class="section" id="other-relevant-changes">
+<h2>Other relevant changes</h2>
+<ul class="simple">
+<li>Support for sub-document projections.</li>
+<li>Embedding of documents by references located in any subdocuments.</li>
+<li>Comma delimited sort syntax in queries. The MongoDB data layer now also supports queries like <tt class="docutils literal"><span class="pre">?sort=lastname,-age</span></tt>.</li>
+<li>ETags are now persisted with the documents. This ensures that etags are consistent across queries, even when projection queries are issued.</li>
+<li>Support for multiple origins when using CORS;</li>
+<li>Support for CORS <tt class="docutils literal"><span class="pre">Access-Control-Expose-Headers</span></tt>.</li>
+<li><tt class="docutils literal">JSON_SORT_KEYS</tt> enables JSON key sorting.</li>
+<li>Regexes are stripped out of HATEOAS urls when present. You now get <tt class="docutils literal"><span class="pre">games/&lt;game_id&gt;/images</span></tt> where previously you would get <tt class="docutils literal"><span class="pre">games/&lt;regex('[a-f0-9]{24}'):game_id&gt;/images</span></tt></li>
+<li><tt class="docutils literal">DELETE</tt> returns <tt class="docutils literal">204 NoContent</tt> on a successful delete.</li>
+<li><tt class="docutils literal"><span class="pre">If-Modified-Since</span></tt> has been disabled on resource (collections) endpoints. Same functionality is available with a <tt class="docutils literal"><span class="pre">?where={&quot;_udpated&quot;:</span> <span class="pre">{&quot;$gt&quot;:</span> &quot;&lt;RFC1123 <span class="pre">date&gt;&quot;}}</span></tt> request. The OpLog also allows retrieving detailed changes happened at any endpoint, deleted documents included.</li>
+</ul>
+<p>And <em>a lot</em> more, see the huge <a class="reference external" href="http://python-eve.org/changelog.html">changelog</a>.</p>
+</div>
+<div class="section" id="contributors">
+<h2>Contributors</h2>
+<p>This patch Hall of Fame is impressively long, once again showing what a strong
+and nice community is gathering around the Eve project, something I am really
+proud of.</p>
+<p>Arnau Orriols, Ashley Roach, Christian Henke, Christopher Larsen, Daniel
+Lytkin, Dmitry Anoshin, Gino Zhang, Grisha K., Harro van der Klauw, James
+Stewart, Jaroslav Semančík, Jen Montes, Johan Bloemberg, Jorge Morales, Josh
+Villbrandt, Juan Madurga, Kevin Funk, Kurt Doherty, Magdas Adrian, Marcus
+Cobden, Matt Creenan, Mikael Berg, Niall Donegan, Olivier Poitrey, Or Neeman,
+Petr Jašek, Sebastián Magrí, Stanislav Heller, hansotronic</p>
+<p>Thank you all for making this release possibile!</p>
+<p>Get <a class="reference external" href="https://pypi.python.org/pypi/Eve">Eve 0.5</a> while it's hot.</p>
+</div>
+
+  </div><!-- /.entry-content -->
+</section>
+            <hr/>
+            <footer id="contentinfo" class="footer">
+                <div>
+                    <a href="http://python-eve.org">Eve</a> <br />
+                    REST WEB APIs Made Simple
+                <div>
+                    A <a href="http://nicolaiarocci.com">Nicola Iarocci</a> Project</a>
+                </div>
+                <div>
+                    Powered by <a href="http://getpelican.com/">Pelican</a>
+                    and <a href="http://python.org">Python</a>. 
+                </div>
+                <div class="social">
+                        <a href="https://twitter.com/nicolaiarocci"><i class="icon-twitter"></i>  </a>
+                        <a href="https://github.com/nicolaiarocci/eve"><i class="icon-github"></i>  </a>
+                        <a href="mailto:eve@nicolaiarocci.com"><i class="icon-envelope"></i> </a>
+                </div>
+            </footer><!-- /#contentinfo -->
+        </div>
+        <!--Add statistycs-->
+
+</body>
+</html>

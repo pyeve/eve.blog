@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Eve News</title><link>http://blog.python-eve.org/</link><description></description><atom:link href="http://blog.python-eve.org/feeds/stanislav-heller.rss.xml" rel="self"></atom:link><lastBuildDate>Fri, 20 Dec 2013 00:00:00 +0100</lastBuildDate><item><title>Eve + ORM? Eve-Mongoengine!</title><link>http://blog.python-eve.org/eve-orm-eve-mongoengine</link><description>&lt;p&gt;&lt;a class="reference external" href="https://github.com/hellerstanislav/eve-mongoengine"&gt;Eve-Mongoengine&lt;/a&gt; is an Eve extension, which enables &lt;a class="reference external" href="http://mongoengine.org/"&gt;Mongoengine&lt;/a&gt; ORM models to
+be used as eve schema.&lt;/p&gt;
+&lt;p&gt;If you use mongoengine in your application and simultaneously want to use &lt;a class="reference external" href="http://python-eve.org"&gt;Eve&lt;/a&gt;,
+instead of writing schema again in &lt;a class="reference external" href="http://cerberus.readthedocs.org/en/latest/"&gt;Cerberus&lt;/a&gt; format (DRY!), you can use this
+extension, which takes your mongoengine models and auto-transforms them into
+Cerberus schema under the hood.&lt;/p&gt;
+&lt;div class="section" id="features"&gt;
+&lt;h2&gt;Features&lt;/h2&gt;
+&lt;ul class="simple"&gt;
+&lt;li&gt;&lt;strong&gt;Auto-generated schema out of your mongoengine models&lt;/strong&gt;. Even if you did not specify &lt;tt class="docutils literal"&gt;updated&lt;/tt&gt; and &lt;tt class="docutils literal"&gt;created&lt;/tt&gt; fields in your model, Eve-Mongoengine adds them into the model class. But beware, if you update your document using mongoengine model (i.e. by calling &lt;tt class="docutils literal"&gt;save()&lt;/tt&gt; on the model object), the &lt;tt class="docutils literal"&gt;updated&lt;/tt&gt; field wont be updated to current time. This is because there arent any hooks bound to &lt;tt class="docutils literal"&gt;save()&lt;/tt&gt; or &lt;tt class="docutils literal"&gt;update()&lt;/tt&gt; methods at default.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Every operation goes through mongoengine&lt;/strong&gt;. You do not loose your mongoengine hooks!&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Support for most of mongoengine fields&lt;/strong&gt;.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Mongoengine validation layer not disconnected&lt;/strong&gt;. If you define some validators on top of regular mongoengine validation spec, you have got them in eve too!&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;div class="section" id="how-it-works"&gt;
+&lt;h2&gt;How it works?&lt;/h2&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;mongoengine&lt;/span&gt;
+&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;eve&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;Eve&lt;/span&gt;
+&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;eve_mongoengine&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;EveMongoengine&lt;/span&gt;
+
+&lt;span class="c"&gt;# create some dummy model class&lt;/span&gt;
+&lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="nc"&gt;Person&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;mongoengine&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;Document&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+    &lt;span class="n"&gt;name&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;mongoengine&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;StringField&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+    &lt;span class="n"&gt;age&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;mongoengine&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;IntField&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+
+&lt;span class="c"&gt;# default eve settings&lt;/span&gt;
+&lt;span class="n"&gt;my_settings&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+    &lt;span class="s"&gt;&amp;#39;MONGO_HOST&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;localhost&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+    &lt;span class="s"&gt;&amp;#39;MONGO_PORT&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;27017&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+    &lt;span class="s"&gt;&amp;#39;MONGO_DBNAME&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;eve_mongoengine_test&amp;#39;&lt;/span&gt;
+    &lt;span class="c"&gt;# You have to give Eve some dummy domain to shut him up. Without this&lt;/span&gt;
+    &lt;span class="c"&gt;# setting it will complain about empty domain.&lt;/span&gt;
+    &lt;span class="s"&gt;&amp;#39;DOMAIN&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;eve-mongoengine&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="p"&gt;{}}&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+
+&lt;span class="c"&gt;# init application&lt;/span&gt;
+&lt;span class="n"&gt;app&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;Eve&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;settings&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;my_settings&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="c"&gt;# init extension&lt;/span&gt;
+&lt;span class="n"&gt;ext&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;EveMongoengine&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;app&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="c"&gt;# register model to eve&lt;/span&gt;
+&lt;span class="n"&gt;ext&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;add_model&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;Person&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="c"&gt;# let&amp;#39;s roll&lt;/span&gt;
+&lt;span class="n"&gt;app&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;run&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;So you just give Eve some general settings, initialize EveMongoengine
+extension and then register a bunch of mongoengine models as you wish.&lt;/p&gt;
+&lt;p&gt;If you ask, what's the name of resource in case of &lt;tt class="docutils literal"&gt;Person&lt;/tt&gt; class, it will be
+lowercase name of given class, in this example it will be &lt;cite&gt;person&lt;/cite&gt;, so the
+request URL could be &lt;tt class="docutils literal"&gt;/person&lt;/tt&gt; (but you can use &lt;tt class="docutils literal"&gt;lowercase&lt;/tt&gt; param to get the
+original name of class as resource name: &lt;tt class="docutils literal"&gt;add_model(Person, lowercase=False)&lt;/tt&gt;).&lt;/p&gt;
+&lt;p&gt;In &lt;tt class="docutils literal"&gt;add_model()&lt;/tt&gt; method you can add into resource settings every possible
+parameter, which is accepted by Eve. Even if you want to overwrite some
+settings, which generates eve-mongoengine under the hood, you can do it this
+way:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;ext&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;add_model&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;Person&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;                                       &lt;span class="c"&gt;# model or models&lt;/span&gt;
+              &lt;span class="n"&gt;resource_methods&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;GET&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;],&lt;/span&gt;                     &lt;span class="c"&gt;# allow only GET&lt;/span&gt;
+              &lt;span class="n"&gt;cache_control&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;max-age=600; must-revalidate&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="c"&gt;# set max-age&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Need more? Check out official &lt;a class="reference external" href="http://eve-mongoengine.readthedocs.org/en/latest/"&gt;documentation&lt;/a&gt; !&lt;/p&gt;
+&lt;/div&gt;
+</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Stanislav Heller</dc:creator><pubDate>Fri, 20 Dec 2013 00:00:00 +0100</pubDate><guid>tag:blog.python-eve.org,2013-12-20:eve-orm-eve-mongoengine</guid><category>eve-mongoengine</category></item></channel></rss>
