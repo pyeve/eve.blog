@@ -1,0 +1,80 @@
+Eve 0.5 Released 
+================
+
+:date: 2015-01-12
+:category: develop
+:tags: releases
+
+Today Eve 0.5 has been released. It brings a lot of new features and fixes,
+along with a couple breaking changes. I'll let you see che changelog_ for
+a complete list, but let's see a few important updates.
+
+Operatins Log
+-------------
+The OpLog is an API-wide log of all edit operations. Every ``POST``, ``PATCH``
+``PUT`` and ``DELETE`` operation can be recorded to the oplog. At its core the
+oplog is simply a server log. What makes it a little bit different is that it
+can be exposed as a read-only endpoint, thus allowing clients to query it as
+they would with any other API endpoint. For more see `Operations Log`_.
+
+GeoJSON
+-------
+The MongoDB data layer supports geographic data structures encoded in GeoJSON
+format. All GeoJSON objects supported by MongoDB are available. See GeoJSON_
+
+Internal Resources
+------------------
+By default responses to GET requests to the home endpoint will include all the
+resources. The ``internal_resource`` setting keyword, however, allows you to make
+an endpoint internal, available only for internal data manipulation: no HTTP
+calls can be made against it and it will be excluded from the HATEOAS links.
+See `Internal Resources`_.
+
+Internal CRUD methods
+---------------------
+``post_internal``, ``put_internal``, ``patch_internal``, ``delete_internal``
+can be used for internal CRUD calls. These methods are not rate limited,
+authentication is not checked and pre-request events are not raised. Validation
+can optionally be skipped. All internal methods still properly update API meta
+fields such as ``ETag``, ``_updated``, etc.
+
+
+Other relevant changes
+-----------------------
+
+- Support for sub-document projections.
+- Embedding of documents by references located in any subdocuments. 
+- Comma delimited sort syntax in queries. The MongoDB data layer now also supports queries like ``?sort=lastname,-age``.
+- ETags are now persisted with the documents. This ensures that etags are consistent across queries, even when projection queries are issued.
+- Support for multiple origins when using CORS;
+- Support for CORS ``Access-Control-Expose-Headers``.
+- ``JSON_SORT_KEYS`` enables JSON key sorting.
+- Regexes are stripped out of HATEOAS urls when present. You now get ``games/<game_id>/images`` where previously you would get ``games/<regex('[a-f0-9]{24}'):game_id>/images``
+- ``DELETE`` returns ``204 NoContent`` on a successful delete.
+- ``If-Modified-Since`` has been disabled on resource (collections) endpoints. Same functionality is available with a ``?where={"_udpated": {"$gt": "<RFC1123 date>"}}`` request. The OpLog also allows retrieving detailed changes happened at any endpoint, deleted documents included.
+
+And *a lot* more, see the huge changelog_.
+
+Contributors
+------------
+This patch Hall of Fame is impressively long, once again showing what a strong
+and nice community is gathering around the Eve project, something I am really
+proud of.
+
+Arnau Orriols, Ashley Roach, Christian Henke, Christopher Larsen, Daniel
+Lytkin, Dmitry Anoshin, Gino Zhang, Grisha K., Harro van der Klauw, James
+Stewart, Jaroslav Semančík, Jen Montes, Johan Bloemberg, Jorge Morales, Josh
+Villbrandt, Juan Madurga, Kevin Funk, Kurt Doherty, Magdas Adrian, Marcus
+Cobden, Matt Creenan, Mikael Berg, Niall Donegan, Olivier Poitrey, Or Neeman,
+Petr Jašek, Sebastián Magrí, Stanislav Heller, hansotronic
+
+Thank you all for making this release possibile!
+
+Get `Eve 0.5`_ while it's hot.
+
+.. _`Operations log`: http://python-eve.org/features#operations-log
+.. _GeoJSON: http://python-eve.org/features.html#geojson
+.. _`Internal Resources`: http://python-eve.org/features#internal-resources
+.. _changelog: http://python-eve.org/changelog.html
+.. _documentation: http://python-eve.org
+.. _`Eve 0.5`: https://pypi.python.org/pypi/Eve
