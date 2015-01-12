@@ -70,7 +70,7 @@ Petr Jašek, Sebastián Magrí, Stanislav Heller, hansotronic
 
 Thank you all for making this release possibile!
 
-Get `Eve 0.5`_ while it's hot.
+Get `Eve 0.5`_ while it's hot!
 
 .. _`Operations log`: http://python-eve.org/features#operations-log
 .. _GeoJSON: http://python-eve.org/features.html#geojson
