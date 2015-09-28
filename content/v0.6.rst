@@ -1,0 +1,97 @@
+Eve 0.6 Released 
+================
+
+:date: 2015-09-28
+:category: develop
+:tags: releases, python
+
+I'm very excited to announce today's release of Eve 0.6. Lots new features and
+fixes along with a couple breaking changes. Speaking of new features and
+improvements, some highlights include:
+
+- Support for multiple databases. Each API endpoint can optionally serve from
+  a different MongoDB instance. See the new ``mongo_prefix`` setting.
+
+- Authentication-driven_ database access, also known as user-reserved databases. 
+
+- Index maintenance. On MongoDB, indexes can be created/updated at application
+  startup. See  the new ``mongo_indexes`` keyword.
+
+- Upserts on PUT. Allows document creation on PUT if the document does not
+  exists. Enabled by default, can be switched off. See the new
+  ``UPSERT_ON_PUT`` setting.
+
+- `Soft Deletes`_, you asked for it.
+
+- ``JSONP`` support. ``CORS`` gets support for ``X-ALLOW-CREDENTIALS`` too.
+
+- `Serving media files at dedicated endpoint`_  as an alternative to returning
+  them as Base64 strings.
+
+- `Enhanced Logging`_.
+
+- A whole set of new, powerful validation rules such as ``anyof``, ``allof``,
+  ``noneof``, ``oneof``, ``coerce``.
+
+- Support for dot notation in POST, PATCH and PUT methods. Be aware that,
+  for PATCH and PUT, if dot notation is used even on just one field, the whole
+  sub-document will be replaced. So if this document is stored:
+  
+  ``{"name": "john", "location": {"city": "New York", "address": "address"}}``
+  
+  A PATCH like this:
+
+    ``{"location.city": "Boston"}``
+
+  (which is exactly equivalent to:)
+
+    ``{"location": {"city": "a nested city"}}``
+
+  Will update the document to:
+  
+  ``{"name": "john", "location": {"city": "Boston"}}``
+
+Again these are just some highlights but there is a lot more to discover. How
+about ``X-Total-Count`` header for collection GET/HEAD requests, or
+``etag_ignore_field`` for ignoring certain fields when computing eTags? Make
+sure you read the whole changelog_!
+
+Breaking changes
+----------------
+
+- When HATEOAS is off the home endpoint will respond with ``200 OK``
+  instead of ``404 Not Found`` (also see the new ``INFO`` setting which allows
+  exposing of API name and version at the home endpoint). 
+
+- PUT does not return ``404`` if a document URL does not exist. It will
+  attempt to create the document instead. Set ``UPSET_ON_PUT`` to ``False`` to
+  disable this behaviour and get a ``404`` instead.
+
+- A PATCH including an ``ID_FIELD`` field which value is different than the
+  original will get a ``400 Bad Request``, along with an explanation in the
+  message body that the field is immutable. Previously, it would get an
+  ``unknown field`` validation error.
+
+There is also a truckload of closed tickets, fixed and improvements so again,
+make sure to check the changelog_.
+
+Contributors
+------------
+Cyprien Pannier, Daniel Lytkin, David Wood, Dominik Kellner, Gonéri Le Bouder,
+Henrique Barroso, Joakim Uddholm, Julian Hille, Kevin Roy, Magdas Adrian,
+Matthew Ellison, Matthieu Prat, Mayur Dhamanwala, Nick Park, Olivier Carrère, 
+Olivier Poitrey, Pau Freixes, Petr Jašek, Samuli Tuomola, Sebastien Estienne,
+Stratos Gerakakis, Tobias Betz, xgddsg.
+
+What a team. Thank you all for making this release possibile!
+
+Get `Eve 0.6`_ while it's hot!
+
+.. _changelog: http://python-eve.org/changelog.html
+.. _documentation: http://python-eve.org
+.. _`Eve 0.6`: https://pypi.python.org/pypi/Eve
+.. _Configuration: http://python-eve.org/config
+.. _Authentication-driven: http://python-eve.org/authentication.html#authdrivendb
+.. _`Enhanced Logging`: http://python-eve.org/features#enhanced-logging
+.. _`Soft Deletes`: http://python-eve.org/features#soft-delete
+.. _`Serving media files at dedicated endpoint`: http://python-eve.org/features#serving-media-files-at-a-dedicated-endpoint
