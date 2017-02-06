@@ -1,5 +1,102 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Eve News</title><link href="http://blog.python-eve.org/" rel="alternate"></link><link href="http://blog.python-eve.org/feeds/develop.atom.xml" rel="self"></link><id>http://blog.python-eve.org/</id><updated>2015-09-28T00:00:00+02:00</updated><entry><title>Eve 0.6 Released</title><link href="http://blog.python-eve.org/eve-06-released" rel="alternate"></link><updated>2015-09-28T00:00:00+02:00</updated><author><name>Nicola Iarocci</name></author><id>tag:blog.python-eve.org,2015-09-28:eve-06-released</id><summary type="html">&lt;p&gt;I'm very excited to announce today's release of Eve 0.6. Lots new features and
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Eve News</title><link href="http://blog.python-eve.org/" rel="alternate"></link><link href="http://blog.python-eve.org/feeds/develop.atom.xml" rel="self"></link><id>http://blog.python-eve.org/</id><updated>2017-01-29T00:00:00+01:00</updated><entry><title>Eve 0.7 Released</title><link href="http://blog.python-eve.org/eve-07-released" rel="alternate"></link><updated>2017-01-29T00:00:00+01:00</updated><author><name>Nicola Iarocci</name></author><id>tag:blog.python-eve.org,2017-01-29:eve-07-released</id><summary type="html">&lt;p&gt;A new major release of the &lt;a class="reference external" href="http://python-eve.org"&gt;Eve REST API Framework&lt;/a&gt; is finally &lt;a class="reference external" href="https://pypi.python.org/pypi/Eve"&gt;out&lt;/a&gt; with a number
+of cool new features, a few fixes and a couple of possibly breaking changes.
+This post explains v0.7 new features and changes compared to the previous
+versions, providing relevant links when necessary. See the &lt;a class="reference external" href="http://python-eve.org/changelog.html"&gt;changelog&lt;/a&gt; for
+details about fixes and documentation updates also coming with this release.&lt;/p&gt;
+&lt;div class="section" id="major-additions"&gt;
+&lt;h2&gt;Major additions&lt;/h2&gt;
+&lt;ul class="simple"&gt;
+&lt;li&gt;Mongo Aggregation Framework Support. API endpoints can now respond with database
+aggregation results. Aggregation pipelines can be static or dynamic. When
+they are dynamic the client uses the new &lt;tt class="docutils literal"&gt;aggregate&lt;/tt&gt; parameter to influence
+the query results, like this: &lt;tt class="docutils literal"&gt;&lt;span class="pre"&gt;?aggregate={&amp;quot;$value&amp;quot;:&lt;/span&gt; 2}&lt;/tt&gt;. For more
+informations see &lt;a class="reference external" href="http://python-eve.org/features.html#mongodb-aggregation-framework"&gt;MongoDB Aggregation Framework&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;Option to improve pagination performance. Set
+&lt;tt class="docutils literal"&gt;OPTIMIZE_PAGINATION_FOR_SPEED&lt;/tt&gt; to &lt;tt class="docutils literal"&gt;True&lt;/tt&gt; to get a very nice boost on
+&lt;tt class="docutils literal"&gt;GET&lt;/tt&gt; responses. When optimization is active no count operation (which can
+be slow on large collections) is performed on the database. This does have
+a few consequences. Firstly, no document count is returned. Secondly, HATEOAS
+is less accurate: no last page link is available, and next page link is
+always included, even on last page. On big collections, switching this
+feature on can greatly improve performance. Defaults to &lt;tt class="docutils literal"&gt;False&lt;/tt&gt; (slower
+performance; document count included; accurate HATEOAS)&lt;/li&gt;
+&lt;li&gt;Support for new &lt;tt class="docutils literal"&gt;Location&lt;/tt&gt; header (&lt;a class="reference external" href="http://tools.ietf.org/html/rfc7231#section-6.3.2"&gt;RFC 7231 § 6.3.2&lt;/a&gt;). Location header is
+returned on &lt;tt class="docutils literal"&gt;201 Created&lt;/tt&gt; POST responses. If will contain the URI to the
+created document. If bulk inserts are enabled, only the first document URI is
+returned. This is especially useful in scenarios where HATEOAS is disabled.&lt;/li&gt;
+&lt;li&gt;Support for pretty printing. Clients can request json responses to be pretty
+printed (indented) by adding the new &lt;tt class="docutils literal"&gt;pretty&lt;/tt&gt; parameter to their query. See
+&lt;a class="reference external" href="http://python-eve.org/features.html#pretty-printing"&gt;Pretty Printing&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;ETag match checks can be made optional. If the new &lt;tt class="docutils literal"&gt;ENFORCE_IF_MATCH&lt;/tt&gt;
+option is active, then all requests are expected to include the &lt;tt class="docutils literal"&gt;&lt;span class="pre"&gt;If-Match&lt;/span&gt;&lt;/tt&gt;
+or they will be rejected (same as old behavior). However, if
+&lt;tt class="docutils literal"&gt;ENFORCE_IF_MATCH&lt;/tt&gt; is disabled, then client determines whether request is
+conditional. When &lt;tt class="docutils literal"&gt;&lt;span class="pre"&gt;If-Match&lt;/span&gt;&lt;/tt&gt; is included, then request is conditional,
+otherwise the request is processed with no conditional checks. See &lt;a class="reference external" href="http://python-eve.org/features.html#disabling-concurrency-control"&gt;Disabling
+Concurrency Control&lt;/a&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;div class="section" id="minor-additions"&gt;
+&lt;h2&gt;Minor additions&lt;/h2&gt;
+&lt;ul class="simple"&gt;
+&lt;li&gt;Regexes are allowed by setting X_DOMAINS_RE values. This allows CORS to
+support websites with dynamic ranges of subdomains.&lt;/li&gt;
+&lt;li&gt;Support weak ETags, commonly applied by servers transmitting gzipped content.&lt;/li&gt;
+&lt;li&gt;Allow old document versions to be cache validated using ETags.&lt;/li&gt;
+&lt;li&gt;&lt;tt class="docutils literal"&gt;get_internal&lt;/tt&gt; and &lt;tt class="docutils literal"&gt;getitem_internal&lt;/tt&gt; functions can be used for internal
+GET calls. These methods are not rate limited, authentication is not checked
+and pre-request events are not raised.&lt;/li&gt;
+&lt;li&gt;Flask views (&lt;tt class="docutils literal"&gt;&amp;#64;app.route&lt;/tt&gt;) can now set &lt;tt class="docutils literal"&gt;mongo_prefix&lt;/tt&gt; via Flask’s &lt;tt class="docutils literal"&gt;g&lt;/tt&gt;
+object, like in &lt;tt class="docutils literal"&gt;g.mongo_prefix = 'MONGO2'&lt;/tt&gt;.&lt;/li&gt;
+&lt;li&gt;Support for MongoDB &lt;tt class="docutils literal"&gt;DBRef&lt;/tt&gt; fields.&lt;/li&gt;
+&lt;li&gt;&lt;tt class="docutils literal"&gt;MONGO_OPTIONS&lt;/tt&gt; allows MongoDB arguments to be passed to the MongoClient
+object. Defaults to &lt;tt class="docutils literal"&gt;{}&lt;/tt&gt;.&lt;/li&gt;
+&lt;li&gt;Flask-PyMongo compatibility for &lt;tt class="docutils literal"&gt;MONGO_CONNECT&lt;/tt&gt; config setting.&lt;/li&gt;
+&lt;li&gt;&lt;tt class="docutils literal"&gt;AUTO_COLLAPSE_MULTI_KEYS.&lt;/tt&gt; If set to &lt;tt class="docutils literal"&gt;True&lt;/tt&gt;, multiple values sent with
+the same key, submitted using the &lt;tt class="docutils literal"&gt;&lt;span class="pre"&gt;application/x-www-form-urlencoded&lt;/span&gt;&lt;/tt&gt; or
+&lt;tt class="docutils literal"&gt;&lt;span class="pre"&gt;multipart/form-data&lt;/span&gt;&lt;/tt&gt; content types, will automatically be converted to
+a list of values. When using this together with &lt;tt class="docutils literal"&gt;AUTO_CREATE_LISTS&lt;/tt&gt; it
+becomes possible to use lists of media fields. Defaults to &lt;tt class="docutils literal"&gt;False&lt;/tt&gt;.&lt;/li&gt;
+&lt;li&gt;&lt;tt class="docutils literal"&gt;AUTO_CREATE_LISTS&lt;/tt&gt;. When submitting a non list type value for a field with
+type list, automatically create a one element list before running the
+validators. Defaults to &lt;tt class="docutils literal"&gt;False&lt;/tt&gt;.&lt;/li&gt;
+&lt;li&gt;&lt;tt class="docutils literal"&gt;MULTIPART_FORM_FIELDS_AS_JSON&lt;/tt&gt;. In case you are submitting your resource
+as &lt;tt class="docutils literal"&gt;&lt;span class="pre"&gt;multipart/form-data&lt;/span&gt;&lt;/tt&gt; all form data fields will be submitted as strings,
+breaking any validation rules you might have on the resource fields. If you
+want to treat all submitted form data as JSON strings you will have to
+activate this setting.&lt;/li&gt;
+&lt;li&gt;Query parameters not recognised by Eve are now returned in HATEOAS URLs.&lt;/li&gt;
+&lt;li&gt;&lt;tt class="docutils literal"&gt;on_oplog_push&lt;/tt&gt; event is fired when OPLOG is about to be updated. Callbacks
+receive two arguments: resource (resource name) and entries (list of oplog
+entries which are about to be written). See &lt;a class="reference external" href="http://python-eve.org/features.html#operations-log"&gt;OPLOG&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;OPLOG audit now include the username or token when available.&lt;/li&gt;
+&lt;li&gt;&lt;tt class="docutils literal"&gt;OPLOG_CHANGE_METHODS&lt;/tt&gt; is a list of HTTP methods which operations will
+include changes into the OPLOG. See &lt;a class="reference external" href="http://python-eve.org/features.html#operations-log"&gt;OPLOG&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;Support for Python 3.6 and 3.5&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;div class="section" id="breaking-changes"&gt;
+&lt;h2&gt;Breaking changes&lt;/h2&gt;
+&lt;ul class="simple"&gt;
+&lt;li&gt;&lt;tt class="docutils literal"&gt;428 Precondition Required&lt;/tt&gt; is now returned when the &lt;tt class="docutils literal"&gt;&lt;span class="pre"&gt;If-Match&lt;/span&gt;&lt;/tt&gt; request
+header is missing. Previously, a generic &lt;tt class="docutils literal"&gt;403 Forbidden&lt;/tt&gt; was returned.&lt;/li&gt;
+&lt;li&gt;ETag response header now conforms to &lt;a class="reference external" href="https://tools.ietf.org/html/rfc7232#section-2.3"&gt;RFC 7232 § 2.3&lt;/a&gt;, and is surrounded by
+double quotes&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;div class="section" id="hall-of-fame"&gt;
+&lt;h2&gt;Hall of Fame&lt;/h2&gt;
+&lt;p&gt;As usual, a number of contributors participated in the effort: Arnau Orriols,
+Arthur Burkart, Carles Bruguera, Conrad Burchert, Eugene Prikazchikov, George
+Lestaris, Giorgos Margaritis, Gustavo Vargas, Hasan Pekdemir, Kris Lambrechts,
+Mario Kralj, Massimo Scamarcia, Mateusz Łoskot, Mattias Lundberg, Nick Park,
+NotSpecial, Rodrigo Rodriguez, Roman Gavrilov, Stanislav Filin, Stratos
+Gerakakis, mmizotin.&lt;/p&gt;
+&lt;p&gt;It is always heartening to see and appreciate how many people are helping in
+taking the framework to the next level. Thank you all!&lt;/p&gt;
+&lt;/div&gt;
+</summary><category term="releases"></category><category term="python"></category></entry><entry><title>Eve 0.6 Released</title><link href="http://blog.python-eve.org/eve-06-released" rel="alternate"></link><updated>2015-09-28T00:00:00+02:00</updated><author><name>Nicola Iarocci</name></author><id>tag:blog.python-eve.org,2015-09-28:eve-06-released</id><summary type="html">&lt;p&gt;I'm very excited to announce today's release of Eve 0.6. Lots new features and
 fixes along with a couple breaking changes. Speaking of new features and
 improvements, some highlights include:&lt;/p&gt;
 &lt;ul&gt;

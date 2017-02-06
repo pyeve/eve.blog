@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <title>Eve 0.7 Released</title>
+        <!-- Fonts -->
+        <link href='http://fonts.googleapis.com/css?family=Inconsolata' rel='stylesheet' type='text/css'>
+        <link href='http://fonts.googleapis.com/css?family=The+Girl+Next+Door' rel='stylesheet' type='text/css'>
+        <link href='http://fonts.googleapis.com/css?family=Marcellus' rel='stylesheet' type='text/css'>
+        
+        <!-- CSS -->
+        <link rel="stylesheet" href="http://blog.python-eve.org/theme/css/main.css" type="text/css" />
+        <link rel="stylesheet" href="http://blog.python-eve.org/theme/css/pygments.css" type="text/css" />
+        <link rel="stylesheet" href="http://blog.python-eve.org/theme/css/font-awesome.css" type="text/css" />
+        <meta charset="utf-8" />
+      
+        <link href="http://blog.python-eve.org/feeds/rss.xml" type="application/rss+xml" rel="alternate" title="Eve News RSS Feed" />
+
+        <!-- Javascript-->
+        <script src="http://blog.python-eve.org/theme/js/invisible-menu-scroll.js"></script>
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8/jquery.min.js"></script>
+        <script type="text/javascript"> 
+          $(function() {
+            invisibleMenu();
+          });
+        </script> 
+</head>
+
+<body id="index" class="home">
+     <div class="navigation">
+        <ol class="nav">
+          <li class="current"><a href="http://blog.python-eve.org">Blog</a> </li>
+          <li><a href="http://blog.python-eve.org/archives.html">Archive</a></li>
+          <li><a href="http://blog.python-eve.org/tags.html">Tags</a> </li>
+          <li><a href="feeds/rss.xml">RSS</a> </li>
+        </ol>
+      </div>
+        <header id="banner" class="body">
+                <div class="banner"><a href="http://blog.python-eve.org">Eve News <strong></strong></a></div>
+        </header><!-- /#banner -->
+        <nav id="menu"><ul>
+        </ul></nav><!-- /#menu -->
+        <div class="box">
+<section id="content" class="body">
+  <header class="post">
+    <h1 class="entry-title">
+      Eve 0.7 Released
+    </h1>
+  </header>
+  <footer class="post-info">
+    <abbr>
+      Sun 29 January 2017 
+         By <a class="url fn" href="http://blog.python-eve.org/author/nicola-iarocci">Nicola Iarocci</a>
+  
+    </abbr>
+  </footer><!-- /.post-info -->
+  <div class="entry-content">
+    <p>A new major release of the <a class="reference external" href="http://python-eve.org">Eve REST API Framework</a> is finally <a class="reference external" href="https://pypi.python.org/pypi/Eve">out</a> with a number
+of cool new features, a few fixes and a couple of possibly breaking changes.
+This post explains v0.7 new features and changes compared to the previous
+versions, providing relevant links when necessary. See the <a class="reference external" href="http://python-eve.org/changelog.html">changelog</a> for
+details about fixes and documentation updates also coming with this release.</p>
+<div class="section" id="major-additions">
+<h2>Major additions</h2>
+<ul class="simple">
+<li>Mongo Aggregation Framework Support. API endpoints can now respond with database
+aggregation results. Aggregation pipelines can be static or dynamic. When
+they are dynamic the client uses the new <tt class="docutils literal">aggregate</tt> parameter to influence
+the query results, like this: <tt class="docutils literal"><span class="pre">?aggregate={&quot;$value&quot;:</span> 2}</tt>. For more
+informations see <a class="reference external" href="http://python-eve.org/features.html#mongodb-aggregation-framework">MongoDB Aggregation Framework</a>.</li>
+<li>Option to improve pagination performance. Set
+<tt class="docutils literal">OPTIMIZE_PAGINATION_FOR_SPEED</tt> to <tt class="docutils literal">True</tt> to get a very nice boost on
+<tt class="docutils literal">GET</tt> responses. When optimization is active no count operation (which can
+be slow on large collections) is performed on the database. This does have
+a few consequences. Firstly, no document count is returned. Secondly, HATEOAS
+is less accurate: no last page link is available, and next page link is
+always included, even on last page. On big collections, switching this
+feature on can greatly improve performance. Defaults to <tt class="docutils literal">False</tt> (slower
+performance; document count included; accurate HATEOAS)</li>
+<li>Support for new <tt class="docutils literal">Location</tt> header (<a class="reference external" href="http://tools.ietf.org/html/rfc7231#section-6.3.2">RFC 7231 § 6.3.2</a>). Location header is
+returned on <tt class="docutils literal">201 Created</tt> POST responses. If will contain the URI to the
+created document. If bulk inserts are enabled, only the first document URI is
+returned. This is especially useful in scenarios where HATEOAS is disabled.</li>
+<li>Support for pretty printing. Clients can request json responses to be pretty
+printed (indented) by adding the new <tt class="docutils literal">pretty</tt> parameter to their query. See
+<a class="reference external" href="http://python-eve.org/features.html#pretty-printing">Pretty Printing</a>.</li>
+<li>ETag match checks can be made optional. If the new <tt class="docutils literal">ENFORCE_IF_MATCH</tt>
+option is active, then all requests are expected to include the <tt class="docutils literal"><span class="pre">If-Match</span></tt>
+or they will be rejected (same as old behavior). However, if
+<tt class="docutils literal">ENFORCE_IF_MATCH</tt> is disabled, then client determines whether request is
+conditional. When <tt class="docutils literal"><span class="pre">If-Match</span></tt> is included, then request is conditional,
+otherwise the request is processed with no conditional checks. See <a class="reference external" href="http://python-eve.org/features.html#disabling-concurrency-control">Disabling
+Concurrency Control</a>.</li>
+</ul>
+</div>
+<div class="section" id="minor-additions">
+<h2>Minor additions</h2>
+<ul class="simple">
+<li>Regexes are allowed by setting X_DOMAINS_RE values. This allows CORS to
+support websites with dynamic ranges of subdomains.</li>
+<li>Support weak ETags, commonly applied by servers transmitting gzipped content.</li>
+<li>Allow old document versions to be cache validated using ETags.</li>
+<li><tt class="docutils literal">get_internal</tt> and <tt class="docutils literal">getitem_internal</tt> functions can be used for internal
+GET calls. These methods are not rate limited, authentication is not checked
+and pre-request events are not raised.</li>
+<li>Flask views (<tt class="docutils literal">&#64;app.route</tt>) can now set <tt class="docutils literal">mongo_prefix</tt> via Flask’s <tt class="docutils literal">g</tt>
+object, like in <tt class="docutils literal">g.mongo_prefix = 'MONGO2'</tt>.</li>
+<li>Support for MongoDB <tt class="docutils literal">DBRef</tt> fields.</li>
+<li><tt class="docutils literal">MONGO_OPTIONS</tt> allows MongoDB arguments to be passed to the MongoClient
+object. Defaults to <tt class="docutils literal">{}</tt>.</li>
+<li>Flask-PyMongo compatibility for <tt class="docutils literal">MONGO_CONNECT</tt> config setting.</li>
+<li><tt class="docutils literal">AUTO_COLLAPSE_MULTI_KEYS.</tt> If set to <tt class="docutils literal">True</tt>, multiple values sent with
+the same key, submitted using the <tt class="docutils literal"><span class="pre">application/x-www-form-urlencoded</span></tt> or
+<tt class="docutils literal"><span class="pre">multipart/form-data</span></tt> content types, will automatically be converted to
+a list of values. When using this together with <tt class="docutils literal">AUTO_CREATE_LISTS</tt> it
+becomes possible to use lists of media fields. Defaults to <tt class="docutils literal">False</tt>.</li>
+<li><tt class="docutils literal">AUTO_CREATE_LISTS</tt>. When submitting a non list type value for a field with
+type list, automatically create a one element list before running the
+validators. Defaults to <tt class="docutils literal">False</tt>.</li>
+<li><tt class="docutils literal">MULTIPART_FORM_FIELDS_AS_JSON</tt>. In case you are submitting your resource
+as <tt class="docutils literal"><span class="pre">multipart/form-data</span></tt> all form data fields will be submitted as strings,
+breaking any validation rules you might have on the resource fields. If you
+want to treat all submitted form data as JSON strings you will have to
+activate this setting.</li>
+<li>Query parameters not recognised by Eve are now returned in HATEOAS URLs.</li>
+<li><tt class="docutils literal">on_oplog_push</tt> event is fired when OPLOG is about to be updated. Callbacks
+receive two arguments: resource (resource name) and entries (list of oplog
+entries which are about to be written). See <a class="reference external" href="http://python-eve.org/features.html#operations-log">OPLOG</a>.</li>
+<li>OPLOG audit now include the username or token when available.</li>
+<li><tt class="docutils literal">OPLOG_CHANGE_METHODS</tt> is a list of HTTP methods which operations will
+include changes into the OPLOG. See <a class="reference external" href="http://python-eve.org/features.html#operations-log">OPLOG</a>.</li>
+<li>Support for Python 3.6 and 3.5</li>
+</ul>
+</div>
+<div class="section" id="breaking-changes">
+<h2>Breaking changes</h2>
+<ul class="simple">
+<li><tt class="docutils literal">428 Precondition Required</tt> is now returned when the <tt class="docutils literal"><span class="pre">If-Match</span></tt> request
+header is missing. Previously, a generic <tt class="docutils literal">403 Forbidden</tt> was returned.</li>
+<li>ETag response header now conforms to <a class="reference external" href="https://tools.ietf.org/html/rfc7232#section-2.3">RFC 7232 § 2.3</a>, and is surrounded by
+double quotes</li>
+</ul>
+</div>
+<div class="section" id="hall-of-fame">
+<h2>Hall of Fame</h2>
+<p>As usual, a number of contributors participated in the effort: Arnau Orriols,
+Arthur Burkart, Carles Bruguera, Conrad Burchert, Eugene Prikazchikov, George
+Lestaris, Giorgos Margaritis, Gustavo Vargas, Hasan Pekdemir, Kris Lambrechts,
+Mario Kralj, Massimo Scamarcia, Mateusz Łoskot, Mattias Lundberg, Nick Park,
+NotSpecial, Rodrigo Rodriguez, Roman Gavrilov, Stanislav Filin, Stratos
+Gerakakis, mmizotin.</p>
+<p>It is always heartening to see and appreciate how many people are helping in
+taking the framework to the next level. Thank you all!</p>
+</div>
+
+  </div><!-- /.entry-content -->
+</section>
+            <hr/>
+            <footer id="contentinfo" class="footer">
+                <div>
+                    <a href="http://python-eve.org">Eve</a> <br />
+                    REST WEB APIs Made Simple
+                <div>
+                    A <a href="http://nicolaiarocci.com">Nicola Iarocci</a> Project</a>
+                </div>
+                <div>
+                    Powered by <a href="http://getpelican.com/">Pelican</a>
+                    and <a href="http://python.org">Python</a>. 
+                </div>
+                <div class="social">
+                        <a href="https://twitter.com/nicolaiarocci"><i class="icon-twitter"></i>  </a>
+                        <a href="https://github.com/nicolaiarocci/eve"><i class="icon-github"></i>  </a>
+                        <a href="mailto:eve@nicolaiarocci.com"><i class="icon-envelope"></i> </a>
+                </div>
+            </footer><!-- /#contentinfo -->
+        </div>
+        <!--Add statistycs-->
+
+</body>
+</html>
