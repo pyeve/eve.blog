@@ -1,0 +1,129 @@
+Eve 0.7 Released 
+================
+
+:date: 2017-02-06
+:category: develop
+:tags: releases, python
+
+A new major release of the `Eve REST API Framework`_ is finally out_ with a number
+of cool new features, a few fixes and a couple of possibly breaking changes.
+This post explains v0.7 new features and changes compared to the previous
+versions, providing relevant links when necessary. See the changelog_ for
+details about fixes and documentation updates also coming with this release.
+
+Major additions
+---------------
+- Mongo Aggregation Framework Support. API endpoints can now respond with database
+  aggregation results. Aggregation pipelines can be static or dynamic. When
+  they are dynamic the client uses the new ``aggregate`` parameter to influence
+  the query results, like this: ``?aggregate={"$value": 2}``. For more
+  informations see `MongoDB Aggregation Framework`_.
+
+- Option to improve pagination performance. Set
+  ``OPTIMIZE_PAGINATION_FOR_SPEED`` to ``True`` to get a very nice boost on
+  ``GET`` responses. When optimization is active no count operation (which can
+  be slow on large collections) is performed on the database. This does have
+  a few consequences. Firstly, no document count is returned. Secondly, HATEOAS
+  is less accurate: no last page link is available, and next page link is
+  always included, even on last page. On big collections, switching this
+  feature on can greatly improve performance. Defaults to ``False`` (slower
+  performance; document count included; accurate HATEOAS)
+
+- Support for new ``Location`` header (`RFC 7231 § 6.3.2`_). Location header is
+  returned on ``201 Created`` POST responses. If will contain the URI to the
+  created document. If bulk inserts are enabled, only the first document URI is
+  returned. This is especially useful in scenarios where HATEOAS is disabled.
+
+- Support for pretty printing. Clients can request json responses to be pretty
+  printed (indented) by adding the new ``pretty`` parameter to their query. See
+  `Pretty Printing`_.
+
+- ETag match checks can be made optional. If the new ``ENFORCE_IF_MATCH``
+  option is active, then all requests are expected to include the ``If-Match``
+  or they will be rejected (same as old behavior). However, if
+  ``ENFORCE_IF_MATCH`` is disabled, then client determines whether request is
+  conditional. When ``If-Match`` is included, then request is conditional,
+  otherwise the request is processed with no conditional checks. See `Disabling
+  Concurrency Control`_.
+
+Minor additions
+---------------
+- Regexes are allowed by setting ``X_DOMAINS_RE`` values. This allows CORS to
+  support websites with dynamic ranges of subdomains.
+
+- Support weak ETags, commonly applied by servers transmitting gzipped content.
+
+- Allow old document versions to be cache validated using ETags.
+
+- ``get_internal`` and ``getitem_internal`` functions can be used for internal
+  GET calls. These methods are not rate limited, authentication is not checked
+  and pre-request events are not raised.
+
+- Flask views (``@app.route``) can now set ``mongo_prefix`` via Flask’s ``g``
+  object, like in ``g.mongo_prefix = 'MONGO2'``.
+
+- Support for MongoDB ``DBRef`` fields.
+
+- ``MONGO_OPTIONS`` allows MongoDB arguments to be passed to the MongoClient
+  object. Defaults to ``{}``.
+
+- Flask-PyMongo compatibility for ``MONGO_CONNECT`` config setting.
+
+- ``AUTO_COLLAPSE_MULTI_KEYS.`` If set to ``True``, multiple values sent with
+  the same key, submitted using the ``application/x-www-form-urlencoded`` or
+  ``multipart/form-data`` content types, will automatically be converted to
+  a list of values. When using this together with ``AUTO_CREATE_LISTS`` it
+  becomes possible to use lists of media fields. Defaults to ``False``.
+
+- ``AUTO_CREATE_LISTS``. When submitting a non list type value for a field with
+  type list, automatically create a one element list before running the
+  validators. Defaults to ``False``.
+
+- ``MULTIPART_FORM_FIELDS_AS_JSON``. In case you are submitting your resource
+  as ``multipart/form-data`` all form data fields will be submitted as strings,
+  breaking any validation rules you might have on the resource fields. If you
+  want to treat all submitted form data as JSON strings you will have to
+  activate this setting.
+
+- Query parameters not recognised by Eve are now returned in HATEOAS URLs.
+
+- ``on_oplog_push`` event is fired when OPLOG is about to be updated. Callbacks
+  receive two arguments: resource (resource name) and entries (list of oplog
+  entries which are about to be written). See OPLOG_.
+
+- OPLOG audit now include the username or token when available.
+
+- ``OPLOG_CHANGE_METHODS`` is a list of HTTP methods which operations will
+  include changes into the OPLOG. See OPLOG_.
+
+- Support for Python 3.6 and 3.5
+
+Breaking changes
+----------------
+- ``428 Precondition Required`` is now returned when the ``If-Match`` request
+  header is missing. Previously, a generic ``403 Forbidden`` was returned.
+
+- ETag response header now conforms to `RFC 7232 § 2.3`_, and is surrounded by
+  double quotes
+
+Hall of Fame
+------------
+As usual, a number of contributors participated in the effort: Arnau Orriols,
+Arthur Burkart, Carles Bruguera, Conrad Burchert, Eugene Prikazchikov, George
+Lestaris, Giorgos Margaritis, Gustavo Vargas, Hasan Pekdemir, Kris Lambrechts,
+Mario Kralj, Massimo Scamarcia, Mateusz Łoskot, Mattias Lundberg, Nick Park,
+NotSpecial, Rodrigo Rodriguez, Roman Gavrilov, Stanislav Filin, Stratos
+Gerakakis, mmizotin.
+
+It is always heartening to see and appreciate how many people are helping in
+taking the framework to the next level. Thank you all!
+
+.. _`MongoDB Aggregation Framework`: http://python-eve.org/features.html#mongodb-aggregation-framework
+.. _`RFC 7231 § 6.3.2`: http://tools.ietf.org/html/rfc7231#section-6.3.2
+.. _`Pretty Printing`: http://python-eve.org/features.html#pretty-printing
+.. _`Disabling Concurrency Control`: http://python-eve.org/features.html#disabling-concurrency-control
+.. _OPLOG: http://python-eve.org/features.html#operations-log
+.. _`RFC 7232 § 2.3`: https://tools.ietf.org/html/rfc7232#section-2.3
+.. _`Eve REST API Framework`: http://python-eve.org
+.. _changelog: http://python-eve.org/changelog.html
+.. _out: https://pypi.python.org/pypi/Eve
