@@ -40,7 +40,7 @@ Concurrency Control&lt;/a&gt;.&lt;/li&gt;
 &lt;div class="section" id="minor-additions"&gt;
 &lt;h2&gt;Minor additions&lt;/h2&gt;
 &lt;ul class="simple"&gt;
-&lt;li&gt;Regexes are allowed by setting X_DOMAINS_RE values. This allows CORS to
+&lt;li&gt;Regexes are allowed by setting &lt;tt class="docutils literal"&gt;X_DOMAINS_RE&lt;/tt&gt; values. This allows CORS to
 support websites with dynamic ranges of subdomains.&lt;/li&gt;
 &lt;li&gt;Support weak ETags, commonly applied by servers transmitting gzipped content.&lt;/li&gt;
 &lt;li&gt;Allow old document versions to be cache validated using ETags.&lt;/li&gt;
