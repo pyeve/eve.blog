@@ -623,7 +623,7 @@ Arsh Singh. Also thanks to all the people who suggested features and fixes.&lt;/
 </summary><category term="releases"></category></entry><entry><title>The Eve Mailing List</title><link href="http://blog.python-eve.org/the-eve-mailing-list" rel="alternate"></link><updated>2013-09-12T00:00:00+02:00</updated><author><name>Nicola Iarocci</name></author><id>tag:blog.python-eve.org,2013-09-12:the-eve-mailing-list</id><summary type="html">&lt;p&gt;The &lt;a class="reference external" href="https://groups.google.com/forum/#!forum/python-eve"&gt;Eve Mailing List&lt;/a&gt; is intended to be a low traffic resource for
 developers, contributors and maintainers.&lt;/p&gt;
 &lt;p&gt;I'm opening it because I keep receiving emails about Eve and its satellite
-projects &lt;a class="reference external" href="https://github.com/nicolaiarocci/cerberus"&gt;Cerberus&lt;/a&gt; and &lt;a class="reference external" href="https://github.com/nicolaiarocci/events"&gt;Events&lt;/a&gt;.  While I'm more than happy to reply to invidual
+projects &lt;a class="reference external" href="https://github.com/pyeve/cerberus"&gt;Cerberus&lt;/a&gt; and &lt;a class="reference external" href="https://github.com/pyeve/events"&gt;Events&lt;/a&gt;.  While I'm more than happy to reply to invidual
 requests, I feel it is a real pity that valuable information is not being
 shared between users. I'm also hoping that experienced Eve users will want to
 contribute with their own advice and experiences, something that is already
@@ -664,7 +664,7 @@ resource schemas are returned, and applied a bunch of performance
 optimizations, especially with regard to &lt;tt class="docutils literal"&gt;POST&lt;/tt&gt; (Eve now performs bulk
 database inserts) and &lt;tt class="docutils literal"&gt;ETag&lt;/tt&gt; computation.  Also, if you have been
 experiencing 400s make sure to download this release, as a couple of
-significant bugs have been squashed. See the &lt;a class="reference external" href="https://github.com/nicolaiarocci/eve/blob/develop/CHANGES"&gt;changelog&lt;/a&gt; for all the news.&lt;/p&gt;
+significant bugs have been squashed. See the &lt;a class="reference external" href="https://github.com/pyeve/eve/blob/develop/CHANGES"&gt;changelog&lt;/a&gt; for all the news.&lt;/p&gt;
 &lt;p&gt;Thanks to all the people who contributed either with patches or by opening
 tickets and reporting bugs. In no particular order: Ondrej Slinták, Thomas
 Sileo, Tomasz Jezierski, Nicolas Bazire, Nicola Carlier, maksim2042, Xu Wang,
