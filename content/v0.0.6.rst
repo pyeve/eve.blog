@@ -27,5 +27,5 @@ Get `Eve 0.0.6`_ while it's hot!
 
 .. _`Event Hooks`: http://python-eve.org/features.html#event-hooks
 .. _Projections: http://python-eve.org/features.html#projections
-.. _changelog: https://github.com/nicolaiarocci/eve/blob/develop/CHANGES
+.. _changelog: https://github.com/pyeve/eve/blob/develop/CHANGES
 .. _`Eve 0.0.6`: https://crate.io/packages/Eve/

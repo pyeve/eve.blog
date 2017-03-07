@@ -20,7 +20,7 @@ TRANSLATION_FEED_ATOM = None
 
 # Blogroll
 LINKS =  (('Eve Website', 'http://python-eve.org'),
-          ('GitHub', 'http://github.com/nicolaiarocci/eve'),
+          ('GitHub', 'http://github.com/pyeve/eve'),
           ('IRC', 'irc://irc.freenode.net/evehq'),
           ('PyPI', 'http://pypi.python.org/pypi/Eve'),
           ('Support', 'http://python-eve.org/support.html'),
@@ -28,7 +28,7 @@ LINKS =  (('Eve Website', 'http://python-eve.org'),
 
 # Social widget
 SOCIAL = (('twitter', 'https://twitter.com/nicolaiarocci'),
-          ('github', 'https://github.com/nicolaiarocci/eve'),)
+          ('github', 'https://github.com/pyeve/eve'),)
 
 THEME = 'eve.iris'
 

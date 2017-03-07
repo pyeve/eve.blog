@@ -19,5 +19,5 @@ Also, a mailing list is browsable, searchable, and covers all timezones,
 something the current IRC room cannot do.
 
 .. _`Eve Mailing List`: https://groups.google.com/forum/#!forum/python-eve
-.. _Cerberus: https://github.com/nicolaiarocci/cerberus
-.. _Events: https://github.com/nicolaiarocci/events
+.. _Cerberus: https://github.com/pyeve/cerberus
+.. _Events: https://github.com/pyeve/events
